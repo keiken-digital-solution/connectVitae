@@ -1,1 +1,6 @@
-
+config:
+  linkedin:
+    accounts:
+      -
+        username: ${USERNAME}
+        password: ${PASSWORD}
