@@ -1,0 +1,47 @@
+{
+  "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,1000054008)",
+  "authority": "Adobe France",
+  "name": "AEM 6 Certified Lead Developer",
+  "timePeriod": {
+    "startDate": {
+      "month": 5,
+      "year": 2017
+    }
+  },
+  "company": {
+    "objectUrn": "urn:li:company:2514146",
+    "entityUrn": "urn:li:fs_miniCompany:2514146",
+    "name": "Adobe France",
+    "showcase": false,
+    "active": true,
+    "logo": {
+      "com.linkedin.common.VectorImage": {
+        "artifacts": [
+          {
+            "width": 200,
+            "fileIdentifyingUrlPathSegment": "200_200/0/1592927979191?e=1698883200&v=beta&t=jNc1uJUTGABjttd3lhT6Hh2eB8SboRN61x2Axe92n4Y",
+            "expiresAt": 1698883200000,
+            "height": 200
+          },
+          {
+            "width": 100,
+            "fileIdentifyingUrlPathSegment": "100_100/0/1592927979191?e=1698883200&v=beta&t=n9qW1xA7kQKIePIdR5SfGZNYtEhk6f5S6AUK3K3n_Jk",
+            "expiresAt": 1698883200000,
+            "height": 100
+          },
+          {
+            "width": 400,
+            "fileIdentifyingUrlPathSegment": "400_400/0/1592927979191?e=1698883200&v=beta&t=HCAP2mZqROQabbo-OYzgIMRiztAXLOgwf3OSK6E6-JU",
+            "expiresAt": 1698883200000,
+            "height": 400
+          }
+        ],
+        "rootUrl": "https://media.licdn.com/dms/image/C4E0BAQF4T-X4HZW3GQ/company-logo_"
+      }
+    },
+    "universalName": "adobe-france",
+    "dashCompanyUrn": "urn:li:fsd_company:2514146",
+    "trackingId": "M0Bj7Rq5SFCE1v8dA5ld3A=="
+  },
+  "companyUrn": "urn:li:fs_miniCompany:2514146"
+}

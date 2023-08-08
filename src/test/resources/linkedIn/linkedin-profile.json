@@ -1,0 +1,100 @@
+{
+  "summary": "As a Seasoned Software Engineer with a comprehensive background in Python, Go, API, and Cloud technologies.I have spent the past 14 years working with global leaders such as JP Morgan Chase, American Express, 3M Company, Alaska Airlines, Cigna Healthcare, and ADP. Throughout my career, I have consistently demonstrated my ability to exceed organizational and personal goals, driving growth and expansion for my employers.\n\nCurrently, I am serving as a Principal Software Engineer for ADP, where I am responsible for developing cutting-edge and scalable applications using Python and a wide range of technologies including Flask, Django, Pandas, Dask, Airflow, Numpy, MySql, Kafka, PySpark, Docker, Kubernetes, and Go. I am also deeply involved in data engineering, architecture, coding, and the migration of existing applications to the Azure/AWS platforms, as part of strategic digitization projects that focus on cloud, machine learning and artificial intelligence and microservices.\n\nIn my role, I work closely with senior leadership, client representatives, SRE and DevOps teams to ensure the successful completion of projects. My colleagues describe me as a dynamic, self-driven, and down-to-earth engineer with a strong ability to deliver superior IT solutions. My passion for technology, attention to detail and ability to think strategically, make me a valuable asset to any team.\n\nYou can contact me via email at  ** brij.pydata@gmail.com ***",
+  "industryName": "Information Technology & Services",
+  "lastName": "Pandey",
+  "supportedLocales": [
+    {
+      "country": "US",
+      "language": "en"
+    }
+  ],
+  "locationName": "United States",
+  "student": false,
+  "geoCountryName": "United States",
+  "geoCountryUrn": "urn:li:fs_geo:103644278",
+  "versionTag": "3719293335",
+  "geoLocationBackfilled": false,
+  "elt": false,
+  "birthDate": {
+    "month": 9,
+    "day": 8
+  },
+  "industryUrn": "urn:li:fs_industry:96",
+  "defaultLocale": {
+    "country": "US",
+    "language": "en"
+  },
+  "firstName": "Brij kishore",
+  "showEducationOnProfileTopCard": true,
+  "entityUrn": "urn:li:fs_profile:ACoAAAKDuMsBugjGZwz0pJy43LJ-6bVwc0gm9xQ",
+  "geoLocation": {
+    "geoUrn": "urn:li:fs_geo:117098405"
+  },
+  "geoLocationName": "Parsippany, New Jersey",
+  "location": {
+    "basicLocation": {
+      "countryCode": "us"
+    }
+  },
+  "miniProfile": {
+    "firstName": "Brij kishore",
+    "lastName": "Pandey",
+    "dashEntityUrn": "urn:li:fsd_profile:ACoAAAKDuMsBugjGZwz0pJy43LJ-6bVwc0gm9xQ",
+    "occupation": "Principal Software Engineer @ADP | Python | AWS | Go | Big Data | Spark | Kafka | Data Engineering",
+    "objectUrn": "urn:li:member:42186955",
+    "entityUrn": "urn:li:fs_miniProfile:ACoAAAKDuMsBugjGZwz0pJy43LJ-6bVwc0gm9xQ",
+    "backgroundImage": {
+      "com.linkedin.common.VectorImage": {
+        "artifacts": [
+          {
+            "width": 800,
+            "fileIdentifyingUrlPathSegment": "200_800/0/1686939947411?e=1696464000&v=beta&t=cQmNRvnGtMia-W1eJiqN2cbCve9M-i7RGPOFuvigv80",
+            "expiresAt": 1696464000000,
+            "height": 200
+          },
+          {
+            "width": 1400,
+            "fileIdentifyingUrlPathSegment": "350_1400/0/1686939947411?e=1696464000&v=beta&t=4_vLUl3I1nrb2PF6SEF2rvEm4J5eWnM-LbJRlokYKtI",
+            "expiresAt": 1696464000000,
+            "height": 350
+          }
+        ],
+        "rootUrl": "https://media.licdn.com/dms/image/D4D16AQEpU4zUh9bNoA/profile-displaybackgroundimage-shrink_"
+      }
+    },
+    "publicIdentifier": "brijpandeyji",
+    "picture": {
+      "com.linkedin.common.VectorImage": {
+        "artifacts": [
+          {
+            "width": 100,
+            "fileIdentifyingUrlPathSegment": "100_100/0/1671247264379?e=1696464000&v=beta&t=Mse3DXk8TGgPiz1SXp5I97L2-IsjX3FMcno-f6mOnVA",
+            "expiresAt": 1696464000000,
+            "height": 100
+          },
+          {
+            "width": 200,
+            "fileIdentifyingUrlPathSegment": "200_200/0/1671247264379?e=1696464000&v=beta&t=B9QUg3lCw9ZHPwbASwybkJRGb4gP5d-z8O3AR_yrfsM",
+            "expiresAt": 1696464000000,
+            "height": 200
+          },
+          {
+            "width": 400,
+            "fileIdentifyingUrlPathSegment": "400_400/0/1671247264379?e=1696464000&v=beta&t=9fSx-MhGlAW-uPGkb2MKXU7VyjdNDuRECwVjJAWp2Xk",
+            "expiresAt": 1696464000000,
+            "height": 400
+          },
+          {
+            "width": 800,
+            "fileIdentifyingUrlPathSegment": "800_800/0/1671247264379?e=1696464000&v=beta&t=ooiF7mdbYeBmIEQLq4KGuQFOV2UUFN8YnoHczt_B0lA",
+            "expiresAt": 1696464000000,
+            "height": 800
+          }
+        ],
+        "rootUrl": "https://media.licdn.com/dms/image/D4E03AQHzw-gGrn4j4g/profile-displayphoto-shrink_"
+      }
+    },
+    "trackingId": "o4i65dIcTH6SYQKfsL7IJA=="
+  },
+  "headline": "Principal Software Engineer @ADP | Python | AWS | Go | Big Data | Spark | Kafka | Data Engineering"
+}
