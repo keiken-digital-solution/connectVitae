@@ -1,8 +1,9 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
-import io.connectvitae.connectvitaelibrary.linkedIn.services.LinkedInService;
+import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.config.LinkedInProperties;
+import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services.LinkedInService;
 import io.connectvitae.connectvitaelibrary.models.Profile;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
