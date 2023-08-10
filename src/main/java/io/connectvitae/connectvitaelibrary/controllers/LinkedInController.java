@@ -1,6 +1,7 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.config.LinkedInProperties;
+import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
+
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services.LinkedInService;
 import io.connectvitae.connectvitaelibrary.models.Profile;
 

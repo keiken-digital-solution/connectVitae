@@ -1,4 +1,4 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.config;
+package io.connectvitae.connectvitaelibrary.linkedIn.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
