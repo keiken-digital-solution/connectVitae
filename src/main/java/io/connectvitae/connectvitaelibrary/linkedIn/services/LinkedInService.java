@@ -3,11 +3,14 @@ package io.connectvitae.connectvitaelibrary.linkedIn.services;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
+import io.connectvitae.connectvitaelibrary.linkedIn.mappers.ProfileMapper;
 import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInAuthenticationDTO;
 import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInProfile;
 import io.connectvitae.connectvitaelibrary.linkedIn.models.views.*;
 import io.connectvitae.connectvitaelibrary.linkedIn.proxies.LinkedInClient;
+import io.connectvitae.connectvitaelibrary.models.Profile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class LinkedInService {
 
     private final LinkedInClient linkedinClient;
+    private final ProfileMapper profileMapper;
     // TODO: find a better way to handle this
     private Map<String, String> storedCookies;
 
@@ -46,14 +50,30 @@ public class LinkedInService {
     }
 
     // Making profile view from different retrieved complete views
-    public ProfileView getProfileView(String profileId) {
-        return ProfileView.builder()
-                .educationView(fetchEducations(profileId))
-                .positionView(fetchPositions(profileId))
-                .skillView(fetchSkills(profileId))
-                .profile(fetchProfile(profileId))
-                .certificationView(fetchCertifications(profileId))
-                .build();
+    public CompletableFuture<Profile> getProfileView(String profileId) {
+        CompletableFuture<EducationView> educationFuture = CompletableFuture.supplyAsync(() -> fetchEducations(profileId));
+        CompletableFuture<PositionView> positionFuture = CompletableFuture.supplyAsync(() -> fetchPositions(profileId));
+        CompletableFuture<SkillView> skillFuture = CompletableFuture.supplyAsync(() -> fetchSkills(profileId));
+        CompletableFuture<LinkedInProfile> linkedInProfileFuture = CompletableFuture.supplyAsync(() -> fetchProfile(profileId));
+        CompletableFuture<CertificationView> certificationFuture = CompletableFuture.supplyAsync(() -> fetchCertifications(profileId));
+
+        return CompletableFuture.allOf(
+                educationFuture,
+                positionFuture,
+                skillFuture,
+                linkedInProfileFuture,
+                certificationFuture
+        ).thenApplyAsync(
+                ignoredVoid -> profileMapper.apply(
+                        ProfileView.builder()
+                                .educationView(educationFuture.join())
+                                .positionView(positionFuture.join())
+                                .skillView(skillFuture.join())
+                                .profile(linkedInProfileFuture.join())
+                                .certificationView(certificationFuture.join())
+                                .build()
+                )
+        );
     }
 
     // TODO: Change the method name
