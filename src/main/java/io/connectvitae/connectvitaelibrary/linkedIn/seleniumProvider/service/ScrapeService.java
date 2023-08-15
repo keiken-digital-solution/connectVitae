@@ -26,7 +26,7 @@ public class ScrapeService {
     private final DateParser dateParser;
     @PostConstruct
     public void postConstruct() throws IOException, URISyntaxException {
-        String filePath = "linkedin/selenium/certificationsExample.html";
+        String filePath = "linkedin/selenium/educationsExample.html";
         ClassPathResource classPathResource = new ClassPathResource(filePath);
         String resourceCode = Files.readString(
                 Path.of(classPathResource
@@ -35,7 +35,7 @@ public class ScrapeService {
 
         getElements(resourceCode).stream()
                 .forEach(element -> {
-                    System.out.println(scrapeCertification(element));
+                    System.out.println(scrapeEducation(element));
                     System.out.println("----------------------------------------------------");
                 });
     }
@@ -65,6 +65,7 @@ public class ScrapeService {
                 .degree(extractText(element, "t-14", "t-normal"))
                 .startDate(dates[0])
                 .endDate(dates[1])
+                .grade(extractGrade(extractText(element,0, 0,"t-14", "t-normal", "t-black")))
                 .build();
     }
 
@@ -116,5 +117,33 @@ public class ScrapeService {
             return "";
         }
         return selectedElements.get(index).child(0).text();
+    }
+
+    private String extractText(Element element, int index1, int index2, String... selectors) {
+        StringBuilder concatenatedSelector = new StringBuilder();
+        for (String selector : selectors) {
+            concatenatedSelector.append(".").append(selector);
+        }
+        Elements selectedElements = element.select(concatenatedSelector.toString());
+        if (index1 >= selectedElements.size()) {
+            return "";
+        }
+        return selectedElements.get(index1).child(0).child(index2).text();
+    }
+    public static String extractGrade(String text) {
+        String[] parts = text.split(":");
+
+        if (parts.length != 2) {
+            return null;
+        }
+
+        String label = parts[0].trim();
+        String value = parts[1].trim();
+
+        if (label.equalsIgnoreCase("Niveau") || label.equalsIgnoreCase("Grade")) {
+            return value;
+        } else {
+            return null;
+        }
     }
 }
