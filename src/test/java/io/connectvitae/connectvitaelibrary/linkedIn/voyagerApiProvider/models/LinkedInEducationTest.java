@@ -1,26 +1,19 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-<<<<<<< HEAD:src/test/java/io/connectvitae/connectvitaelibrary/linkedIn/models/LinkedInEducationTest.java
-=======
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInEducation;
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInTimePeriod;
->>>>>>> f3cca68 (feat(LinkedIn) : Implementing first selenium authentication):src/test/java/io/connectvitae/connectvitaelibrary/linkedIn/voyagerApiProvider/models/LinkedInEducationTest.java
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,8 +24,10 @@ public class LinkedInEducationTest {
   private ObjectMapper objectMapper;
 
   @Test
-  public void linkedInEducationJsonMappingTest() throws ParseException, IOException {
-    String jsonFilePath = "linkedIn/linkedin-education.json";
+
+  public void LinkedInEducationJsonMappingTest() throws ParseException, IOException {
+    String jsonFilePath = "linkedIn/voyagerApiProvider/linkedin-education.json";
+
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInEducationAsJson =
         StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);

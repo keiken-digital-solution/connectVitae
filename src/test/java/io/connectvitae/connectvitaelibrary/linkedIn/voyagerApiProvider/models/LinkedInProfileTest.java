@@ -1,21 +1,16 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-<<<<<<< HEAD:src/test/java/io/connectvitae/connectvitaelibrary/linkedIn/models/LinkedInProfileTest.java
-=======
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInProfile;
->>>>>>> f3cca68 (feat(LinkedIn) : Implementing first selenium authentication):src/test/java/io/connectvitae/connectvitaelibrary/linkedIn/voyagerApiProvider/models/LinkedInProfileTest.java
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,8 +21,9 @@ public class LinkedInProfileTest {
   private ObjectMapper objectMapper;
 
   @Test
-  public void linkedInProfileJsonMappingTest() throws IOException {
-    String jsonFilePath = "linkedIn/linkedin-profile.json";
+  public void LinkedInProfileJsonMappingTest() throws IOException {
+    String jsonFilePath = "linkedIn/voyagerApiProvider/linkedin-profile.json";
+
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInProfileAsJson =
         StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
