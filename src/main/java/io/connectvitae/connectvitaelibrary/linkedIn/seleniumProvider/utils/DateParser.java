@@ -13,20 +13,24 @@ public class DateParser {
             "MMM. yyyy",
             "MMMM yyyy",
             "MMMM. yyyy",
-            "yyyy"
+            "yyyy",
+            "DDDD"
     };
     static final Locale[] supportedLanguages = new Locale[]{
             Locale.FRENCH,
             Locale.ENGLISH
     };
 
+
+
     public static Date[] extractDates(String dateText) {
-        String[] parts = dateText.split(" - ");
-        return
+
+        return  dateText != "" ?
                 new Date[]{
-                parseDate(reformDate(parts[0])),
-                parseDate(reformDate(parts[1]))
-        };
+                        parseDate(reformDate(dateText.split("-")[0]).trim()),
+                        parseDate(reformDate(dateText.split("-")[1].trim()))
+                }
+                : new Date[] {null, null};
     }
 
     public static String reformDate(String textPart){

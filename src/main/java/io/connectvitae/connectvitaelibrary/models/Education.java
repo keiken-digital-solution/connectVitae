@@ -14,8 +14,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Training {
 
+public class Education {
     private String school;
     private String degree;
     private String specialty; //TODO: change the name

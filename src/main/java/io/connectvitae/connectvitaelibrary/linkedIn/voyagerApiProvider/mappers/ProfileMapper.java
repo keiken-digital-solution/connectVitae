@@ -1,12 +1,8 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.mappers;
 
 
-import io.connectvitae.connectvitaelibrary.models.Certification;
-import io.connectvitae.connectvitaelibrary.models.Experience;
-import io.connectvitae.connectvitaelibrary.models.Profile;
-import io.connectvitae.connectvitaelibrary.models.Skill;
-import io.connectvitae.connectvitaelibrary.models.Training;
-import io.connectvitae.connectvitaelibrary.models.User;
+import io.connectvitae.connectvitaelibrary.models.*;
+
 import java.util.function.Function;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.*;
@@ -17,44 +13,45 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProfileMapper implements Function<ProfileView, Profile> {
 
-  @Override
-  public Profile apply(ProfileView profileView) {
-    return Profile.builder()
-        .user(this.convertToUser(profileView.getProfile()))
-        .experiences(
-            profileView
-                .getPositionView()
-                .getElements()
-                .stream()
-                .map(this::convertToExperience)
-                .toList()
-        )
-        .trainings(
-            profileView
-                .getEducationView()
-                .getElements()
-                .stream()
-                .map(this::convertToTraining)
-                .toList()
-        )
-        .skills(
-            profileView
-                .getSkillView()
-                .getElements()
-                .stream()
-                .map(this::convertToSkill)
-                .toList()
-        )
-        .certifications(
-            profileView
-                .getCertificationView()
-                .getElements()
-                .stream()
-                .map(this::convertToCertification)
-                .toList()
-        )
-        .build();
-  }
+
+    @Override
+    public Profile apply(ProfileView profileView) {
+        return Profile.builder()
+                .user(this.convertToUser(profileView.getProfile()))
+                .experiences(
+                        profileView
+                                .getPositionView()
+                                .getElements()
+                                .stream()
+                                .map(this::convertToExperience)
+                                .toList()
+                )
+                .educations(
+                        profileView
+                                .getEducationView()
+                                .getElements()
+                                .stream()
+                                .map(this::convertToTraining)
+                                .toList()
+                )
+                .skills(
+                        profileView
+                                .getSkillView()
+                                .getElements()
+                                .stream()
+                                .map(this::convertToSkill)
+                                .toList()
+                )
+                .certifications(
+                        profileView
+                                .getCertificationView()
+                                .getElements()
+                                .stream()
+                                .map(this::convertToCertification)
+                                .toList()
+                )
+                .build();
+    }
 
   public User convertToUser(LinkedInProfile linkedInProfile) {
     return User.builder()
@@ -65,21 +62,21 @@ public class ProfileMapper implements Function<ProfileView, Profile> {
         .build();
   }
 
-  public Training convertToTraining(LinkedInEducation linkedInEducation) {
-    return Training.builder()
-        .school(linkedInEducation.getSchoolName())
-        .degree(linkedInEducation.getDegreeName())
-        .specialty(linkedInEducation.getFieldOfStudy())
-        .startDate(
-            linkedInEducation.getTimePeriod() != null
-                ? linkedInEducation.getTimePeriod().getStartDate()
-                : null
-        )
-        .endDate(
-            linkedInEducation.getTimePeriod() != null
-                ? linkedInEducation.getTimePeriod().getEndDate()
-                : null
 
+    public Education convertToTraining(LinkedInEducation linkedInEducation) {
+        return Education.builder()
+                .school(linkedInEducation.getSchoolName())
+                .degree(linkedInEducation.getDegreeName())
+                .specialty(linkedInEducation.getFieldOfStudy())
+                .startDate(
+                        linkedInEducation.getTimePeriod() != null ?
+                                linkedInEducation.getTimePeriod().getStartDate()
+                                : null
+                )
+                .endDate(
+                        linkedInEducation.getTimePeriod() != null ?
+                                linkedInEducation.getTimePeriod().getEndDate()
+                                : null
         )
         .build();
   }

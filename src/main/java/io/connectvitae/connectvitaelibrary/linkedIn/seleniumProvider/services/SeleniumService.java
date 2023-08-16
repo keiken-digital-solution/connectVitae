@@ -1,7 +1,6 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.service;
+package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -11,12 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.time.Duration;
-
-import static org.openqa.selenium.remote.ErrorCodes.TIMEOUT;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +32,6 @@ public class SeleniumService {
 
         int retries = 1;
         final int MAX_RETRIES = 5;
-
 
         driver.get("https://www.linkedin.com");
 
