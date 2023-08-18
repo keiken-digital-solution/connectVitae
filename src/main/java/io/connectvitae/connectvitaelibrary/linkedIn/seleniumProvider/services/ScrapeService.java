@@ -1,23 +1,15 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.utils.DateParser;
-import io.connectvitae.connectvitaelibrary.models.Certification;
-import io.connectvitae.connectvitaelibrary.models.Experience;
-import io.connectvitae.connectvitaelibrary.models.Skill;
-import io.connectvitae.connectvitaelibrary.models.Education;
-import jakarta.annotation.PostConstruct;
+import io.connectvitae.connectvitaelibrary.models.*;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.core.io.ClassPathResource;
+import org.openqa.selenium.By;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,20 +19,22 @@ import java.util.List;
 public class ScrapeService {
     private final DateParser dateParser;
 
-    @PostConstruct
-    public void postConstruct() throws IOException, URISyntaxException {
-        String filePath = "linkedin/selenium/educationsExample.html";
-        ClassPathResource classPathResource = new ClassPathResource(filePath);
-        String resourceCode = Files.readString(
-                Path.of(classPathResource
-                        .getURL()
-                        .toURI()));
+    public User scrapeUser(String innerHTML) {
+        Document doc = Jsoup.parse(innerHTML, "UTF-8");
+        Element fullNameElement = doc.selectFirst("h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words");
+        assert fullNameElement != null;
+        String fullName = fullNameElement.text();
+        var aboutElement = doc.selectFirst("div.display-flex.ph5.pv3 span:nth-child(1)");
+        String about = aboutElement.text();
 
-        getElements(resourceCode).stream()
-                .forEach(element -> {
-                    System.out.println(scrapeEducation(element));
-                    System.out.println("----------------------------------------------------");
-                });
+        String firstName = fullName.split("\\s", 2)[0];
+        String lastName = fullName.split("\\s", 2)[1];
+
+        return User.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .bio(about)
+                .build();
     }
 
     public Experience scrapeExperience(Element element) {

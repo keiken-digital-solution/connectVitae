@@ -53,14 +53,15 @@ public class ProfileMapper implements Function<ProfileView, Profile> {
                 .build();
     }
 
-  public User convertToUser(LinkedInProfile linkedInProfile) {
-    return User.builder()
-        .firstName(linkedInProfile.getFirstName())
-        .lastName(linkedInProfile.getLastName())
-        .adresse(linkedInProfile.getGeoLocationName())
-        .bio(linkedInProfile.getSummary())
-        .build();
-  }
+
+    public User convertToUser(LinkedInProfile linkedInProfile) {
+        return User.builder()
+                .firstName(linkedInProfile.getFirstName())
+                .lastName(linkedInProfile.getLastName())
+                .address(linkedInProfile.getGeoLocationName())
+                .bio(linkedInProfile.getSummary())
+                .build();
+    }
 
 
     public Education convertToTraining(LinkedInEducation linkedInEducation) {

@@ -97,7 +97,7 @@ public class ProfileMapperTest {
                 User.builder()
                         .firstName("John")
                         .lastName("Lenon")
-                        .adresse("Paris, France")
+                        .address("Paris, France")
                         .bio("An enthusiastic software engineer who is interested in artificial intelligence")
                         .build();
         User actualUser = profileMapper.convertToUser(linkedInProfile);

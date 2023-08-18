@@ -1,32 +1,27 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
+import io.connectvitae.connectvitaelibrary.models.*;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class SeleniumService {
     private final WebDriver driver;
+    private final ScrapeService scrapeService;
     private final LinkedInProperties linkedInProperties;
 
-
-//    @PostConstruct
-//    void postConstruct(){
-//        authenticate(
-//                linkedInProperties.getAccounts().get(0).username(),
-//                linkedInProperties.getAccounts().get(0).password());
-//        getPositions("ahmedtaoufiq");
-//        driver.quit();
-//    }
     public void authenticate(String username, String password){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
 
@@ -60,34 +55,69 @@ public class SeleniumService {
         driver.findElement(By.xpath("//*[@id=\"main-content\"]/section[1]/div/div/form/div[2]/button"))
                 .click();
     }
-    public void getProfile(String userId){
-        driver.get("https://www.linkedin.com/in/" + userId);
-        WebElement experiences = driver.findElement(By.className("pvs-list"));
-        System.out.println(experiences.getText());
+
+    public Profile getProfile (String profileId) {
+        return Profile.builder()
+                .experiences(getExperiences(profileId))
+                .educations(getEducations(profileId))
+                .skills(getSkills(profileId))
+                .certifications(getCertifications(profileId))
+                .user(getUser(profileId))
+                .build();
+    }
+    public User getUser(String profileId){
+        driver.get("https://www.linkedin.com/in/" + profileId);
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words")));
+        return scrapeService.scrapeUser(driver.getPageSource());
     }
 
-    public String getPositions(String userId){
-        return get("experience",userId);
+    // TODO: test the case where this is a group
+    public List<Experience> getExperiences(String profileId) {
+        var experiences =  get("experience",profileId);
+        List<Experience> experienceList = new ArrayList<>();
+        scrapeService.getElements(experiences).forEach(element -> {
+            experienceList.add(scrapeService.scrapeExperience(element));
+        });
+
+        return experienceList;
     }
 
-    public String getEducations(String userId){
-        return get("education",userId);
+    public List<Education> getEducations(String profileId) {
+        var educations =  get("education",profileId);
+        List<Education> educationList = new ArrayList<>();
+        scrapeService.getElements(educations).forEach(element -> {
+            educationList.add(scrapeService.scrapeEducation(element));
+        });
+
+        return educationList;
     }
 
-    public String getSkills(String userId){
-        return get("skills",userId);
+    public List<Skill> getSkills(String profileId) {
+        var skills = get("skills",profileId);
+        List<Skill> skillList = new ArrayList<>();
+        scrapeService.getElements(skills).forEach(element -> {
+            skillList.add(scrapeService.scrapeSkill(element));
+        });
+        return skillList;
     }
 
-    public String getCertifications(String userId){
-        return get("certifications",userId);
+    public List<Certification> getCertifications(String profileId) {
+        var certifications = get("certifications",profileId);
+        List<Certification> certificationList = new ArrayList<>();
+        scrapeService.getElements(certifications).forEach(element -> {
+            certificationList.add(scrapeService.scrapeCertification(element));
+        });
+
+        return certificationList;
     }
 
-    public String getLanguages(String userId){
-        return get("languages",userId);
+    public String getLanguages(String profileId) {
+        return get("languages",profileId);
     }
 
-    public String get(String informationType, String userId){
-        driver.get("https://www.linkedin.com/in/" + userId + "/details/" + informationType);
+    private String get(String informationType, String profileId) {
+        driver.get("https://www.linkedin.com/in/" + profileId + "/details/" + informationType);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("pvs-list")));
         return driver
