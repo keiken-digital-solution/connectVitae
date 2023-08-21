@@ -56,60 +56,29 @@ public class SeleniumService {
                 .click();
     }
 
-    public Profile getProfile (String profileId) {
-        return Profile.builder()
-                .experiences(getExperiences(profileId))
-                .educations(getEducations(profileId))
-                .skills(getSkills(profileId))
-                .certifications(getCertifications(profileId))
-                .user(getUser(profileId))
-                .build();
-    }
-    public User getUser(String profileId){
+
+    public String getUser(String profileId){
         driver.get("https://www.linkedin.com/in/" + profileId);
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words")));
-        return scrapeService.scrapeUser(driver.getPageSource());
+        return driver.getPageSource();
     }
 
     // TODO: test the case where this is a group
-    public List<Experience> getExperiences(String profileId) {
-        var experiences =  get("experience",profileId);
-        List<Experience> experienceList = new ArrayList<>();
-        scrapeService.getElements(experiences).forEach(element -> {
-            experienceList.add(scrapeService.scrapeExperience(element));
-        });
-
-        return experienceList;
+    public String getExperiences(String profileId) {
+        return get("experience", profileId);
     }
 
-    public List<Education> getEducations(String profileId) {
-        var educations =  get("education",profileId);
-        List<Education> educationList = new ArrayList<>();
-        scrapeService.getElements(educations).forEach(element -> {
-            educationList.add(scrapeService.scrapeEducation(element));
-        });
-
-        return educationList;
+    public String getEducations(String profileId) {
+        return get("education",profileId);
     }
 
-    public List<Skill> getSkills(String profileId) {
-        var skills = get("skills",profileId);
-        List<Skill> skillList = new ArrayList<>();
-        scrapeService.getElements(skills).forEach(element -> {
-            skillList.add(scrapeService.scrapeSkill(element));
-        });
-        return skillList;
+    public String getSkills(String profileId) {
+        return get("skills",profileId);
     }
 
-    public List<Certification> getCertifications(String profileId) {
-        var certifications = get("certifications",profileId);
-        List<Certification> certificationList = new ArrayList<>();
-        scrapeService.getElements(certifications).forEach(element -> {
-            certificationList.add(scrapeService.scrapeCertification(element));
-        });
-
-        return certificationList;
+    public String getCertifications(String profileId) {
+        return get("certifications",profileId);
     }
 
     public String getLanguages(String profileId) {
