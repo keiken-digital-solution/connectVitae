@@ -113,10 +113,6 @@ public class ScrapeService {
 
     // --------------------------------------- Helpers --------------------------------------- \\
 
-    public Elements getElements(String innerHTML) {
-        Document doc = Jsoup.parse(innerHTML, "UTF-8");
-        return doc.select("li.pvs-list__paged-list-item");
-    }
 
     private String extractText(Element element, String... selectors) {
         StringBuilder concatenatedSelector = new StringBuilder();

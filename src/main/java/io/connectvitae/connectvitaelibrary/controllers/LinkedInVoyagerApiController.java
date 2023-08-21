@@ -16,9 +16,10 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/linkedIn")
-public class LinkedInController {
-  private final LinkedInProperties linkedInProperties;
-  private final LinkedInService linkedInService;
+
+public class LinkedInVoyagerApiController {
+    private final LinkedInProperties linkedInProperties;
+    private final LinkedInService linkedInService;
 
   private boolean isAuthenticated = false;
 

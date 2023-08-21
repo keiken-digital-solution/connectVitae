@@ -19,8 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SeleniumService {
     private final WebDriver driver;
-    private final ScrapeService scrapeService;
-    private final LinkedInProperties linkedInProperties;
 
     public void authenticate(String username, String password){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
@@ -55,7 +53,6 @@ public class SeleniumService {
         driver.findElement(By.xpath("//*[@id=\"main-content\"]/section[1]/div/div/form/div[2]/button"))
                 .click();
     }
-
 
     public String getUser(String profileId){
         driver.get("https://www.linkedin.com/in/" + profileId);
