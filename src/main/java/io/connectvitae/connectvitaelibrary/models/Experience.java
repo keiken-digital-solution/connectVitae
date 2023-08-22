@@ -25,5 +25,4 @@ public class Experience {
   private String projectType;
   private String domain;
 
-
 }
