@@ -20,7 +20,12 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ jdk maven ];
+          packages = with pkgs; [
+            jdk
+            maven
+            chromium
+            chromedriver
+          ];
         };
       });
     };
