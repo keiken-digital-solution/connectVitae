@@ -1,4 +1,4 @@
-﻿package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services;
+package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.services.DataExtractorServiceInterface;
 import io.connectvitae.connectvitaelibrary.models.*;
