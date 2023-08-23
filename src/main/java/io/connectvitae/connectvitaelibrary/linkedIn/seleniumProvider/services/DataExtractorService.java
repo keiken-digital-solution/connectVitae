@@ -22,7 +22,7 @@ public class DataExtractorService implements DataExtractorServiceInterface {
                 .educations(getEducations(profileId))
                 .skills(getSkills(profileId))
                 .certifications(getCertifications(profileId))
-//                .user(fetchUser(profileId))  TODO: Handle the null case of profile information
+                .user(getUser(profileId))
                 .build();
     }
 

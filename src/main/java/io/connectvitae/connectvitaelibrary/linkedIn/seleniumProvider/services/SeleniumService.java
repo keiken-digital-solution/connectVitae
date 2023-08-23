@@ -53,7 +53,8 @@ public class SeleniumService {
     public String fetchUser(String profileId){
         driver.get("https://www.linkedin.com/in/" + profileId);
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".pv-top-card h1")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".pvs-loader__profile-card")));
         return driver.getPageSource();
     }
 

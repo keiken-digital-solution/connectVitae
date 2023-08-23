@@ -4,6 +4,7 @@ import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
 import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.DataExtractorService;
 import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumService;
 import io.connectvitae.connectvitaelibrary.models.Profile;
+import io.connectvitae.connectvitaelibrary.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,12 @@ public class LinkedInScraperController {
     public Profile getProfile(@PathVariable String profileId) {
         authenticate();
         return dataExtractorService.getProfile(profileId);
+    }
+
+    @GetMapping("/profile/{profileId}/user")
+    public User getUser(@PathVariable String profileId) {
+        authenticate();
+        return dataExtractorService.getUser(profileId);
     }
 
     private void authenticate() {

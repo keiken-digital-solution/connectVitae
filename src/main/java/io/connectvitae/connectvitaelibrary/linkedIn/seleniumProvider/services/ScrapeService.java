@@ -7,7 +7,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openqa.selenium.By;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,16 +18,26 @@ import java.util.List;
 public class ScrapeService {
     private final DateParser dateParser;
 
-    public User scrapeUser(String innerHTML) {
-        Document doc = Jsoup.parse(innerHTML, "UTF-8");
-        Element fullNameElement = doc.selectFirst("h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words");
-        assert fullNameElement != null;
-        String fullName = fullNameElement.text();
-        var aboutElement = doc.selectFirst("div.display-flex.ph5.pv3 span:nth-child(1)");
-        String about = aboutElement.text();
+    public User scrapeUser(String HTML) {
+        Document doc = Jsoup.parse(HTML, "UTF-8");
 
-        String firstName = fullName.split("\\s", 2)[0];
-        String lastName = fullName.split("\\s", 2)[1];
+        Element fullNameElement = doc.selectFirst(".pv-top-card h1");
+        Elements aboutProfileCard = doc.select(
+                "main [data-view-name=\"profile-card\"]:nth-of-type(2) [aria-hidden]"
+        );
+
+        String firstName = null;
+        String lastName = null;
+        if (fullNameElement != null) {
+            String fullName = fullNameElement.text();
+            firstName = fullName.split("\\s", 2)[0];
+            lastName = fullName.split("\\s", 2)[1];
+        }
+
+        String about = null;
+        if (aboutProfileCard.size() == 2 && aboutProfileCard.first().text().equals("Infos")) {
+            about = aboutProfileCard.last().text();
+        }
 
         return User.builder()
                 .firstName(firstName)
