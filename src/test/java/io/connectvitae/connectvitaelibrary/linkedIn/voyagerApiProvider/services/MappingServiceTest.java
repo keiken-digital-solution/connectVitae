@@ -1,24 +1,18 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.mappers;
+package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services;
 
 import io.connectvitae.connectvitaelibrary.models.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumService;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.*;
-
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 
 @SpringBootTest
-public class ProfileMapperTest {
 
+public class MappingServiceTest {
     @Autowired
-    private ProfileMapper profileMapper;
+    private MappingService mappingService;
 
     @Test
     void testConvertExperience() {
@@ -29,7 +23,7 @@ public class ProfileMapperTest {
                         .locationName("Paris, France")
                         .title("Software Developer")
                         .build();
-        Experience actualExperience = profileMapper.convertToExperience(linkedInPosition);
+        Experience actualExperience = mappingService.convertToExperience(linkedInPosition);
 
         Experience expectedExperience =
                 Experience.builder()
@@ -53,7 +47,7 @@ public class ProfileMapperTest {
                         .certificationProvider("Adobe")
                         .certificationName("Adobe certified Expert : CQ Component Developer")
                         .build();
-        Certification actualCertification = profileMapper.convertToCertification(linkedInCertification);
+        Certification actualCertification = mappingService.convertToCertification(linkedInCertification);
         assertEquals(expectedCertification, actualCertification);
     }
 
@@ -71,7 +65,7 @@ public class ProfileMapperTest {
                         .specialty("Information Technology")
                         .degree("Engineer")
                         .build();
-        Education actualEducation = profileMapper.convertToTraining(linkedInEducation);
+        Education actualEducation = mappingService.convertToEducation(linkedInEducation);
         assertEquals(expectedEducation, actualEducation);
     }
 
@@ -79,7 +73,7 @@ public class ProfileMapperTest {
     void testConvertSkill() {
         LinkedInSkill linkedInSkill = LinkedInSkill.builder().name("Project Management").build();
         Skill expectedSkill = Skill.builder().skillName("Project Management").build();
-        Skill actualSkill = profileMapper.convertToSkill(linkedInSkill);
+        Skill actualSkill = mappingService.convertToSkill(linkedInSkill);
         assertEquals(expectedSkill, actualSkill);
     }
 
@@ -102,7 +96,7 @@ public class ProfileMapperTest {
                         .address("Paris, France")
                         .bio("An enthusiastic software engineer who is interested in artificial intelligence")
                         .build();
-        User actualUser = profileMapper.convertToUser(linkedInProfile);
+        User actualUser = mappingService.convertToUser(linkedInProfile);
         assertEquals(expectedUser, actualUser);
     }
 }

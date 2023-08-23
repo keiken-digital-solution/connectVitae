@@ -22,7 +22,7 @@ public class LinkedInScraperController {
     @GetMapping("/profile/{profileId}")
     public Profile getProfile(@PathVariable String profileId) {
         authenticate();
-        return dataExtractorService.fetchProfile(profileId);
+        return dataExtractorService.getProfile(profileId);
     }
 
     private void authenticate() {

@@ -1,7 +1,5 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
-import io.connectvitae.connectvitaelibrary.models.*;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -12,8 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -54,7 +50,7 @@ public class SeleniumService {
                 .click();
     }
 
-    public String getUser(String profileId){
+    public String fetchUser(String profileId){
         driver.get("https://www.linkedin.com/in/" + profileId);
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1.text-heading-xlarge.inline.t-24.v-align-middle.break-words")));
@@ -62,27 +58,27 @@ public class SeleniumService {
     }
 
     // TODO: test the case where this is a group
-    public String getExperiences(String profileId) {
-        return get("experience", profileId);
+    public String fetchExperiences(String profileId) {
+        return fetch("experience", profileId);
     }
 
-    public String getEducations(String profileId) {
-        return get("education",profileId);
+    public String fetchEducations(String profileId) {
+        return fetch("education",profileId);
     }
 
-    public String getSkills(String profileId) {
-        return get("skills",profileId);
+    public String fetchSkills(String profileId) {
+        return fetch("skills",profileId);
     }
 
-    public String getCertifications(String profileId) {
-        return get("certifications",profileId);
+    public String fetchCertifications(String profileId) {
+        return fetch("certifications",profileId);
     }
 
     public String getLanguages(String profileId) {
-        return get("languages",profileId);
+        return fetch("languages",profileId);
     }
 
-    private String get(String informationType, String profileId) {
+    private String fetch(String informationType, String profileId) {
         driver.get("https://www.linkedin.com/in/" + profileId + "/details/" + informationType);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("pvs-list")));

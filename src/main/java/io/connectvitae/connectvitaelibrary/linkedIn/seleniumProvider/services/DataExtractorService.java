@@ -1,5 +1,6 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
+import io.connectvitae.connectvitaelibrary.linkedIn.services.DataExtractorServiceInterface;
 import io.connectvitae.connectvitaelibrary.models.*;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
@@ -12,25 +13,25 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DataExtractorService {
+public class DataExtractorService implements DataExtractorServiceInterface {
     private final ScrapeService scrapeService;
     private final SeleniumService seleniumService;
-    public Profile fetchProfile(String profileId) {
+    public Profile getProfile(String profileId) {
         return Profile.builder()
-                .experiences(fetchExperiences(profileId))
-                .educations(fetchEducations(profileId))
-                .skills(fetchSkills(profileId))
-                .certifications(fetchCertifications(profileId))
+                .experiences(getExperiences(profileId))
+                .educations(getEducations(profileId))
+                .skills(getSkills(profileId))
+                .certifications(getCertifications(profileId))
 //                .user(fetchUser(profileId))  TODO: Handle the null case of profile information
                 .build();
     }
 
-    public User fetchUser (String profileId){
-        return scrapeService.scrapeUser(seleniumService.getUser(profileId));
+    public User getUser(String profileId){
+        return scrapeService.scrapeUser(seleniumService.fetchUser(profileId));
     }
 
-    public List<Experience> fetchExperiences(String profileId) {
-        var experiences =  seleniumService.getExperiences(profileId);
+    public List<Experience> getExperiences(String profileId) {
+        var experiences =  seleniumService.fetchExperiences(profileId);
         List<Experience> experienceList = new ArrayList<>();
         getElements(experiences).forEach(element -> {
             experienceList.add(scrapeService.scrapeExperience(element));
@@ -39,8 +40,8 @@ public class DataExtractorService {
         return experienceList;
     }
 
-    public List<Education> fetchEducations(String profileId) {
-        var educations =  seleniumService.getEducations(profileId);
+    public List<Education> getEducations(String profileId) {
+        var educations =  seleniumService.fetchEducations(profileId);
         List<Education> educationList = new ArrayList<>();
         getElements(educations).forEach(element -> {
             educationList.add(scrapeService.scrapeEducation(element));
@@ -49,8 +50,8 @@ public class DataExtractorService {
         return educationList;
     }
 
-    public List<Skill> fetchSkills(String profileId) {
-        var skills = seleniumService.getSkills(profileId);
+    public List<Skill> getSkills(String profileId) {
+        var skills = seleniumService.fetchSkills(profileId);
         List<Skill> skillList = new ArrayList<>();
         getElements(skills).forEach(element -> {
             skillList.add(scrapeService.scrapeSkill(element));
@@ -58,8 +59,8 @@ public class DataExtractorService {
         return skillList;
     }
 
-    public List<Certification> fetchCertifications(String profileId) {
-        var certifications = seleniumService.getCertifications(profileId);
+    public List<Certification> getCertifications(String profileId) {
+        var certifications = seleniumService.fetchCertifications(profileId);
         List<Certification> certificationList = new ArrayList<>();
         getElements(certifications).forEach(element -> {
             certificationList.add(scrapeService.scrapeCertification(element));

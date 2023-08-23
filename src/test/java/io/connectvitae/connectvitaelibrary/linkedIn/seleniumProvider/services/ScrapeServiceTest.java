@@ -9,7 +9,6 @@ import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 
@@ -24,9 +23,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class ScrapeServiceTest {
+    private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
     @Autowired
     ScrapeService scrapeService;
-    SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+
     @Test
     public void testScrapeExperience() throws IOException, ParseException {
         Element linkedInExperienceElement =
@@ -34,8 +34,8 @@ public class ScrapeServiceTest {
 
 
         Experience expectedExperience = Experience.builder()
-                .startDate(formatter.parse("01/06/2016"))
-                .endDate(formatter.parse("01/08/2016"))
+                .startDate(FORMATTER.parse("01/06/2016"))
+                .endDate(FORMATTER.parse("01/08/2016"))
                 .company("Société de Fabrication des Cuisinières (SOFACUIS) . Stage")
                 .roleName("Concepteur mécanique")
                 .mission("Conception d'un model de four avec de nouvelles dimensions: - Etude des étapes de production des fours et cuisinières. - Conception des pièces (CATIA V5, SOLIDWORKS). - Validation de la conception avec le responsable.")
@@ -68,7 +68,7 @@ public class ScrapeServiceTest {
         Certification expectedCertification = Certification.builder()
                 .certificationName("Adobe Certified Master - Adobe Experience Manager Sites Architect")
                 .certificationProvider("Adobe")
-                .certifiedDate(formatter.parse("01/06/2020"))
+                .certifiedDate(FORMATTER.parse("01/06/2020"))
                 .build();
         Certification actualCertification = scrapeService.scrapeCertification(linkedInCertificationElement);
         assertEquals(expectedCertification,actualCertification);
@@ -82,8 +82,8 @@ public class ScrapeServiceTest {
         Education expectedEducation = Education.builder()
                 .school("Université Hassan II de Casablanca")
                 .degree("Associate's degree, software engineering")
-                .startDate(formatter.parse("01/01/2005"))
-                .endDate(formatter.parse("01/01/2007"))
+                .startDate(FORMATTER.parse("01/01/2005"))
+                .endDate(FORMATTER.parse("01/01/2007"))
                 .grade("Excellent")
                 .build();
         Education actualEducation = scrapeService.scrapeEducation(linkedInEducationElement);
@@ -98,8 +98,8 @@ public class ScrapeServiceTest {
         List<Experience> expectedExperienceGroup = new ArrayList<>();
 
         Experience firstExperience = Experience.builder()
-                .startDate(formatter.parse("01/11/2015"))
-                .endDate(formatter.parse("01/03/2016"))
+                .startDate(FORMATTER.parse("01/11/2015"))
+                .endDate(FORMATTER.parse("01/03/2016"))
                 .company("Google")
                 .roleName("Senior Research Scientist")
                 .mission("As a member of the Google Brain team, I work on deep learning, both in terms of basic research and in terms of improving products. I'm writing a textbook on deep learning along with my PhD thesis advisors: www.deeplearningbook.org")
@@ -107,8 +107,8 @@ public class ScrapeServiceTest {
                 .build();
 
         Experience secondExperience = Experience.builder()
-                .startDate(formatter.parse("01/07/2014"))
-                .endDate(formatter.parse("01/11/2015"))
+                .startDate(FORMATTER.parse("01/07/2014"))
+                .endDate(FORMATTER.parse("01/11/2015"))
                 .company("Google")
                 .roleName("Research Scientist")
                 .mission("During my first year and change at Google, I contributed to TensorFlow, designed a new method for generating adversarial examples and using them to improve neural networks, made a bunch of visualizations showing that neural network loss functions aren't full of scary obstacles after all, supervised intern Tianqi Chen as he developed a method for rapidly transferring knowledge between neural networks, and did many other fun deep learning-related things.")
