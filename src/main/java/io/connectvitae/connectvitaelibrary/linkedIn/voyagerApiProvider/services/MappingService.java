@@ -7,7 +7,6 @@ import java.util.function.Function;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.*;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.views.ProfileView;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 

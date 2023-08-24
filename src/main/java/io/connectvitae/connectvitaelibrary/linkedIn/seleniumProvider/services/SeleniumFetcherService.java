@@ -1,5 +1,6 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
+import io.connectvitae.connectvitaelibrary.linkedIn.services.FetcherServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -13,7 +14,7 @@ import java.time.Duration;
 
 @Service
 @RequiredArgsConstructor
-public class SeleniumService {
+public class SeleniumFetcherService implements FetcherServiceInterface {
     private final WebDriver driver;
 
     public void authenticate(String username, String password){
@@ -75,7 +76,7 @@ public class SeleniumService {
         return fetch("certifications",profileId);
     }
 
-    public String getLanguages(String profileId) {
+    public String fetchLanguages(String profileId) {
         return fetch("languages",profileId);
     }
 

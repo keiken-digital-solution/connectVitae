@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 @Component
-public class DateParser {
+public class SeleniumDateParser {
     static final String[] patterns = {
             "MMM yyyy",
             "MMM. yyyy",

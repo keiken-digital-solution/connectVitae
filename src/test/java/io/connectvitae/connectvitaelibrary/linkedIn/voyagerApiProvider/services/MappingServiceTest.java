@@ -1,8 +1,11 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services;
 
-import io.connectvitae.connectvitaelibrary.models.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.*;
+
+import io.connectvitae.connectvitaelibrary.models.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

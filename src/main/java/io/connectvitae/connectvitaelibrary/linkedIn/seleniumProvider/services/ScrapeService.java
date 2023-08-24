@@ -1,7 +1,7 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.utils.DateParser;
-import io.connectvitae.connectvitaelibrary.models.*;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.utils.SeleniumDateParser;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.*;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,9 +16,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ScrapeService {
-    private final DateParser dateParser;
+    private final SeleniumDateParser seleniumDateParser;
 
-    public User scrapeUser(String HTML) {
+    public SeleniumUser scrapeUser(String HTML) {
         Document doc = Jsoup.parse(HTML, "UTF-8");
 
         Element fullNameElement = doc.selectFirst(".pv-top-card h1");
@@ -39,19 +39,19 @@ public class ScrapeService {
             about = aboutProfileCard.last().text();
         }
 
-        return User.builder()
+        return SeleniumUser.builder()
                 .firstName(firstName)
                 .lastName(lastName)
                 .bio(about)
                 .build();
     }
 
-    public Experience scrapeExperience(Element element) {
+    public SeleniumExperience scrapeExperience(Element element) {
 
         String datesAsAText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
-        Date[] dates = dateParser.extractDates(datesAsAText);
+        Date[] dates = seleniumDateParser.extractDates(datesAsAText);
 
-        return Experience.builder()
+        return SeleniumExperience.builder()
                 .company(extractText(element, "t-14", "t-normal"))
                 .roleName(extractText(element, "t-bold"))
                 .mission(extractText(element, "t-14", "t-normal", "t-black"))
@@ -61,11 +61,11 @@ public class ScrapeService {
                 .build();
     }
 
-    public Education scrapeEducation(Element element) {
+    public SeleniumEducation scrapeEducation(Element element) {
         String dateAsAText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
-        Date[] dates = dateParser.extractDates(dateAsAText);
+        Date[] dates = seleniumDateParser.extractDates(dateAsAText);
 
-        return Education.builder()
+        return SeleniumEducation.builder()
                 .school(extractText(element, "t-bold"))
                 .degree(extractText(element, "t-14", "t-normal"))
                 .startDate(dates[0])
@@ -74,29 +74,29 @@ public class ScrapeService {
                 .build();
     }
 
-    public Certification scrapeCertification(Element element) {
+    public SeleniumCertification scrapeCertification(Element element) {
 
         String certifiedDateAsText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
         Date certifiedDate = certifiedDateAsText != "" ?
-                dateParser.parseDate(certifiedDateAsText.split(":")[1].trim())
+                seleniumDateParser.parseDate(certifiedDateAsText.split(":")[1].trim())
                 : null;
 
-        return Certification.builder()
+        return SeleniumCertification.builder()
                 .certificationName(extractText(element, "t-bold"))
                 .certifiedDate(certifiedDate)
                 .certificationProvider(extractText(element, "t-14", "t-normal"))
                 .build();
     }
 
-    public Skill scrapeSkill(Element element) {
+    public SeleniumSkill scrapeSkill(Element element) {
 
-        return Skill.builder()
+        return SeleniumSkill.builder()
                 .skillName(extractText(element, "t-bold"))
                 .build();
     }
 
-    public List<Experience> scrapeExperiencesGroup(Element experiencesGroupElement) {
-        List<Experience> experiences = new ArrayList<>();
+    public List<SeleniumExperience> scrapeExperiencesGroup(Element experiencesGroupElement) {
+        List<SeleniumExperience> seleniumExperiences = new ArrayList<>();
         String companyName = extractText(experiencesGroupElement, "t-bold");
         Elements elements = Jsoup.parse(experiencesGroupElement
                         .selectFirst("li.pvs-list__paged-list-item")
@@ -106,8 +106,8 @@ public class ScrapeService {
         elements.stream()
                 .forEach(experienceElement -> {
                     String dateAsAText = extractText(experienceElement, 0, "t-14", "t-normal", "t-black--light");
-                    Date[] dates = dateParser.extractDates(dateAsAText);
-                    Experience experience = Experience.builder()
+                    Date[] dates = seleniumDateParser.extractDates(dateAsAText);
+                    SeleniumExperience seleniumExperience = SeleniumExperience.builder()
                             .company(companyName)
                             .roleName(extractText(experienceElement, "t-bold"))
                             .startDate(dates[0])
@@ -115,9 +115,9 @@ public class ScrapeService {
                             .location(extractText(experienceElement, 1, "t-14", "t-normal", "t-black--light"))
                             .mission(extractText(experienceElement, "t-14", "t-normal", "t-black"))
                             .build();
-                    experiences.add(experience);
+                    seleniumExperiences.add(seleniumExperience);
                 });
-        return experiences;
+        return seleniumExperiences;
     }
 
     // --------------------------------------- Helpers --------------------------------------- \\

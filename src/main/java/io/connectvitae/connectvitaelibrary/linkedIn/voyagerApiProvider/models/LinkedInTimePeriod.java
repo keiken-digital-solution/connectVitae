@@ -1,9 +1,9 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.utils.LinkedInDateDeserializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.utils.VoyagerDateParser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,8 +16,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LinkedInTimePeriod {
-  @JsonDeserialize(using = LinkedInDateDeserializer.class)
-  private Date startDate;
-  @JsonDeserialize(using = LinkedInDateDeserializer.class)
-  private Date endDate;
+    @JsonDeserialize(using = VoyagerDateParser.class)
+    private Date startDate;
+    @JsonDeserialize(using = VoyagerDateParser.class)
+    private Date endDate;
 }

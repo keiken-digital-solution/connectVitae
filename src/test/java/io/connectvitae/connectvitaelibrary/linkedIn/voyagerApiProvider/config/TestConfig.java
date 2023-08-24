@@ -2,9 +2,7 @@ package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumService;
 import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 
 @TestConfiguration

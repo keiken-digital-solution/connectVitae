@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
+import io.connectvitae.connectvitaelibrary.linkedIn.services.FetcherServiceInterface;
 import io.connectvitae.connectvitaelibrary.models.Profile;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInAuthenticationDTO;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInProfile;
@@ -23,7 +24,7 @@ import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
 @Service
-public class VoyagerApiService {
+public class VoyagerApiFetcherService implements FetcherServiceInterface {
 
 
     private final LinkedInClient linkedinClient;
@@ -63,9 +64,9 @@ public class VoyagerApiService {
      */
     public CompletableFuture<Profile> getProfileView(String profileId) {
         CompletableFuture<EducationView> educationFuture = CompletableFuture.supplyAsync(() -> fetchEducations(profileId));
-        CompletableFuture<PositionView> positionFuture = CompletableFuture.supplyAsync(() -> fetchPositions(profileId));
+        CompletableFuture<PositionView> positionFuture = CompletableFuture.supplyAsync(() -> fetchExperiences(profileId));
         CompletableFuture<SkillView> skillFuture = CompletableFuture.supplyAsync(() -> fetchSkills(profileId));
-        CompletableFuture<LinkedInProfile> linkedInProfileFuture = CompletableFuture.supplyAsync(() -> fetchProfile(profileId));
+        CompletableFuture<LinkedInProfile> linkedInProfileFuture = CompletableFuture.supplyAsync(() -> fetchUser(profileId));
         CompletableFuture<CertificationView> certificationFuture = CompletableFuture.supplyAsync(() -> fetchCertifications(profileId));
 
         return CompletableFuture.allOf(
@@ -95,7 +96,7 @@ public class VoyagerApiService {
      * @param profileId The id of the user.
      * @return A LinkedInProfile object.
      */
-    public LinkedInProfile fetchProfile(String profileId) {
+    public LinkedInProfile fetchUser(String profileId) {
         return linkedinClient.fetchProfile(
                 formatCookies(storedCookies),
                 getSessionID(storedCookies),
@@ -111,7 +112,7 @@ public class VoyagerApiService {
      * @param profileId The id of the user.
      * @return A list of LinkedInPosition objects nested inside a PositionView object.
      */
-    public PositionView fetchPositions(String profileId) {
+    public PositionView fetchExperiences(String profileId) {
         return linkedinClient.fetchPositions(
                 formatCookies(storedCookies),
                 getSessionID(storedCookies),
@@ -168,6 +169,9 @@ public class VoyagerApiService {
 
     }
 
+    public Object fetchLanguages(String profileId){
+        return null;
+    }
 
     // --------------------------------------- Helpers --------------------------------------- \\
 

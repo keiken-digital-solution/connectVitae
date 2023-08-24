@@ -1,11 +1,11 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.services.DataExtractorServiceInterface;
+import io.connectvitae.connectvitaelibrary.linkedIn.services.ExtractorServiceInterface;
 import io.connectvitae.connectvitaelibrary.models.*;
 
 import java.util.List;
 
-public class DataExtractorService implements DataExtractorServiceInterface {
+public class VoyagerApiExtractorService implements ExtractorServiceInterface {
 
     public Profile getProfile(String profileId) {
         return null;

@@ -4,7 +4,7 @@ import io.connectvitae.connectvitaelibrary.models.*;
 
 import java.util.List;
 
-public interface DataExtractorServiceInterface {
+public interface ExtractorServiceInterface {
     public Profile getProfile(String profileId);
 
     public User getUser(String profileId);

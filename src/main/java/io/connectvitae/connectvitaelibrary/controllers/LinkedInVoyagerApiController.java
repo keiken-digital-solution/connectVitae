@@ -2,7 +2,7 @@ package io.connectvitae.connectvitaelibrary.controllers;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services.VoyagerApiService;
+import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services.VoyagerApiFetcherService;
 import io.connectvitae.connectvitaelibrary.models.Profile;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class LinkedInVoyagerApiController {
     private final LinkedInProperties linkedInProperties;
-    private final VoyagerApiService voyagerApiService;
+    private final VoyagerApiFetcherService voyagerApiFetcherService;
 
   private boolean isAuthenticated = false;
 
@@ -27,13 +27,13 @@ public class LinkedInVoyagerApiController {
     @GetMapping("/{profileId}")
     public CompletableFuture<Profile> getProfile(@PathVariable String profileId) {
         authenticate();
-        return voyagerApiService.getProfileView(profileId);
+        return voyagerApiFetcherService.getProfileView(profileId);
     }
 
     private void authenticate() {
         if (!isAuthenticated) {
             var accounts = linkedInProperties.getAccounts();
-            voyagerApiService.authenticate(accounts.get(0).username(), accounts.get(0).password());
+            voyagerApiFetcherService.authenticate(accounts.get(0).username(), accounts.get(0).password());
             isAuthenticated = true;
         }
     }

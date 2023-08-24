@@ -16,8 +16,8 @@ import org.springframework.http.ResponseEntity;
 
 
 @SpringBootTest
-public class VoyagerApiServiceTest {
-  @Autowired private VoyagerApiService voyagerApiService;
+public class VoyagerApiFetcherServiceTest {
+  @Autowired private VoyagerApiFetcherService voyagerApiFetcherService;
 
   @Test
   public void testGetCookies() {
@@ -31,7 +31,7 @@ public class VoyagerApiServiceTest {
         new ResponseEntity<>("response body here", headers, HttpStatus.OK);
 
     // Calling the getCookies method with the mock ResponseEntity
-    Map<String, String> cookiesMap = VoyagerApiService.getCookies(responseEntity);
+    Map<String, String> cookiesMap = VoyagerApiFetcherService.getCookies(responseEntity);
 
     assertEquals("mockedJSessionID", cookiesMap.get("JSESSIONID"));
     assertEquals("mockedLiAt", cookiesMap.get("li_at"));

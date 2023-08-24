@@ -1,5 +1,9 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumCertification;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumEducation;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumExperience;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumSkill;
 import io.connectvitae.connectvitaelibrary.models.Certification;
 import io.connectvitae.connectvitaelibrary.models.Education;
 import io.connectvitae.connectvitaelibrary.models.Experience;
@@ -33,7 +37,7 @@ public class ScrapeServiceTest {
                 getElement("linkedIn/seleniumProvider/elements/linkedin-experience-element.html");
 
 
-        Experience expectedExperience = Experience.builder()
+        SeleniumExperience expectedExperience = SeleniumExperience.builder()
                 .startDate(FORMATTER.parse("01/06/2016"))
                 .endDate(FORMATTER.parse("01/08/2016"))
                 .company("Société de Fabrication des Cuisinières (SOFACUIS) . Stage")
@@ -42,7 +46,7 @@ public class ScrapeServiceTest {
                 .location("Fes -Maroc")
                 .build();
 
-        Experience actualExperience = scrapeService.scrapeExperience(linkedInExperienceElement);
+        SeleniumExperience actualExperience = scrapeService.scrapeExperience(linkedInExperienceElement);
 
         assertEquals(expectedExperience, actualExperience);
     }
@@ -52,11 +56,11 @@ public class ScrapeServiceTest {
         Element linkedInSkillElement =
                 getElement("linkedIn/seleniumProvider/elements/linkedin-skill-element.html");
 
-        Skill expectedSkill = Skill.builder()
+        SeleniumSkill expectedSkill = SeleniumSkill.builder()
                 .skillName("Java Enterprise Edition")
                 .build();
 
-        Skill actualSkill = scrapeService.scrapeSkill(linkedInSkillElement);
+        SeleniumSkill actualSkill = scrapeService.scrapeSkill(linkedInSkillElement);
 
         assertEquals(expectedSkill, actualSkill);
     }
@@ -65,13 +69,13 @@ public class ScrapeServiceTest {
     public void testScrapeCertification() throws IOException, ParseException {
         Element linkedInCertificationElement =
                 getElement("linkedIn/seleniumProvider/elements/linkedin-certification-element.html");
-        Certification expectedCertification = Certification.builder()
+        SeleniumCertification expectedCertification = SeleniumCertification.builder()
                 .certificationName("Adobe Certified Master - Adobe Experience Manager Sites Architect")
                 .certificationProvider("Adobe")
                 .certifiedDate(FORMATTER.parse("01/06/2020"))
                 .build();
-        Certification actualCertification = scrapeService.scrapeCertification(linkedInCertificationElement);
-        assertEquals(expectedCertification,actualCertification);
+        SeleniumCertification actualCertification = scrapeService.scrapeCertification(linkedInCertificationElement);
+        assertEquals(expectedCertification, actualCertification);
     }
 
     @Test
@@ -79,14 +83,14 @@ public class ScrapeServiceTest {
         Element linkedInEducationElement =
                 getElement("linkedIn/seleniumProvider/elements/linkedin-education-element.html");
 
-        Education expectedEducation = Education.builder()
+        SeleniumEducation expectedEducation = SeleniumEducation.builder()
                 .school("Université Hassan II de Casablanca")
                 .degree("Associate's degree, software engineering")
                 .startDate(FORMATTER.parse("01/01/2005"))
                 .endDate(FORMATTER.parse("01/01/2007"))
                 .grade("Excellent")
                 .build();
-        Education actualEducation = scrapeService.scrapeEducation(linkedInEducationElement);
+        SeleniumEducation actualEducation = scrapeService.scrapeEducation(linkedInEducationElement);
         assertEquals(expectedEducation, actualEducation);
     }
 
@@ -95,9 +99,9 @@ public class ScrapeServiceTest {
         Element linkedInExperienceGroupElement =
                 getElement("linkedIn/seleniumProvider/elements/linkedin-experience-group-element.html");
 
-        List<Experience> expectedExperienceGroup = new ArrayList<>();
+        List<SeleniumExperience> expectedExperienceGroup = new ArrayList<>();
 
-        Experience firstExperience = Experience.builder()
+        SeleniumExperience firstExperience = SeleniumExperience.builder()
                 .startDate(FORMATTER.parse("01/11/2015"))
                 .endDate(FORMATTER.parse("01/03/2016"))
                 .company("Google")
@@ -106,7 +110,7 @@ public class ScrapeServiceTest {
                 .location("")
                 .build();
 
-        Experience secondExperience = Experience.builder()
+        SeleniumExperience secondExperience = SeleniumExperience.builder()
                 .startDate(FORMATTER.parse("01/07/2014"))
                 .endDate(FORMATTER.parse("01/11/2015"))
                 .company("Google")
@@ -118,7 +122,7 @@ public class ScrapeServiceTest {
         expectedExperienceGroup.add(firstExperience);
         expectedExperienceGroup.add(secondExperience);
 
-        List<Experience> actualExperiences = scrapeService.scrapeExperiencesGroup(linkedInExperienceGroupElement);
+        List<SeleniumExperience> actualExperiences = scrapeService.scrapeExperiencesGroup(linkedInExperienceGroupElement);
         assertEquals(expectedExperienceGroup,actualExperiences);
     }
     public Element getElement(String filePath) throws IOException {

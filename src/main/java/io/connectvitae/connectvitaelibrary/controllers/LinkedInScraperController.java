@@ -1,10 +1,10 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.DataExtractorService;
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumService;
-import io.connectvitae.connectvitaelibrary.models.Profile;
-import io.connectvitae.connectvitaelibrary.models.User;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumExtractorService;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumFetcherService;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumProfile;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/selenium")
 public class LinkedInScraperController {
-    private final DataExtractorService dataExtractorService;
+    private final SeleniumExtractorService dataSeleniumExtractorService;
     private final LinkedInProperties linkedInProperties;
-    private final SeleniumService seleniumService;
+    private final SeleniumFetcherService seleniumFetcherService;
     private boolean isAuthenticated = false;
 
     @GetMapping("/profile/{profileId}")
-    public Profile getProfile(@PathVariable String profileId) {
+    public SeleniumProfile getProfile(@PathVariable String profileId) {
         authenticate();
-        return dataExtractorService.getProfile(profileId);
+        return dataSeleniumExtractorService.getProfile(profileId);
     }
 
     @GetMapping("/profile/{profileId}/user")
-    public User getUser(@PathVariable String profileId) {
+    public SeleniumUser getUser(@PathVariable String profileId) {
         authenticate();
-        return dataExtractorService.getUser(profileId);
+        return dataSeleniumExtractorService.getUser(profileId);
     }
 
     private void authenticate() {
         if (!isAuthenticated) {
             var accounts = linkedInProperties.getAccounts();
-            seleniumService.authenticate(accounts.get(0).username(), accounts.get(0).password());
+            seleniumFetcherService.authenticate(accounts.get(0).username(), accounts.get(0).password());
             isAuthenticated = true;
         }
     }

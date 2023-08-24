@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings("checkstyle:LineLength")
 @SpringBootTest
+
 public class LinkedInProfileTest {
-  @Autowired
-  private ObjectMapper objectMapper;
+  @Autowired private ObjectMapper objectMapper;
 
   @Test
   public void LinkedInProfileJsonMappingTest() throws IOException {
