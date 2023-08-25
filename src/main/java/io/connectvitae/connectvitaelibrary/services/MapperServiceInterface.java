@@ -1,4 +1,4 @@
-﻿package io.connectvitae.connectvitaelibrary.services;
+package io.connectvitae.connectvitaelibrary.services;
 
 public interface MapperServiceInterface {
 }
