@@ -1,15 +1,16 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
 import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
+import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.*;
 import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumExtractorService;
 import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services.SeleniumFetcherService;
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumProfile;
-import io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.models.SeleniumUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -30,6 +31,30 @@ public class LinkedInScraperController {
     public SeleniumUser getUser(@PathVariable String profileId) {
         authenticate();
         return dataSeleniumExtractorService.getUser(profileId);
+    }
+
+    @GetMapping("/profile/{profileId}/experiences")
+    public List<SeleniumExperience> getExperiences(@PathVariable String profileId) {
+        authenticate();
+        return dataSeleniumExtractorService.getExperiences(profileId);
+    }
+
+    @GetMapping("/profile/{profileId}/certifications")
+    public List<SeleniumCertification> getCertifications(@PathVariable String profileId) {
+        authenticate();
+        return dataSeleniumExtractorService.getCertifications(profileId);
+    }
+
+    @GetMapping("/profile/{profileId}/educations")
+    public List<SeleniumEducation> getEducations(@PathVariable String profileId) {
+        authenticate();
+        return dataSeleniumExtractorService.getEducations(profileId);
+    }
+
+    @GetMapping("/profile/{profileId}/skills")
+    public List<SeleniumSkill> getSkills(@PathVariable String profileId) {
+        authenticate();
+        return dataSeleniumExtractorService.getSkills(profileId);
     }
 
     private void authenticate() {
