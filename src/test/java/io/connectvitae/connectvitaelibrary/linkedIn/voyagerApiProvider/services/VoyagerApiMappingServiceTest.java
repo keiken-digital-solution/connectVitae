@@ -3,6 +3,7 @@ package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.connectvitae.connectvitaelibrary.mappers.VoyagerApiMappingService;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.*;
 
 import io.connectvitae.connectvitaelibrary.models.*;
@@ -13,9 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 
-public class MappingServiceTest {
+public class VoyagerApiMappingServiceTest {
     @Autowired
-    private MappingService mappingService;
+    private VoyagerApiMappingService voyagerApiMappingService;
 
     @Test
     void testConvertExperience() {
@@ -26,7 +27,7 @@ public class MappingServiceTest {
                         .locationName("Paris, France")
                         .title("Software Developer")
                         .build();
-        Experience actualExperience = mappingService.convertToExperience(linkedInPosition);
+        Experience actualExperience = voyagerApiMappingService.mapExperience(linkedInPosition);
 
         Experience expectedExperience =
                 Experience.builder()
@@ -50,7 +51,7 @@ public class MappingServiceTest {
                         .certificationProvider("Adobe")
                         .certificationName("Adobe certified Expert : CQ Component Developer")
                         .build();
-        Certification actualCertification = mappingService.convertToCertification(linkedInCertification);
+        Certification actualCertification = voyagerApiMappingService.mapCertification(linkedInCertification);
         assertEquals(expectedCertification, actualCertification);
     }
 
@@ -68,7 +69,7 @@ public class MappingServiceTest {
                         .specialty("Information Technology")
                         .degree("Engineer")
                         .build();
-        Education actualEducation = mappingService.convertToEducation(linkedInEducation);
+        Education actualEducation = voyagerApiMappingService.mapEducation(linkedInEducation);
         assertEquals(expectedEducation, actualEducation);
     }
 
@@ -76,7 +77,7 @@ public class MappingServiceTest {
     void testConvertSkill() {
         LinkedInSkill linkedInSkill = LinkedInSkill.builder().name("Project Management").build();
         Skill expectedSkill = Skill.builder().skillName("Project Management").build();
-        Skill actualSkill = mappingService.convertToSkill(linkedInSkill);
+        Skill actualSkill = voyagerApiMappingService.mapSkill(linkedInSkill);
         assertEquals(expectedSkill, actualSkill);
     }
 
@@ -99,7 +100,7 @@ public class MappingServiceTest {
                         .address("Paris, France")
                         .bio("An enthusiastic software engineer who is interested in artificial intelligence")
                         .build();
-        User actualUser = mappingService.convertToUser(linkedInProfile);
+        User actualUser = voyagerApiMappingService.mapUser(linkedInProfile);
         assertEquals(expectedUser, actualUser);
     }
 }

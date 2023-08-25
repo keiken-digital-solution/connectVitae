@@ -1,4 +1,4 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services;
+package io.connectvitae.connectvitaelibrary.mappers;
 
 
 import io.connectvitae.connectvitaelibrary.models.*;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class MappingService implements Function<ProfileView, Profile> {
+public class VoyagerApiMappingService implements Function<ProfileView, Profile> {
     /**
      * Maps data from the ProfileView object to the intern Profile object that contains Experiences,
      * Educations, Skills, Certifications and User data.
@@ -23,13 +23,13 @@ public class MappingService implements Function<ProfileView, Profile> {
     @Override
     public Profile apply(ProfileView profileView) {
         return Profile.builder()
-                .user(this.convertToUser(profileView.getProfile()))
+                .user(this.mapUser(profileView.getProfile()))
                 .experiences(
                         profileView
                                 .getPositionView()
                                 .getElements()
                                 .stream()
-                                .map(this::convertToExperience)
+                                .map(this::mapExperience)
                                 .toList()
                 )
                 .educations(
@@ -37,7 +37,7 @@ public class MappingService implements Function<ProfileView, Profile> {
                                 .getEducationView()
                                 .getElements()
                                 .stream()
-                                .map(this::convertToEducation)
+                                .map(this::mapEducation)
                                 .toList()
                 )
                 .skills(
@@ -45,7 +45,7 @@ public class MappingService implements Function<ProfileView, Profile> {
                                 .getSkillView()
                                 .getElements()
                                 .stream()
-                                .map(this::convertToSkill)
+                                .map(this::mapSkill)
                                 .toList()
                 )
                 .certifications(
@@ -53,7 +53,7 @@ public class MappingService implements Function<ProfileView, Profile> {
                                 .getCertificationView()
                                 .getElements()
                                 .stream()
-                                .map(this::convertToCertification)
+                                .map(this::mapCertification)
                                 .toList()
                 )
                 .build();
@@ -67,7 +67,7 @@ public class MappingService implements Function<ProfileView, Profile> {
      * @param linkedInProfile The source Profile object.
      * @return The intern model User object.
      */
-    public User convertToUser(LinkedInProfile linkedInProfile) {
+    public User mapUser(LinkedInProfile linkedInProfile) {
         return User.builder()
                 .firstName(linkedInProfile.getFirstName())
                 .lastName(linkedInProfile.getLastName())
@@ -83,7 +83,7 @@ public class MappingService implements Function<ProfileView, Profile> {
      * @param linkedInEducation The source Education object.
      * @return The intern model education object.
      */
-    public Education convertToEducation(LinkedInEducation linkedInEducation) {
+    public Education mapEducation(LinkedInEducation linkedInEducation) {
         return Education.builder()
                 .school(linkedInEducation.getSchoolName())
                 .degree(linkedInEducation.getDegreeName())
@@ -110,7 +110,7 @@ public class MappingService implements Function<ProfileView, Profile> {
      * @param linkedInSkill The source Skill object.
      * @return The intern model Skill object.
      */
-    public Skill convertToSkill(LinkedInSkill linkedInSkill) {
+    public Skill mapSkill(LinkedInSkill linkedInSkill) {
         return Skill.builder()
                 .skillName(linkedInSkill.getName()).build();
     }
@@ -121,7 +121,7 @@ public class MappingService implements Function<ProfileView, Profile> {
      * @param linkedInPosition The source Certification object.
      * @return The intern model Experience object.
      */
-    public Experience convertToExperience(LinkedInPosition linkedInPosition) {
+    public Experience mapExperience(LinkedInPosition linkedInPosition) {
         return Experience.builder()
                 .startDate(
                         linkedInPosition.getTimePeriod() != null ?
@@ -145,7 +145,7 @@ public class MappingService implements Function<ProfileView, Profile> {
      * @param linkedInCertification The source Certification object.
      * @return The intern model certification object.
      */
-    public Certification convertToCertification(LinkedInCertification linkedInCertification) {
+    public Certification mapCertification(LinkedInCertification linkedInCertification) {
         return Certification.builder()
                 .certificationName(linkedInCertification.getName())
                 .certifiedDate(

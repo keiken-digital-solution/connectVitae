@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.services.FetcherServiceInterface;
+import io.connectvitae.connectvitaelibrary.mappers.VoyagerApiMappingService;
+import io.connectvitae.connectvitaelibrary.services.FetcherServiceInterface;
 import io.connectvitae.connectvitaelibrary.models.Profile;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInAuthenticationDTO;
 import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.LinkedInProfile;
@@ -28,7 +29,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
 
 
     private final LinkedInClient linkedinClient;
-    private final MappingService mappingService;
+    private final VoyagerApiMappingService voyagerApiMappingService;
     // TODO: find a better way to handle this
     private Map<String, String> storedCookies;
 
@@ -76,7 +77,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
                 linkedInProfileFuture,
                 certificationFuture
         ).thenApplyAsync(
-                ignoredVoid -> mappingService.apply(
+                ignoredVoid -> voyagerApiMappingService.apply(
                         ProfileView.builder()
                                 .educationView(educationFuture.join())
                                 .positionView(positionFuture.join())

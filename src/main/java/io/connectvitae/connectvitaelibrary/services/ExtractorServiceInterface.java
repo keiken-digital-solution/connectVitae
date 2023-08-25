@@ -1,4 +1,4 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.services;
+package io.connectvitae.connectvitaelibrary.services;
 
 import io.connectvitae.connectvitaelibrary.models.*;
 

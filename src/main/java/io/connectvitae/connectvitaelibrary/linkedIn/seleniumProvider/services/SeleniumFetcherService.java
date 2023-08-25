@@ -1,6 +1,6 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.seleniumProvider.services;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.services.FetcherServiceInterface;
+import io.connectvitae.connectvitaelibrary.services.FetcherServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
