@@ -35,7 +35,7 @@ public class ScrapeService {
         }
 
         String about = null;
-        if (aboutProfileCard.size() == 2 && aboutProfileCard.first().text().equals("Infos")) {
+        if (aboutProfileCard.size() == 2 && aboutProfileCard.first().text().equals("About")) {
             about = aboutProfileCard.last().text();
         }
 
@@ -77,8 +77,11 @@ public class ScrapeService {
     public SeleniumCertification scrapeCertification(Element element) {
 
         String certifiedDateAsText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
+        if (certifiedDateAsText.startsWith("Issued ")) {
+            certifiedDateAsText = certifiedDateAsText.replace("Issued ", "");
+        }
         Date certifiedDate = certifiedDateAsText != "" ?
-                seleniumDateParser.parseDate(certifiedDateAsText.split(":")[1].trim())
+                seleniumDateParser.parseDate(certifiedDateAsText.trim())
                 : null;
 
         return SeleniumCertification.builder()
