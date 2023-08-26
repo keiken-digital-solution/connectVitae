@@ -1,7 +1,7 @@
 {
   description = "A Nix-flake-based Java development environment";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
 
   outputs = { self, nixpkgs }:
     let
@@ -9,7 +9,6 @@
       overlays = [
         (final: prev: rec {
           jdk = prev."jdk${toString javaVersion}";
-          gradle = prev.gradle.override { java = jdk; };
           maven = prev.maven.override { inherit jdk; };
         })
       ];
@@ -21,7 +20,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ gradle jdk maven ];
+          packages = with pkgs; [ jdk maven ];
         };
       });
     };
