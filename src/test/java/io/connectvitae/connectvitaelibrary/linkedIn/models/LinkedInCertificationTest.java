@@ -1,26 +1,28 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.models;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 public class LinkedInCertificationTest {
   private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-yyyy");
 
-  @Autowired private ObjectMapper objectMapper;
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @Test
-  public void LinkedInCertificationJsonMappingTest() throws ParseException, IOException {
+  public void linkedInCertificationJsonMappingTest() throws ParseException, IOException {
     String jsonFilePath = "linkedIn/linkedin-certification.json";
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInCertificationAsJson =

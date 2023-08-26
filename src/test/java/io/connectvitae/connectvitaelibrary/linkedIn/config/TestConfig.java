@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Bean;
 
 @TestConfiguration
 public class TestConfig {
-    @Bean
-    public ObjectMapper objectMapper() {
-        return  new ObjectMapper().configure(
-                DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
-                false
-        );
-    }
+  @Bean
+  public ObjectMapper objectMapper() {
+    return new ObjectMapper().configure(
+        DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+        false
+    );
+  }
 }

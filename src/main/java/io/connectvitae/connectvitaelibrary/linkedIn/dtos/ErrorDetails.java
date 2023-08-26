@@ -2,11 +2,11 @@ package io.connectvitae.connectvitaelibrary.linkedIn.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.time.LocalDateTime;
-import java.util.List;
-import lombok.Builder;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -16,7 +16,7 @@ public class ErrorDetails {
   private LocalDateTime timestamp;
   private String message;
   private String debugMessage;
-  public List<SubErrorDetails> subErrors;
+  private List<SubErrorDetails> subErrors;
 
   public ErrorDetails(HttpStatus status) {
     this.status = status;

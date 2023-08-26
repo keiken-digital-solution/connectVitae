@@ -1,16 +1,25 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.mappers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import io.connectvitae.connectvitaelibrary.linkedIn.models.*;
-import io.connectvitae.connectvitaelibrary.models.*;
+import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInCertification;
+import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInEducation;
+import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInPosition;
+import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInProfile;
+import io.connectvitae.connectvitaelibrary.linkedIn.models.LinkedInSkill;
+import io.connectvitae.connectvitaelibrary.models.Certification;
+import io.connectvitae.connectvitaelibrary.models.Experience;
+import io.connectvitae.connectvitaelibrary.models.Skill;
+import io.connectvitae.connectvitaelibrary.models.Training;
+import io.connectvitae.connectvitaelibrary.models.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 public class ProfileMapperTest {
-  @Autowired private ProfileMapper profileMapper;
+  @Autowired
+  private ProfileMapper profileMapper;
 
   @Test
   void testConvertExperience() {

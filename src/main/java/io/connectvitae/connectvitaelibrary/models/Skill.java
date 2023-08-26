@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Skill {
-    private String skillName;
-    private String skillDescription;
+  private String skillName;
+  private String skillDescription;
 }

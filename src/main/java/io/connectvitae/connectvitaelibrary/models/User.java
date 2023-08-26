@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String adresse; //TODO: change the name
-    private String bio;
+  private String firstName;
+  private String lastName;
+  private String email;
+  private String adresse; //TODO: change the name
+  private String bio;
 
 }

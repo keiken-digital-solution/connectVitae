@@ -1,6 +1,5 @@
 config:
   linkedin:
     accounts:
-      -
-        username: ${USERNAME}
+      - username: ${USERNAME}
         password: ${PASSWORD}

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProfileView {
-    public LinkedInProfile profile;
-    public CertificationView certificationView;
-    public EducationView educationView;
-    public PositionView positionView;
-    public SkillView skillView;
+  private LinkedInProfile profile;
+  private CertificationView certificationView;
+  private EducationView educationView;
+  private PositionView positionView;
+  private SkillView skillView;
 }

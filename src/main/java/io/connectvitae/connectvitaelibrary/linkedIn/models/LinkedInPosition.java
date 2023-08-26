@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class LinkedInPosition {
-    private String locationName;
-    private String companyName;
-    private LinkedInTimePeriod timePeriod;
-    private String description;
-    private String title;
+  private String locationName;
+  private String companyName;
+  private LinkedInTimePeriod timePeriod;
+  private String description;
+  private String title;
 }

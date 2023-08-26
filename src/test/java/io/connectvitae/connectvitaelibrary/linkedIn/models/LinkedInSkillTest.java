@@ -1,22 +1,24 @@
 package io.connectvitae.connectvitaelibrary.linkedIn.models;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 public class LinkedInSkillTest {
-  @Autowired private ObjectMapper objectMapper;
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @Test
-  public void LinkedInSkillJsonMappingTest() throws IOException {
+  public void linkedInSkillJsonMappingTest() throws IOException {
     String jsonFilePath = "linkedIn/linkedin-skill.json";
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInSkillAsJson =

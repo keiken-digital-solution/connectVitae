@@ -15,22 +15,22 @@ import java.util.concurrent.CompletableFuture;
 @RestController
 @RequestMapping("/linkedIn")
 public class LinkedInController {
-    private final LinkedInProperties linkedInProperties;
-    private final LinkedInService linkedInService;
+  private final LinkedInProperties linkedInProperties;
+  private final LinkedInService linkedInService;
 
-    private boolean isAuthenticated = false;
+  private boolean isAuthenticated = false;
 
-    @GetMapping("/{profileId}")
-    public CompletableFuture<Profile> getProfile(@PathVariable String profileId) {
-        authenticate();
-        return linkedInService.getProfileView(profileId);
+  @GetMapping("/{profileId}")
+  public CompletableFuture<Profile> getProfile(@PathVariable String profileId) {
+    authenticate();
+    return linkedInService.getProfileView(profileId);
+  }
+
+  private void authenticate() {
+    if (!isAuthenticated) {
+      var accounts = linkedInProperties.getAccounts();
+      linkedInService.authenticate(accounts.get(0).username(), accounts.get(0).password());
+      isAuthenticated = true;
     }
-
-    private void authenticate() {
-        if (!isAuthenticated) {
-            var accounts = linkedInProperties.getAccounts();
-            linkedInService.authenticate(accounts.get(0).username(), accounts.get(0).password());
-            isAuthenticated = true;
-        }
-    }
+  }
 }
