@@ -92,9 +92,20 @@ public class ScrapeService {
     }
 
     public SeleniumSkill scrapeSkill(Element element) {
+        Elements skillEndorsementsElements = element
+                .select(".pv-shared-text-with-see-more.full-width.t-14.t-normal.t-black.hoverable-link-text.display-flex.align-items-center");
 
+        List<String> skillEndorsements = new ArrayList<>();
+        skillEndorsementsElements.stream().forEach(element1 ->
+                skillEndorsements.add(extractText(
+                        element1,
+                        0,
+                        "inline-show-more-text",
+                        "inline-show-more-text--is-collapsed",
+                        "inline-show-more-text--is-collapsed-with-line-clamp")));
         return SeleniumSkill.builder()
                 .skillName(extractText(element, "t-bold"))
+                .skillEndorsements(skillEndorsements)
                 .build();
     }
 

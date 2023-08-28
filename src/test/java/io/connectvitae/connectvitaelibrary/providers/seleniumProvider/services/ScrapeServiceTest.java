@@ -49,11 +49,15 @@ public class ScrapeServiceTest {
 
     @Test
     public void testScrapeSkill() throws IOException {
+        List<String> skillEndorsements = new ArrayList<>();
+        skillEndorsements.add("Compétences recommandées par Abdelahad SATOUR et 1 autre personne très compétente dans ce domaine");
+        skillEndorsements.add("Compétences recommandées par 5 collègues chez Capgemini");
         Element linkedInSkillElement =
                 getElement("linkedIn/seleniumProvider/elements/linkedin-skill-element.html");
 
         SeleniumSkill expectedSkill = SeleniumSkill.builder()
                 .skillName("Java Enterprise Edition")
+                .skillEndorsements(skillEndorsements)
                 .build();
 
         SeleniumSkill actualSkill = scrapeService.scrapeSkill(linkedInSkillElement);

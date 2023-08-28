@@ -84,14 +84,24 @@ public class VoyagerApiSeleniumExtractorServiceTest {
         when(seleniumFetcherService.fetchSkills(anyString()))
                 .thenReturn(getCollection("linkedIn/seleniumProvider/collections/linkedin-skills.html"));
         List<SeleniumSkill> expectedSkills = new ArrayList<>();
+        List<String> skillEndorsements1 = new ArrayList<>();
+        skillEndorsements1.add("Compétences recommandées par 3 collègues chez Capgemini");
         expectedSkills.add(SeleniumSkill.builder()
                 .skillName("J2EE Application Development")
+                        .skillEndorsements(skillEndorsements1)
                 .build());
+        List<String> skillEndorsements2 = new ArrayList<>();
+        skillEndorsements2.add("Compétences recommandées par Abdelahad SATOUR et 1 autre personne très compétente dans ce domaine");
+        skillEndorsements2.add("Compétences recommandées par 5 collègues chez Capgemini");
         expectedSkills.add(SeleniumSkill.builder()
                 .skillName("Java Enterprise Edition")
+                .skillEndorsements(skillEndorsements2)
                 .build());
+        List<String> skillEndorsements3 = new ArrayList<>();
+        skillEndorsements3.add("Compétences recommandées par 3 collègues chez Capgemini");
         expectedSkills.add(SeleniumSkill.builder()
                 .skillName("Jrules")
+                .skillEndorsements(skillEndorsements3)
                 .build());
         List<SeleniumSkill> actualSkills = dataSeleniumExtractorService.getSkills("UserId");
         assertEquals(expectedSkills,actualSkills);
