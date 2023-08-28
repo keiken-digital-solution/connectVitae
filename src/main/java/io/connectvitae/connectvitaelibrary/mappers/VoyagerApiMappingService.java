@@ -5,8 +5,10 @@ import io.connectvitae.connectvitaelibrary.models.*;
 
 import java.util.function.Function;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.*;
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.models.views.ProfileView;
+
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.*;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
+
 import org.springframework.stereotype.Service;
 
 
@@ -105,7 +107,7 @@ public class VoyagerApiMappingService implements Function<ProfileView, Profile> 
 
 
     /**
-     * Maps data from the LinkedInPosition object to the intern Experience object.
+     * Maps data from the LinkedInSkill object to the intern Skill object.
      *
      * @param linkedInSkill The source Skill object.
      * @return The intern model Skill object.
@@ -162,4 +164,6 @@ public class VoyagerApiMappingService implements Function<ProfileView, Profile> 
                 )
                 .build();
     }
+
+
 }

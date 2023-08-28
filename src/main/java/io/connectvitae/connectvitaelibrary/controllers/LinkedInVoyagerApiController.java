@@ -1,8 +1,8 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.config.LinkedInProperties;
+import io.connectvitae.connectvitaelibrary.config.LinkedInProperties;
 
-import io.connectvitae.connectvitaelibrary.linkedIn.voyagerApiProvider.services.VoyagerApiFetcherService;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services.VoyagerApiFetcherService;
 import io.connectvitae.connectvitaelibrary.models.Profile;
 
 import lombok.RequiredArgsConstructor;
