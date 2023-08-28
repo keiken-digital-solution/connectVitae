@@ -75,7 +75,20 @@ public class VoyagerApiSeleniumExtractorServiceTest {
                 .certificationProvider("Adobe France")
                 .certifiedDate(FORMATTER.parse("01/05/2017"))
                 .build());
-        List<io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumCertification> actualSeleniumCertifications = dataSeleniumExtractorService.getCertifications("UserId");
+        expectedCertifications.add(SeleniumCertification.builder()
+                .certificationName("AEM 6 Certified Lead Developper")
+                .certificationProvider("Adobe France")
+                .certifiedDate(FORMATTER.parse("01/05/2017"))
+                .build());
+        expectedCertifications.add(SeleniumCertification.builder()
+                .certificationName("Adobe certified Expert : CQ Component Developer")
+                .certificationProvider("")
+                .build());
+        expectedCertifications.add(SeleniumCertification.builder()
+                .certificationName("Sun Certified Java Programmer")
+                .certificationProvider("")
+                .build());
+        List<SeleniumCertification> actualSeleniumCertifications = dataSeleniumExtractorService.getCertifications("UserId");
         assertEquals(expectedCertifications, actualSeleniumCertifications);
     }
 
