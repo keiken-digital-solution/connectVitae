@@ -3,17 +3,18 @@ package io.connectvitae.connectvitaelibrary.services;
 import io.connectvitae.connectvitaelibrary.models.*;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public interface ExtractorServiceInterface {
-    public Profile getProfile(String profileId);
+    public CompletableFuture<Profile> getProfile(String profileId);
 
-    public User getUser(String profileId);
+    public Object getUser(String profileId);
 
-    public List<Experience> getExperiences(String profileId);
+    public Object getExperiences(String profileId);
 
-    public List<Education> getEducations(String profileId);
+    public Object getEducations(String profileId);
 
-    public List<Skill> getSkills(String profileId);
+    public Object getSkills(String profileId);
 
-    public List<Certification> getCertifications(String profileId);
+    public Object getCertifications(String profileId);
 }
