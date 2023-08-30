@@ -23,7 +23,7 @@ public class LinkedInCertificationTest {
 
   @Test
   public void LinkedInCertificationJsonMappingTest() throws ParseException, IOException {
-    String jsonFilePath = "linkedIn/voyagerApiProvider/linkedin-certification.json";
+    String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-certification-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
 

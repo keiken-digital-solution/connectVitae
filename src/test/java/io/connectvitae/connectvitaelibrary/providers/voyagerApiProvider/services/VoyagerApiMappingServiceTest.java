@@ -19,7 +19,7 @@ public class VoyagerApiMappingServiceTest {
     private VoyagerApiMappingService voyagerApiMappingService;
 
     @Test
-    void testConvertExperience() {
+    void testMapExperience() {
         LinkedInPosition linkedInPosition =
                 LinkedInPosition.builder()
                         .companyName("Keiken Digital")
@@ -40,7 +40,7 @@ public class VoyagerApiMappingServiceTest {
     }
 
     @Test
-    void testConvertCertification() {
+    void testMapCertification() {
         LinkedInCertification linkedInCertification =
                 LinkedInCertification.builder()
                         .authority("Adobe")
@@ -56,7 +56,7 @@ public class VoyagerApiMappingServiceTest {
     }
 
     @Test
-    void testConvertTraining() {
+    void testMapTraining() {
         LinkedInEducation linkedInEducation =
                 LinkedInEducation.builder()
                         .degreeName("Engineer")
@@ -74,7 +74,7 @@ public class VoyagerApiMappingServiceTest {
     }
 
     @Test
-    void testConvertSkill() {
+    void testMapSkill() {
         LinkedInSkill linkedInSkill = LinkedInSkill.builder().name("Project Management").build();
         Skill expectedSkill = Skill.builder().skillName("Project Management").build();
         Skill actualSkill = voyagerApiMappingService.mapSkill(linkedInSkill);
@@ -82,7 +82,7 @@ public class VoyagerApiMappingServiceTest {
     }
 
     @Test
-    void testConvertUserTest() {
+    void testMapUser() {
         LinkedInProfile linkedInProfile =
                 LinkedInProfile.builder()
                         .firstName("John")

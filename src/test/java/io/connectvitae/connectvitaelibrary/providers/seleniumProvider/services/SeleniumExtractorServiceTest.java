@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-public class VoyagerApiSeleniumExtractorServiceTest {
+public class SeleniumExtractorServiceTest {
     private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
     @MockBean
     private SeleniumFetcherService seleniumFetcherService;
@@ -32,7 +32,7 @@ public class VoyagerApiSeleniumExtractorServiceTest {
 
 
     @Test
-    public void testFetchEducations() throws IOException, ParseException {
+    public void testGetEducations() throws IOException, ParseException {
         when(seleniumFetcherService.fetchEducations(anyString()))
                 .thenReturn(getCollection("linkedIn/seleniumProvider/collections/linkedin-educations.html"));
         List<SeleniumEducation> expectedEducations = new ArrayList<>();
@@ -51,12 +51,10 @@ public class VoyagerApiSeleniumExtractorServiceTest {
                 .build());
         List<SeleniumEducation> actualEducations = dataSeleniumExtractorService.getEducations("UserId");
         assertEquals(expectedEducations,actualEducations);
-
-
     }
 
     @Test
-    public void testFetchCertifications() throws IOException, ParseException {
+    public void testGetCertifications() throws IOException, ParseException {
         when(seleniumFetcherService.fetchCertifications(anyString()))
                 .thenReturn(getCollection("linkedIn/seleniumProvider/collections/linkedin-certifications.html"));
         List<SeleniumCertification> expectedCertifications = new ArrayList<>();
@@ -93,7 +91,7 @@ public class VoyagerApiSeleniumExtractorServiceTest {
     }
 
     @Test
-    public void testFetchSkills() throws IOException {
+    public void testGetSkills() throws IOException {
         when(seleniumFetcherService.fetchSkills(anyString()))
                 .thenReturn(getCollection("linkedIn/seleniumProvider/collections/linkedin-skills.html"));
         List<SeleniumSkill> expectedSkills = new ArrayList<>();
@@ -121,7 +119,7 @@ public class VoyagerApiSeleniumExtractorServiceTest {
     }
 
     @Test
-    public void testFetchExperiences() throws IOException, ParseException {
+    public void testGetExperiences() throws IOException, ParseException {
         when(seleniumFetcherService.fetchExperiences(anyString()))
                 .thenReturn(getCollection("linkedIn/seleniumProvider/collections/linkedin-experiences.html"));
         List<SeleniumExperience> expectedExperiences = new ArrayList<>();

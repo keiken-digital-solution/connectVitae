@@ -1,0 +1,135 @@
+{
+  "paging": {
+      "start": 0,
+      "count": 5,
+      "total": 10,
+      "links": []
+  },
+  "entityUrn": "urn:li:fs_positionView:ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
+  "profileId": "ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
+  "elements": [
+      {
+          "locationName": "France",
+          "entityUrn": "urn:li:fs_position:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,1110642408)",
+          "geoLocationName": "France",
+          "companyName": "Capgemini",
+          "timePeriod": {
+              "endDate": {
+                  "month": 2,
+                  "year": 2021
+              },
+              "startDate": {
+                  "month": 10,
+                  "year": 2017
+              }
+          },
+          "company": {
+              "miniCompany": {
+                  "objectUrn": "urn:li:company:157240",
+                  "entityUrn": "urn:li:fs_miniCompany:157240",
+                  "name": "Capgemini",
+                  "showcase": false,
+                  "active": true,
+                  "logo": {
+                      "com.linkedin.common.VectorImage": {
+                          "artifacts": [
+                              {
+                                  "width": 200,
+                                  "fileIdentifyingUrlPathSegment": "200_200/0/1688232761552?e=1698883200&v=beta&t=4HPV_j-R3SizmXKRC0QoZBYolKFx656qujwU8AJFKyk",
+                                  "expiresAt": 1698883200000,
+                                  "height": 200
+                              },
+                              {
+                                  "width": 100,
+                                  "fileIdentifyingUrlPathSegment": "100_100/0/1688232761552?e=1698883200&v=beta&t=mwPqSnqqRNmbSykD5SwFMqcoFKS2Ha5nZ-qhyg60TvM",
+                                  "expiresAt": 1698883200000,
+                                  "height": 100
+                              },
+                              {
+                                  "width": 400,
+                                  "fileIdentifyingUrlPathSegment": "400_400/0/1688232761552?e=1698883200&v=beta&t=jL1S5qwc0-tTBs3HBaq1I2Ke9A4zdx0XSqd6_DAES34",
+                                  "expiresAt": 1698883200000,
+                                  "height": 400
+                              }
+                          ],
+                          "rootUrl": "https://media.licdn.com/dms/image/D560BAQF_q1awsuPNAg/company-logo_"
+                      }
+                  },
+                  "universalName": "capgemini",
+                  "dashCompanyUrn": "urn:li:fsd_company:157240",
+                  "trackingId": "SD/DB/NjQwuKwFoms/WrWA=="
+              },
+              "employeeCountRange": {
+                  "start": 10001
+              },
+              "industries": [
+                  "Information Technology and Services"
+              ]
+          },
+          "title": "Solution architect managing",
+          "companyUrn": "urn:li:fs_miniCompany:157240"
+      },
+      {
+          "locationName": "Région de Paris, France",
+          "entityUrn": "urn:li:fs_position:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,762325353)",
+          "geoLocationName": "Région de Paris, France",
+          "geoUrn": "urn:li:fs_geo:90009659",
+          "companyName": "AXA",
+          "timePeriod": {
+              "endDate": {
+                  "month": 10,
+                  "year": 2017
+              },
+              "startDate": {
+                  "year": 2015
+              }
+          },
+          "company": {
+              "miniCompany": {
+                  "objectUrn": "urn:li:company:2221",
+                  "entityUrn": "urn:li:fs_miniCompany:2221",
+                  "name": "AXA",
+                  "showcase": false,
+                  "active": true,
+                  "logo": {
+                      "com.linkedin.common.VectorImage": {
+                          "artifacts": [
+                              {
+                                  "width": 200,
+                                  "fileIdentifyingUrlPathSegment": "200_200/0/1589821547937?e=1698883200&v=beta&t=ywLVeORwa9tsBPWR1bjmdmoPANB0Dvdi_Ze3Fl2lTtQ",
+                                  "expiresAt": 1698883200000,
+                                  "height": 200
+                              },
+                              {
+                                  "width": 100,
+                                  "fileIdentifyingUrlPathSegment": "100_100/0/1589821547937?e=1698883200&v=beta&t=k6t8k1sDmRHhuv0uA3VJICDnqBsOGlA3Uc9pQJ59G3Q",
+                                  "expiresAt": 1698883200000,
+                                  "height": 100
+                              },
+                              {
+                                  "width": 400,
+                                  "fileIdentifyingUrlPathSegment": "400_400/0/1589821547937?e=1698883200&v=beta&t=60Z0Suf2tYFje-5ouXG3NxWWohbapSuRXmCxZQQLqaQ",
+                                  "expiresAt": 1698883200000,
+                                  "height": 400
+                              }
+                          ],
+                          "rootUrl": "https://media.licdn.com/dms/image/C4D0BAQGAsVEEdkQRGg/company-logo_"
+                      }
+                  },
+                  "universalName": "axa",
+                  "dashCompanyUrn": "urn:li:fsd_company:2221",
+                  "trackingId": "qjGGh4juSACFu5OqLmneNA=="
+              },
+              "employeeCountRange": {
+                  "start": 10001
+              },
+              "industries": [
+                  "Insurance"
+              ]
+          },
+          "title": "Architecte applications",
+          "region": "urn:li:fs_region:(fr,5227)",
+          "companyUrn": "urn:li:fs_miniCompany:2221"
+      }
+  ]
+}

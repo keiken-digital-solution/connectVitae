@@ -21,7 +21,7 @@ public class LinkedInSkillTest {
   @Test
 
   public void LinkedInSkillJsonMappingTest() throws IOException {
-    String jsonFilePath = "linkedIn/voyagerApiProvider/linkedin-skill.json";
+    String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-skill-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInSkillAsJson =

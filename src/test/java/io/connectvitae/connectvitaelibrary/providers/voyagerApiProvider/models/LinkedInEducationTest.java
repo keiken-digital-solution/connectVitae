@@ -25,7 +25,7 @@ public class LinkedInEducationTest {
   @Test
 
   public void LinkedInEducationJsonMappingTest() throws ParseException, IOException {
-    String jsonFilePath = "linkedIn/voyagerApiProvider/linkedin-education.json";
+    String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-education-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInEducationAsJson =

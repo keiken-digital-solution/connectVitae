@@ -1,5 +1,7 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
 
 import java.util.List;

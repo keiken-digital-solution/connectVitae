@@ -23,7 +23,7 @@ public class LinkedInPositionTest {
   @SuppressWarnings("checkstyle:LineLength")
   @Test
   public void LinkedInPositionJsonMappingTest() throws ParseException, IOException {
-    String jsonFilePath = "linkedIn/voyagerApiProvider/linkedin-position.json";
+    String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-position-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInPositionAsJson =

@@ -14,17 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Profile {
-<<<<<<< HEAD
-  private List<Experience> experiences;
-  private List<Skill> skills;
-  private List<Certification> certifications;
-  private List<Training> trainings;
-  private User user;
-=======
+
     private List<Experience> experiences;
     private List<Skill> skills;
     private List <Certification> certifications;
     private List<Education> educations;
     private User user;
->>>>>>> 368fed6 (feat(LinkedIn): Implementing experience group scraper and unit tests)
 }
