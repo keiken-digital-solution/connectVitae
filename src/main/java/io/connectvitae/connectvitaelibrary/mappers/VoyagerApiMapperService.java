@@ -1,11 +1,8 @@
 package io.connectvitae.connectvitaelibrary.mappers;
 
-
-import io.connectvitae.connectvitaelibrary.models.*;
-
 import java.util.function.Function;
 
-
+import io.connectvitae.connectvitaelibrary.models.*;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.*;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
 
@@ -13,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class VoyagerApiMappingService implements Function<ProfileView, Profile> {
+public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
     /**
      * Maps data from the ProfileView object to the intern Profile object that contains Experiences,
      * Educations, Skills, Certifications and User data.
@@ -60,7 +57,6 @@ public class VoyagerApiMappingService implements Function<ProfileView, Profile> 
                 )
                 .build();
     }
-
 
     /**
      * Maps data from the LinkedInProfile object to the intern User object that contains
@@ -157,10 +153,7 @@ public class VoyagerApiMappingService implements Function<ProfileView, Profile> 
                 )
                 .certificationProvider(
                         linkedInCertification.getAuthority() != null ?
-                        linkedInCertification.getAuthority()
-                        : linkedInCertification.getCompany() != null ?
-                        linkedInCertification.getCompany().getName()
-                        : null
+                        linkedInCertification.getAuthority() : ""
                 )
                 .build();
     }

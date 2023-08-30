@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ScrapeService {
+public class SeleniumScrapeService {
     private final SeleniumDateParser seleniumDateParser;
 
     public SeleniumUser scrapeUser(String HTML) {

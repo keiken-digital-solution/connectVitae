@@ -22,10 +22,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class ScrapeServiceTest {
+public class SeleniumScrapeServiceTest {
     private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
     @Autowired
-    ScrapeService scrapeService;
+    SeleniumScrapeService seleniumScrapeService;
 
     @Test
     public void testScrapeExperience() throws IOException, ParseException {
@@ -42,7 +42,7 @@ public class ScrapeServiceTest {
                 .location("Fes -Maroc")
                 .build();
 
-        SeleniumExperience actualExperience = scrapeService.scrapeExperience(linkedInExperienceElement);
+        SeleniumExperience actualExperience = seleniumScrapeService.scrapeExperience(linkedInExperienceElement);
 
         assertEquals(expectedExperience, actualExperience);
     }
@@ -60,7 +60,7 @@ public class ScrapeServiceTest {
                 .skillEndorsements(skillEndorsements)
                 .build();
 
-        SeleniumSkill actualSkill = scrapeService.scrapeSkill(linkedInSkillElement);
+        SeleniumSkill actualSkill = seleniumScrapeService.scrapeSkill(linkedInSkillElement);
 
         assertEquals(expectedSkill, actualSkill);
     }
@@ -74,7 +74,7 @@ public class ScrapeServiceTest {
                 .certificationProvider("Adobe")
                 .certifiedDate(FORMATTER.parse("01/06/2020"))
                 .build();
-        SeleniumCertification actualCertification = scrapeService.scrapeCertification(linkedInCertificationElement);
+        SeleniumCertification actualCertification = seleniumScrapeService.scrapeCertification(linkedInCertificationElement);
         assertEquals(expectedCertification, actualCertification);
     }
 
@@ -90,7 +90,7 @@ public class ScrapeServiceTest {
                 .endDate(FORMATTER.parse("01/01/2007"))
                 .grade("Excellent")
                 .build();
-        SeleniumEducation actualEducation = scrapeService.scrapeEducation(linkedInEducationElement);
+        SeleniumEducation actualEducation = seleniumScrapeService.scrapeEducation(linkedInEducationElement);
         assertEquals(expectedEducation, actualEducation);
     }
 
@@ -122,7 +122,7 @@ public class ScrapeServiceTest {
         expectedExperienceGroup.add(firstExperience);
         expectedExperienceGroup.add(secondExperience);
 
-        List<SeleniumExperience> actualExperiences = scrapeService.scrapeExperiencesGroup(linkedInExperienceGroupElement);
+        List<SeleniumExperience> actualExperiences = seleniumScrapeService.scrapeExperiencesGroup(linkedInExperienceGroupElement);
         assertEquals(expectedExperienceGroup,actualExperiences);
     }
     public Element getElement(String filePath) throws IOException {

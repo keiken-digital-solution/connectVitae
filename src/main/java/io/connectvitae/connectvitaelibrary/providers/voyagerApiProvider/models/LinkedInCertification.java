@@ -13,5 +13,4 @@ public class LinkedInCertification {
   private String name;
   private String authority;
   private LinkedInTimePeriod timePeriod;
-  private LinkedInCompany company;
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import io.connectvitae.connectvitaelibrary.mappers.VoyagerApiMappingService;
+import io.connectvitae.connectvitaelibrary.mappers.VoyagerApiMapperService;
 import io.connectvitae.connectvitaelibrary.services.FetcherServiceInterface;
 import io.connectvitae.connectvitaelibrary.models.Profile;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInAuthenticationDTO;
@@ -18,18 +18,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-
 @RequiredArgsConstructor
 @Service
 public class VoyagerApiFetcherService implements FetcherServiceInterface {
 
 
     private final LinkedInClient linkedinClient;
-    private final VoyagerApiMappingService voyagerApiMappingService;
+    private final VoyagerApiMapperService voyagerApiMapperService;
     // TODO: find a better way to handle this
     private Map<String, String> storedCookies;
 
@@ -38,7 +33,6 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
      * the cookies that will be used for future requests.
      *
      * @param username,password The credential for LinkedIn account with which the requests will be done.
-     * @return Void.
      */
     public void authenticate(String username, String password) {
          ResponseEntity<String> authenticationResponse =
@@ -63,6 +57,8 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
      * @param profileId The id of the user of which we want to retrive information.
      * @return The intern model profile object.
      */
+
+    //TODO: This should be externalized - Mapper Service shouldn't be used here
     public CompletableFuture<Profile> getProfileView(String profileId) {
         CompletableFuture<EducationView> educationFuture = CompletableFuture.supplyAsync(() -> fetchEducations(profileId));
         CompletableFuture<PositionView> positionFuture = CompletableFuture.supplyAsync(() -> fetchExperiences(profileId));
@@ -77,7 +73,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
                 linkedInProfileFuture,
                 certificationFuture
         ).thenApplyAsync(
-                ignoredVoid -> voyagerApiMappingService.apply(
+                ignoredVoid -> voyagerApiMapperService.apply(
                         ProfileView.builder()
                                 .educationView(educationFuture.join())
                                 .positionView(positionFuture.join())

@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SeleniumExtractorService {
-    private final ScrapeService scrapeService;
+    private final SeleniumScrapeService seleniumScrapeService;
     private final SeleniumFetcherService seleniumFetcherService;
     public SeleniumProfile getProfile(String profileId) {
         return SeleniumProfile.builder()
@@ -26,14 +26,14 @@ public class SeleniumExtractorService {
     }
 
     public SeleniumUser getUser(String profileId){
-        return scrapeService.scrapeUser(seleniumFetcherService.fetchUser(profileId));
+        return seleniumScrapeService.scrapeUser(seleniumFetcherService.fetchUser(profileId));
     }
 
     public List<SeleniumExperience> getExperiences(String profileId) {
         var experiences =  seleniumFetcherService.fetchExperiences(profileId);
         List<SeleniumExperience> seleniumExperienceList = new ArrayList<>();
         getElements(experiences).forEach(element -> {
-            seleniumExperienceList.add(scrapeService.scrapeExperience(element));
+            seleniumExperienceList.add(seleniumScrapeService.scrapeExperience(element));
         });
 
         return seleniumExperienceList;
@@ -43,7 +43,7 @@ public class SeleniumExtractorService {
         var educations =  seleniumFetcherService.fetchEducations(profileId);
         List<SeleniumEducation> seleniumEducationList = new ArrayList<>();
         getElements(educations).forEach(element -> {
-            seleniumEducationList.add(scrapeService.scrapeEducation(element));
+            seleniumEducationList.add(seleniumScrapeService.scrapeEducation(element));
         });
 
         return seleniumEducationList;
@@ -53,7 +53,7 @@ public class SeleniumExtractorService {
         var skills = seleniumFetcherService.fetchSkills(profileId);
         List<SeleniumSkill> seleniumSkillList = new ArrayList<>();
         getElements(skills).forEach(element -> {
-            seleniumSkillList.add(scrapeService.scrapeSkill(element));
+            seleniumSkillList.add(seleniumScrapeService.scrapeSkill(element));
         });
         return seleniumSkillList;
     }
@@ -62,7 +62,7 @@ public class SeleniumExtractorService {
         var certifications = seleniumFetcherService.fetchCertifications(profileId);
         List<SeleniumCertification> seleniumCertificationList = new ArrayList<>();
         getElements(certifications).forEach(element -> {
-            seleniumCertificationList.add(scrapeService.scrapeCertification(element));
+            seleniumCertificationList.add(seleniumScrapeService.scrapeCertification(element));
         });
 
         return seleniumCertificationList;

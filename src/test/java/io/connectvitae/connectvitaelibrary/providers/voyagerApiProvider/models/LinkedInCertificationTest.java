@@ -41,7 +41,6 @@ public class LinkedInCertificationTest {
             .name("AEM 6 Certified Lead Developer")
             .authority("Adobe France")
             .timePeriod(timePeriod)
-            .company(company)
             .build();
 
     LinkedInCertification actualLinkedInCertification =

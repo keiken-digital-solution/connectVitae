@@ -1,10 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.connectvitae.connectvitaelibrary.models.*;
-import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumCertification;
-import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumExperience;
-import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.*;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CertificationView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.EducationView;
@@ -30,9 +26,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class VoyagerApiExtractorServiceTest {
-
     private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
-
     @MockBean
     VoyagerApiFetcherService fetcherService;
     @Autowired
@@ -134,7 +128,7 @@ public class VoyagerApiExtractorServiceTest {
                 .name("AEM 6 Certified Business Practitioner ")
                 .authority("Adobe France")
                 .timePeriod(LinkedInTimePeriod.builder()
-                        .startDate(FORMATTER.parse("01/15/2017"))
+                        .startDate(FORMATTER.parse("01/05/2017"))
                         .build())
                 .build());
         expectedCertifications.add(LinkedInCertification.builder()
@@ -145,6 +139,7 @@ public class VoyagerApiExtractorServiceTest {
                         .build())
                 .build());
         List<LinkedInCertification> actualCertifications = extractorService.getCertifications("profileId");
+        assertEquals(expectedCertifications, actualCertifications);
     }
 
     @Test
@@ -166,7 +161,6 @@ public class VoyagerApiExtractorServiceTest {
 
 
     // --------------------------------------- Helpers --------------------------------------- \\
-
     private String getJson(String jsonFilePath) throws IOException {
         ClassPathResource resource = new ClassPathResource(jsonFilePath);
         return StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
