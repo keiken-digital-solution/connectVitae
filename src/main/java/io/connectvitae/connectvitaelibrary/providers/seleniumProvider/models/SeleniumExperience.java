@@ -15,14 +15,14 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class SeleniumExperience {
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private Date startDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private Date endDate;
-    private String company;
-    private String roleName;
-    private String mission;
-    private String projectType;
-    private String domain;
-    private String location;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+  private Date startDate;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+  private Date endDate;
+  private String company;
+  private String roleName;
+  private String mission;
+  private String projectType;
+  private String domain;
+  private String location;
 }

@@ -12,35 +12,35 @@ import java.util.Date;
 
 
 public class VoyagerDateParser extends StdDeserializer<Date> {
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-yyyy"); // Adjust the format accordingly
+  private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-yyyy"); // Adjust the format accordingly
 
-    protected VoyagerDateParser() {
-        this(null);
+  protected VoyagerDateParser() {
+    this(null);
+  }
+
+  protected VoyagerDateParser(Class<?> vc) {
+    super(vc);
+  }
+
+  @Override
+  public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    DateInfo dateInfo = jsonParser.readValueAs(DateInfo.class);
+
+    String year = dateInfo.getYear();
+    String month = dateInfo.getMonth();
+    try {
+      String dateString = month != null
+          ? month + "-" + year
+          : "01-" + year;
+      return DATE_FORMAT.parse(dateString);
+    } catch (ParseException e) {
+      throw new IOException("Failed to parse date", e);
     }
+  }
 
-    protected VoyagerDateParser(Class<?> vc) {
-        super(vc);
-    }
-
-
-    @Data
-    private static class DateInfo {
-        public String year;
-        public String month;
-    }
-    @Override
-    public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        DateInfo dateInfo = jsonParser.readValueAs(DateInfo.class);
-
-        String year = dateInfo.getYear();
-        String month = dateInfo.getMonth();
-        try {
-            String dateString = month != null ?
-                    month + "-" + year
-                    : "01-" + year;
-            return DATE_FORMAT.parse(dateString);
-        } catch (ParseException e) {
-            throw new IOException("Failed to parse date", e);
-        }
-    }
+  @Data
+  private static class DateInfo {
+    private String year;
+    private String month;
+  }
 }

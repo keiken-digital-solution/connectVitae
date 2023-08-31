@@ -2,7 +2,11 @@ package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.proxies
 
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInAuthenticationDTO;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.*;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CertificationView;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.EducationView;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.PositionView;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.SkillView;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

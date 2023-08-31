@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class SeleniumUser {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String address;
-    private String bio;
+  private String firstName;
+  private String lastName;
+  private String email;
+  private String address;
+  private String bio;
 }

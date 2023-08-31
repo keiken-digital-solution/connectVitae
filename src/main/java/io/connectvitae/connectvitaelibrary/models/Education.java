@@ -16,12 +16,12 @@ import java.util.Date;
 @Builder
 
 public class Education {
-    private String school;
-    private String degree;
-    private String specialty; //TODO: change the name
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date startDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date endDate;
-    private String grade;
+  private String school;
+  private String degree;
+  private String specialty; //TODO: change the name
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  private Date startDate;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  private Date endDate;
+  private String grade;
 }

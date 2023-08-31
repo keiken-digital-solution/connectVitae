@@ -1,75 +1,75 @@
 {
-        "paging": {
-            "start": 0,
-            "count": 3,
-            "total": 2,
-            "links": []
+  "paging": {
+    "start": 0,
+    "count": 3,
+    "total": 2,
+    "links": []
+  },
+  "entityUrn": "urn:li:fs_educationView:ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
+  "profileId": "ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
+  "elements": [
+    {
+      "entityUrn": "urn:li:fs_education:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,46228052)",
+      "timePeriod": {
+        "endDate": {
+          "year": 2010
         },
-        "entityUrn": "urn:li:fs_educationView:ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
-        "profileId": "ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
-        "elements": [
-            {
-                "entityUrn": "urn:li:fs_education:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,46228052)",
-                "timePeriod": {
-                    "endDate": {
-                        "year": 2010
-                    },
-                    "startDate": {
-                        "year": 2007
-                    }
-                },
-                "fieldOfStudyUrn": "urn:li:fs_fieldOfStudy:100197",
-                "schoolName": "Institut national des postes et telecommunications",
-                "fieldOfStudy": "Network and System Administration/Administrator"
-            },
-            {
-                "entityUrn": "urn:li:fs_education:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,429541747)",
-                "school": {
-                    "objectUrn": "urn:li:school:14889",
-                    "entityUrn": "urn:li:fs_miniSchool:14889",
-                    "active": true,
-                    "logo": {
-                        "com.linkedin.common.VectorImage": {
-                            "artifacts": [
-                                {
-                                    "width": 200,
-                                    "fileIdentifyingUrlPathSegment": "200_200/0/1519913125248?e=1698883200&v=beta&t=639H40Ci6BBFbwltCwNzGL8sZpRktZ5xWPf8OMk144Q",
-                                    "expiresAt": 1698883200000,
-                                    "height": 200
-                                },
-                                {
-                                    "width": 100,
-                                    "fileIdentifyingUrlPathSegment": "100_100/0/1519913125248?e=1698883200&v=beta&t=cj8sZk50G0S1M0-fgiMJkI6JGUEL8sDzxh4yWDyjous",
-                                    "expiresAt": 1698883200000,
-                                    "height": 100
-                                },
-                                {
-                                    "width": 400,
-                                    "fileIdentifyingUrlPathSegment": "400_400/0/1519913125248?e=1698883200&v=beta&t=eS3ShVZy6lAy65lJ3D8Ukqiur32k8XiCUacCIh79T3g",
-                                    "expiresAt": 1698883200000,
-                                    "height": 400
-                                }
-                            ],
-                            "rootUrl": "https://media.licdn.com/dms/image/C4D0BAQGTKRbPhc2lVA/company-logo_"
-                        }
-                    },
-                    "schoolName": "Université Hassan II de Casablanca",
-                    "trackingId": "V8zqxfX7SAKC2P8Z4jkX+g=="
-                },
-                "grade": "Excellent",
-                "timePeriod": {
-                    "endDate": {
-                        "year": 2007
-                    },
-                    "startDate": {
-                        "year": 2005
-                    }
-                },
-                "degreeName": "Associate's degree",
-                "schoolName": "Université Hassan II Aïn Chock de Casablanca",
-                "fieldOfStudy": "software engineering",
-                "degreeUrn": "urn:li:fs_degree:100",
-                "schoolUrn": "urn:li:fs_miniSchool:14889"
-            }
-        ]
+        "startDate": {
+          "year": 2007
+        }
+      },
+      "fieldOfStudyUrn": "urn:li:fs_fieldOfStudy:100197",
+      "schoolName": "Institut national des postes et telecommunications",
+      "fieldOfStudy": "Network and System Administration/Administrator"
+    },
+    {
+      "entityUrn": "urn:li:fs_education:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,429541747)",
+      "school": {
+        "objectUrn": "urn:li:school:14889",
+        "entityUrn": "urn:li:fs_miniSchool:14889",
+        "active": true,
+        "logo": {
+          "com.linkedin.common.VectorImage": {
+            "artifacts": [
+              {
+                "width": 200,
+                "fileIdentifyingUrlPathSegment": "200_200/0/1519913125248?e=1698883200&v=beta&t=639H40Ci6BBFbwltCwNzGL8sZpRktZ5xWPf8OMk144Q",
+                "expiresAt": 1698883200000,
+                "height": 200
+              },
+              {
+                "width": 100,
+                "fileIdentifyingUrlPathSegment": "100_100/0/1519913125248?e=1698883200&v=beta&t=cj8sZk50G0S1M0-fgiMJkI6JGUEL8sDzxh4yWDyjous",
+                "expiresAt": 1698883200000,
+                "height": 100
+              },
+              {
+                "width": 400,
+                "fileIdentifyingUrlPathSegment": "400_400/0/1519913125248?e=1698883200&v=beta&t=eS3ShVZy6lAy65lJ3D8Ukqiur32k8XiCUacCIh79T3g",
+                "expiresAt": 1698883200000,
+                "height": 400
+              }
+            ],
+            "rootUrl": "https://media.licdn.com/dms/image/C4D0BAQGTKRbPhc2lVA/company-logo_"
+          }
+        },
+        "schoolName": "Université Hassan II de Casablanca",
+        "trackingId": "V8zqxfX7SAKC2P8Z4jkX+g=="
+      },
+      "grade": "Excellent",
+      "timePeriod": {
+        "endDate": {
+          "year": 2007
+        },
+        "startDate": {
+          "year": 2005
+        }
+      },
+      "degreeName": "Associate's degree",
+      "schoolName": "Université Hassan II Aïn Chock de Casablanca",
+      "fieldOfStudy": "software engineering",
+      "degreeUrn": "urn:li:fs_degree:100",
+      "schoolUrn": "urn:li:fs_miniSchool:14889"
     }
+  ]
+}

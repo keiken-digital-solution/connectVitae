@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class SeleniumSkill {
-    private String skillName;
-    private String skillDescription;
-    private List<String> skillEndorsements;
+  private String skillName;
+  private String skillDescription;
+  private List<String> skillEndorsements;
 }

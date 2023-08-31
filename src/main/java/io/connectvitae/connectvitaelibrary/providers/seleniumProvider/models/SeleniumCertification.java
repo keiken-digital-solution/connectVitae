@@ -15,9 +15,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class SeleniumCertification {
-    private String certificationName;
-    private String certificationProvider;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date certifiedDate;
+  private String certificationName;
+  private String certificationProvider;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  private Date certifiedDate;
 
 }

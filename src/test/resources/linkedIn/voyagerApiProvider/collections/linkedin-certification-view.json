@@ -1,155 +1,155 @@
 {
   "paging": {
-      "start": 0,
-      "count": 10,
-      "total": 6,
-      "links": []
+    "start": 0,
+    "count": 10,
+    "total": 6,
+    "links": []
   },
   "entityUrn": "urn:li:fs_certificationView:ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
   "profileId": "ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y",
   "elements": [
-      {
-          "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,1000054008)",
-          "authority": "Adobe France",
-          "name": "AEM 6 Certified Lead Developper",
-          "timePeriod": {
-              "startDate": {
-                  "month": 5,
-                  "year": 2017
-              }
-          },
-          "company": {
-              "objectUrn": "urn:li:company:2514146",
-              "entityUrn": "urn:li:fs_miniCompany:2514146",
-              "name": "Adobe France",
-              "showcase": false,
-              "active": true,
-              "logo": {
-                  "com.linkedin.common.VectorImage": {
-                      "artifacts": [
-                          {
-                              "width": 200,
-                              "fileIdentifyingUrlPathSegment": "200_200/0/1592927979191?e=1698883200&v=beta&t=jNc1uJUTGABjttd3lhT6Hh2eB8SboRN61x2Axe92n4Y",
-                              "expiresAt": 1698883200000,
-                              "height": 200
-                          },
-                          {
-                              "width": 100,
-                              "fileIdentifyingUrlPathSegment": "100_100/0/1592927979191?e=1698883200&v=beta&t=n9qW1xA7kQKIePIdR5SfGZNYtEhk6f5S6AUK3K3n_Jk",
-                              "expiresAt": 1698883200000,
-                              "height": 100
-                          },
-                          {
-                              "width": 400,
-                              "fileIdentifyingUrlPathSegment": "400_400/0/1592927979191?e=1698883200&v=beta&t=HCAP2mZqROQabbo-OYzgIMRiztAXLOgwf3OSK6E6-JU",
-                              "expiresAt": 1698883200000,
-                              "height": 400
-                          }
-                      ],
-                      "rootUrl": "https://media.licdn.com/dms/image/C4E0BAQF4T-X4HZW3GQ/company-logo_"
-                  }
-              },
-              "universalName": "adobe-france",
-              "dashCompanyUrn": "urn:li:fsd_company:2514146",
-              "trackingId": "M0Bj7Rq5SFCE1v8dA5ld3A=="
-          },
-          "companyUrn": "urn:li:fs_miniCompany:2514146"
+    {
+      "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,1000054008)",
+      "authority": "Adobe France",
+      "name": "AEM 6 Certified Lead Developper",
+      "timePeriod": {
+        "startDate": {
+          "month": 5,
+          "year": 2017
+        }
       },
-      {
-          "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,1000149416)",
-          "authority": "Adobe France",
-          "name": "AEM 6 Certified Business Practitioner ",
-          "timePeriod": {
-              "startDate": {
-                  "month": 5,
-                  "year": 2017
-              }
-          },
-          "company": {
-              "objectUrn": "urn:li:company:2514146",
-              "entityUrn": "urn:li:fs_miniCompany:2514146",
-              "name": "Adobe France",
-              "showcase": false,
-              "active": true,
-              "logo": {
-                  "com.linkedin.common.VectorImage": {
-                      "artifacts": [
-                          {
-                              "width": 200,
-                              "fileIdentifyingUrlPathSegment": "200_200/0/1592927979191?e=1698883200&v=beta&t=jNc1uJUTGABjttd3lhT6Hh2eB8SboRN61x2Axe92n4Y",
-                              "expiresAt": 1698883200000,
-                              "height": 200
-                          },
-                          {
-                              "width": 100,
-                              "fileIdentifyingUrlPathSegment": "100_100/0/1592927979191?e=1698883200&v=beta&t=n9qW1xA7kQKIePIdR5SfGZNYtEhk6f5S6AUK3K3n_Jk",
-                              "expiresAt": 1698883200000,
-                              "height": 100
-                          },
-                          {
-                              "width": 400,
-                              "fileIdentifyingUrlPathSegment": "400_400/0/1592927979191?e=1698883200&v=beta&t=HCAP2mZqROQabbo-OYzgIMRiztAXLOgwf3OSK6E6-JU",
-                              "expiresAt": 1698883200000,
-                              "height": 400
-                          }
-                      ],
-                      "rootUrl": "https://media.licdn.com/dms/image/C4E0BAQF4T-X4HZW3GQ/company-logo_"
-                  }
+      "company": {
+        "objectUrn": "urn:li:company:2514146",
+        "entityUrn": "urn:li:fs_miniCompany:2514146",
+        "name": "Adobe France",
+        "showcase": false,
+        "active": true,
+        "logo": {
+          "com.linkedin.common.VectorImage": {
+            "artifacts": [
+              {
+                "width": 200,
+                "fileIdentifyingUrlPathSegment": "200_200/0/1592927979191?e=1698883200&v=beta&t=jNc1uJUTGABjttd3lhT6Hh2eB8SboRN61x2Axe92n4Y",
+                "expiresAt": 1698883200000,
+                "height": 200
               },
-              "universalName": "adobe-france",
-              "dashCompanyUrn": "urn:li:fsd_company:2514146",
-              "trackingId": "XNkm3UPuTPSGk+Rc0UwYUw=="
-          },
-          "companyUrn": "urn:li:fs_miniCompany:2514146"
+              {
+                "width": 100,
+                "fileIdentifyingUrlPathSegment": "100_100/0/1592927979191?e=1698883200&v=beta&t=n9qW1xA7kQKIePIdR5SfGZNYtEhk6f5S6AUK3K3n_Jk",
+                "expiresAt": 1698883200000,
+                "height": 100
+              },
+              {
+                "width": 400,
+                "fileIdentifyingUrlPathSegment": "400_400/0/1592927979191?e=1698883200&v=beta&t=HCAP2mZqROQabbo-OYzgIMRiztAXLOgwf3OSK6E6-JU",
+                "expiresAt": 1698883200000,
+                "height": 400
+              }
+            ],
+            "rootUrl": "https://media.licdn.com/dms/image/C4E0BAQF4T-X4HZW3GQ/company-logo_"
+          }
+        },
+        "universalName": "adobe-france",
+        "dashCompanyUrn": "urn:li:fsd_company:2514146",
+        "trackingId": "M0Bj7Rq5SFCE1v8dA5ld3A=="
       },
-      {
-          "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,89129330)",
-          "authority": "Adobe",
-          "name": "Adobe Certified Master - Adobe Experience Manager Sites Architect",
-          "timePeriod": {
-              "startDate": {
-                  "month": 6,
-                  "year": 2020
-              }
-          },
-          "company": {
-              "objectUrn": "urn:li:company:1480",
-              "entityUrn": "urn:li:fs_miniCompany:1480",
-              "name": "Adobe",
-              "showcase": false,
-              "active": true,
-              "logo": {
-                  "com.linkedin.common.VectorImage": {
-                      "artifacts": [
-                          {
-                              "width": 200,
-                              "fileIdentifyingUrlPathSegment": "200_200/0/1590681827578?e=1698883200&v=beta&t=6F0INAvWGs4K0nwE4b5bjkoMJDxrubGkcPrl8NYIl4c",
-                              "expiresAt": 1698883200000,
-                              "height": 200
-                          },
-                          {
-                              "width": 100,
-                              "fileIdentifyingUrlPathSegment": "100_100/0/1590681827578?e=1698883200&v=beta&t=mp4wv7DSzfB0W-lA4IYkOvMgazrYqRQJLooESAzFnc0",
-                              "expiresAt": 1698883200000,
-                              "height": 100
-                          },
-                          {
-                              "width": 400,
-                              "fileIdentifyingUrlPathSegment": "400_400/0/1590681827578?e=1698883200&v=beta&t=y11JPH0zgLR0ftjWLG7_7M1Qc8t44Tu7OzebpvEzGaA",
-                              "expiresAt": 1698883200000,
-                              "height": 400
-                          }
-                      ],
-                      "rootUrl": "https://media.licdn.com/dms/image/C560BAQFrtK-ioO1rsQ/company-logo_"
-                  }
+      "companyUrn": "urn:li:fs_miniCompany:2514146"
+    },
+    {
+      "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,1000149416)",
+      "authority": "Adobe France",
+      "name": "AEM 6 Certified Business Practitioner ",
+      "timePeriod": {
+        "startDate": {
+          "month": 5,
+          "year": 2017
+        }
+      },
+      "company": {
+        "objectUrn": "urn:li:company:2514146",
+        "entityUrn": "urn:li:fs_miniCompany:2514146",
+        "name": "Adobe France",
+        "showcase": false,
+        "active": true,
+        "logo": {
+          "com.linkedin.common.VectorImage": {
+            "artifacts": [
+              {
+                "width": 200,
+                "fileIdentifyingUrlPathSegment": "200_200/0/1592927979191?e=1698883200&v=beta&t=jNc1uJUTGABjttd3lhT6Hh2eB8SboRN61x2Axe92n4Y",
+                "expiresAt": 1698883200000,
+                "height": 200
               },
-              "universalName": "adobe",
-              "dashCompanyUrn": "urn:li:fsd_company:1480",
-              "trackingId": "WYCpIZLtRaeK2yqubhVVkA=="
-          },
-          "displaySource": "youracclaim.com",
-          "companyUrn": "urn:li:fs_miniCompany:1480",
-          "url": "https://www.youracclaim.com/badges/62239dd1-d519-450d-a3a3-066800c2c3b5/linked_in_profile"
-      }
+              {
+                "width": 100,
+                "fileIdentifyingUrlPathSegment": "100_100/0/1592927979191?e=1698883200&v=beta&t=n9qW1xA7kQKIePIdR5SfGZNYtEhk6f5S6AUK3K3n_Jk",
+                "expiresAt": 1698883200000,
+                "height": 100
+              },
+              {
+                "width": 400,
+                "fileIdentifyingUrlPathSegment": "400_400/0/1592927979191?e=1698883200&v=beta&t=HCAP2mZqROQabbo-OYzgIMRiztAXLOgwf3OSK6E6-JU",
+                "expiresAt": 1698883200000,
+                "height": 400
+              }
+            ],
+            "rootUrl": "https://media.licdn.com/dms/image/C4E0BAQF4T-X4HZW3GQ/company-logo_"
+          }
+        },
+        "universalName": "adobe-france",
+        "dashCompanyUrn": "urn:li:fsd_company:2514146",
+        "trackingId": "XNkm3UPuTPSGk+Rc0UwYUw=="
+      },
+      "companyUrn": "urn:li:fs_miniCompany:2514146"
+    },
+    {
+      "entityUrn": "urn:li:fs_certification:(ACoAAAQfeOUBolorRdcVyaopxOQLIwhw6I-Bt9Y,89129330)",
+      "authority": "Adobe",
+      "name": "Adobe Certified Master - Adobe Experience Manager Sites Architect",
+      "timePeriod": {
+        "startDate": {
+          "month": 6,
+          "year": 2020
+        }
+      },
+      "company": {
+        "objectUrn": "urn:li:company:1480",
+        "entityUrn": "urn:li:fs_miniCompany:1480",
+        "name": "Adobe",
+        "showcase": false,
+        "active": true,
+        "logo": {
+          "com.linkedin.common.VectorImage": {
+            "artifacts": [
+              {
+                "width": 200,
+                "fileIdentifyingUrlPathSegment": "200_200/0/1590681827578?e=1698883200&v=beta&t=6F0INAvWGs4K0nwE4b5bjkoMJDxrubGkcPrl8NYIl4c",
+                "expiresAt": 1698883200000,
+                "height": 200
+              },
+              {
+                "width": 100,
+                "fileIdentifyingUrlPathSegment": "100_100/0/1590681827578?e=1698883200&v=beta&t=mp4wv7DSzfB0W-lA4IYkOvMgazrYqRQJLooESAzFnc0",
+                "expiresAt": 1698883200000,
+                "height": 100
+              },
+              {
+                "width": 400,
+                "fileIdentifyingUrlPathSegment": "400_400/0/1590681827578?e=1698883200&v=beta&t=y11JPH0zgLR0ftjWLG7_7M1Qc8t44Tu7OzebpvEzGaA",
+                "expiresAt": 1698883200000,
+                "height": 400
+              }
+            ],
+            "rootUrl": "https://media.licdn.com/dms/image/C560BAQFrtK-ioO1rsQ/company-logo_"
+          }
+        },
+        "universalName": "adobe",
+        "dashCompanyUrn": "urn:li:fsd_company:1480",
+        "trackingId": "WYCpIZLtRaeK2yqubhVVkA=="
+      },
+      "displaySource": "youracclaim.com",
+      "companyUrn": "urn:li:fs_miniCompany:1480",
+      "url": "https://www.youracclaim.com/badges/62239dd1-d519-450d-a3a3-066800c2c3b5/linked_in_profile"
+    }
   ]
 }

@@ -1,7 +1,12 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
 import io.connectvitae.connectvitaelibrary.config.LinkedInProperties;
-import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.*;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumCertification;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumEducation;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumExperience;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumProfile;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumUser;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services.SeleniumExtractorService;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services.SeleniumFetcherService;
 import lombok.RequiredArgsConstructor;
@@ -16,52 +21,52 @@ import java.util.List;
 @RestController
 @RequestMapping("/selenium")
 public class LinkedInScraperController {
-    private final SeleniumExtractorService dataSeleniumExtractorService;
-    private final LinkedInProperties linkedInProperties;
-    private final SeleniumFetcherService seleniumFetcherService;
-    private boolean isAuthenticated = false;
+  private final SeleniumExtractorService dataSeleniumExtractorService;
+  private final LinkedInProperties linkedInProperties;
+  private final SeleniumFetcherService seleniumFetcherService;
+  private boolean isAuthenticated = false;
 
-    @GetMapping("/profile/{profileId}")
-    public SeleniumProfile getProfile(@PathVariable String profileId) {
-        authenticate();
-        return dataSeleniumExtractorService.getProfile(profileId);
-    }
+  @GetMapping("/profile/{profileId}")
+  public SeleniumProfile getProfile(@PathVariable String profileId) {
+    authenticate();
+    return dataSeleniumExtractorService.getProfile(profileId);
+  }
 
-    @GetMapping("/profile/{profileId}/user")
-    public SeleniumUser getUser(@PathVariable String profileId) {
-        authenticate();
-        return dataSeleniumExtractorService.getUser(profileId);
-    }
+  @GetMapping("/profile/{profileId}/user")
+  public SeleniumUser getUser(@PathVariable String profileId) {
+    authenticate();
+    return dataSeleniumExtractorService.getUser(profileId);
+  }
 
-    @GetMapping("/profile/{profileId}/experiences")
-    public List<SeleniumExperience> getExperiences(@PathVariable String profileId) {
-        authenticate();
-        return dataSeleniumExtractorService.getExperiences(profileId);
-    }
+  @GetMapping("/profile/{profileId}/experiences")
+  public List<SeleniumExperience> getExperiences(@PathVariable String profileId) {
+    authenticate();
+    return dataSeleniumExtractorService.getExperiences(profileId);
+  }
 
-    @GetMapping("/profile/{profileId}/certifications")
-    public List<SeleniumCertification> getCertifications(@PathVariable String profileId) {
-        authenticate();
-        return dataSeleniumExtractorService.getCertifications(profileId);
-    }
+  @GetMapping("/profile/{profileId}/certifications")
+  public List<SeleniumCertification> getCertifications(@PathVariable String profileId) {
+    authenticate();
+    return dataSeleniumExtractorService.getCertifications(profileId);
+  }
 
-    @GetMapping("/profile/{profileId}/educations")
-    public List<SeleniumEducation> getEducations(@PathVariable String profileId) {
-        authenticate();
-        return dataSeleniumExtractorService.getEducations(profileId);
-    }
+  @GetMapping("/profile/{profileId}/educations")
+  public List<SeleniumEducation> getEducations(@PathVariable String profileId) {
+    authenticate();
+    return dataSeleniumExtractorService.getEducations(profileId);
+  }
 
-    @GetMapping("/profile/{profileId}/skills")
-    public List<SeleniumSkill> getSkills(@PathVariable String profileId) {
-        authenticate();
-        return dataSeleniumExtractorService.getSkills(profileId);
-    }
+  @GetMapping("/profile/{profileId}/skills")
+  public List<SeleniumSkill> getSkills(@PathVariable String profileId) {
+    authenticate();
+    return dataSeleniumExtractorService.getSkills(profileId);
+  }
 
-    private void authenticate() {
-        if (!isAuthenticated) {
-            var accounts = linkedInProperties.getAccounts();
-            seleniumFetcherService.authenticate(accounts.get(0).username(), accounts.get(0).password());
-            isAuthenticated = true;
-        }
+  private void authenticate() {
+    if (!isAuthenticated) {
+      var accounts = linkedInProperties.getAccounts();
+      seleniumFetcherService.authenticate(accounts.get(0).username(), accounts.get(0).password());
+      isAuthenticated = true;
     }
+  }
 }

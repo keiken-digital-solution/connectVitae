@@ -14,9 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SeleniumProfile {
-    private List<SeleniumExperience> seleniumExperiences;
-    private List<SeleniumSkill> seleniumSkills;
-    private List <SeleniumCertification> seleniumCertifications;
-    private List<SeleniumEducation> seleniumEducations;
-    private SeleniumUser seleniumUser;
+  private List<SeleniumExperience> seleniumExperiences;
+  private List<SeleniumSkill> seleniumSkills;
+  private List<SeleniumCertification> seleniumCertifications;
+  private List<SeleniumEducation> seleniumEducations;
+  private SeleniumUser seleniumUser;
 }

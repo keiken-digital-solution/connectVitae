@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 @TestConfiguration
 public class LinkedInTestConfig {
-    @Bean
-    public WebDriver driver() {
-        return Mockito.mock(WebDriver.class);
-    }
+  @Bean
+  public WebDriver driver() {
+    return Mockito.mock(WebDriver.class);
+  }
 }

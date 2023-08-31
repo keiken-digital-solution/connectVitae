@@ -15,9 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Profile {
 
-    private List<Experience> experiences;
-    private List<Skill> skills;
-    private List <Certification> certifications;
-    private List<Education> educations;
-    private User user;
+  private List<Experience> experiences;
+  private List<Skill> skills;
+  private List<Certification> certifications;
+  private List<Education> educations;
+  private User user;
 }
