@@ -148,13 +148,10 @@ public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
                 .certificationName(linkedInCertification.getName())
                 .certifiedDate(
                         linkedInCertification.getTimePeriod() != null ?
-                                linkedInCertification.getTimePeriod().getEndDate()
+                                linkedInCertification.getTimePeriod().getStartDate()
                                 : null
                 )
-                .certificationProvider(
-                        linkedInCertification.getAuthority() != null ?
-                        linkedInCertification.getAuthority() : ""
-                )
+                .certificationProvider(linkedInCertification.getAuthority())
                 .build();
     }
 
