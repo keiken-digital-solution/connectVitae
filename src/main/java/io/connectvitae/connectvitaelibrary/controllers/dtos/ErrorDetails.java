@@ -1,4 +1,4 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.dtos;
+package io.connectvitae.connectvitaelibrary.controllers.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

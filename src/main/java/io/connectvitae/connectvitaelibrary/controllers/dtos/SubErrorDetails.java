@@ -1,4 +1,4 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.dtos;
+package io.connectvitae.connectvitaelibrary.controllers.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

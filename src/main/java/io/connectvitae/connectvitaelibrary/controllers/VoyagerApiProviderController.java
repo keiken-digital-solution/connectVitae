@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @RestController
 @RequestMapping("/linkedIn")
 
-public class LinkedInVoyagerApiController {
+public class VoyagerApiProviderController {
   private final LinkedInProperties linkedInProperties;
   private final VoyagerApiFetcherService voyagerApiFetcherService;
 

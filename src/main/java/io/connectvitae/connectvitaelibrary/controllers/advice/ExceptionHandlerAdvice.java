@@ -1,10 +1,10 @@
-package io.connectvitae.connectvitaelibrary.linkedIn.advice;
+package io.connectvitae.connectvitaelibrary.controllers.advice;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.FeignException;
-import io.connectvitae.connectvitaelibrary.linkedIn.dtos.ErrorDetails;
+import io.connectvitae.connectvitaelibrary.controllers.dtos.ErrorDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

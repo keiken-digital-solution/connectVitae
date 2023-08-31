@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/selenium")
-public class LinkedInScraperController {
+public class SeleniumProviderController {
   private final SeleniumExtractorService dataSeleniumExtractorService;
   private final LinkedInProperties linkedInProperties;
   private final SeleniumFetcherService seleniumFetcherService;
