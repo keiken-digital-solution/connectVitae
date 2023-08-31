@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 @SuppressWarnings("checkstyle:LineLength")
 public class VoyagerApiExtractorServiceTest {
-  private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
+  private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
   @MockBean
   private VoyagerApiFetcherService fetcherService;
   @Autowired

@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 @SuppressWarnings("checkstyle:LineLength")
 public class SeleniumScrapeServiceTest {
-  private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
+  private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
   @Autowired
   private SeleniumScrapeService seleniumScrapeService;
 

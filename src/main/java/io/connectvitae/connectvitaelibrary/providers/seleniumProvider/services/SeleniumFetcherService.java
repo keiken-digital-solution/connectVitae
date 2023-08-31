@@ -14,19 +14,18 @@ import java.time.Duration;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("checkstyle:MemberName")
 public class SeleniumFetcherService implements FetcherServiceInterface {
   private final WebDriver driver;
-
+  private static final int MAX_WAIT_SECONDS = 4;
+  private static final int WAIT_BEFORE_SUBMIT_CLICK = 2000;
+  private static final int REFRESH_MAX_RETRIES = 5;
   public void authenticate(String username, String password) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_SECONDS));
     int retries = 1;
-    final int MAX_RETRIES = 5;
-
     driver.get("https://www.linkedin.com");
-
-    // Refreshing until 5 times if the page is not loaded
-    while (retries <= MAX_RETRIES) {
+    // Refreshing until REFRESH_MAX_RETRIES times if the page is not loaded
+    while (retries <= REFRESH_MAX_RETRIES) {
 
       try {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("session_key")))
@@ -43,7 +42,7 @@ public class SeleniumFetcherService implements FetcherServiceInterface {
 
     // Sleeping two seconds before clicking submit
     try {
-      Thread.sleep(2000);
+      Thread.sleep(WAIT_BEFORE_SUBMIT_CLICK);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -53,7 +52,7 @@ public class SeleniumFetcherService implements FetcherServiceInterface {
 
   public String fetchUser(String profileId) {
     driver.get("https://www.linkedin.com/in/" + profileId);
-    Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_SECONDS));
     wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".pv-top-card h1")));
     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".pvs-loader__profile-card")));
     return driver.getPageSource();
@@ -82,7 +81,7 @@ public class SeleniumFetcherService implements FetcherServiceInterface {
 
   private String fetch(String informationType, String profileId) {
     driver.get("https://www.linkedin.com/in/" + profileId + "/details/" + informationType);
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_SECONDS));
     wait.until(ExpectedConditions.presenceOfElementLocated(By.className("pvs-list")));
     return driver
         .findElement(By.className("pvs-list"))

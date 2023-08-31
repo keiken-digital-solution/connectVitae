@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 @SuppressWarnings("checkstyle:LineLength")
 public class SeleniumExtractorServiceTest {
-  private final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
+  private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy");
   @MockBean
   private SeleniumFetcherService seleniumFetcherService;
   @Autowired

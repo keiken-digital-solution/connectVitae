@@ -15,7 +15,7 @@ public class SeleniumConfiguration {
   @Bean
   public WebDriver driver() {
     System.setProperty("webdriver.chrome.driver", webDriverLocation);
-    final ChromeOptions chromeOptions = new ChromeOptions();
+    ChromeOptions chromeOptions = new ChromeOptions();
     //    chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
     //    chromeOptions.addArguments("--headless");
 
