@@ -1,6 +1,7 @@
 package io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services;
 
 import io.connectvitae.connectvitaelibrary.services.FetcherServiceInterface;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -16,6 +17,8 @@ import java.time.Duration;
 @RequiredArgsConstructor
 @SuppressWarnings("checkstyle:MemberName")
 public class SeleniumFetcherService implements FetcherServiceInterface {
+
+
   private final WebDriver driver;
   private static final int MAX_WAIT_SECONDS = 4;
   private static final int WAIT_BEFORE_SUBMIT_CLICK = 2000;

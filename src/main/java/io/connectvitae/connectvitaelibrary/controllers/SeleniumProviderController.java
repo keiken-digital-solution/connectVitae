@@ -9,6 +9,7 @@ import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.Sel
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumUser;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services.SeleniumExtractorService;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services.SeleniumFetcherService;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ public class SeleniumProviderController {
   private final LinkedInProperties linkedInProperties;
   private final SeleniumFetcherService seleniumFetcherService;
   private boolean isAuthenticated = false;
+
 
   @GetMapping("/profile/{profileId}")
   public SeleniumProfile getProfile(@PathVariable String profileId) {

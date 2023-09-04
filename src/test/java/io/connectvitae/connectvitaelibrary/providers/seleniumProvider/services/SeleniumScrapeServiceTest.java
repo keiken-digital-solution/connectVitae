@@ -3,6 +3,7 @@ package io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumCertification;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumEducation;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumExperience;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumLanguage;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -78,6 +79,18 @@ public class SeleniumScrapeServiceTest {
         .build();
     SeleniumCertification actualCertification = seleniumScrapeService.scrapeCertification(linkedInCertificationElement);
     assertEquals(expectedCertification, actualCertification);
+  }
+
+  @Test
+  public void testScrapeLanguage() throws IOException, ParseException {
+    Element linkedInLanguageElement =
+        getElement("linkedIn/seleniumProvider/elements/linkedin-language-element.html");
+    SeleniumLanguage expectedLanguage = SeleniumLanguage.builder()
+        .languageName("Espagnol")
+        .languageLevel("Elementary proficiency")
+        .build();
+    SeleniumLanguage actualLanguage = seleniumScrapeService.scrapeLanguage(linkedInLanguageElement);
+    assertEquals(expectedLanguage, actualLanguage);
   }
 
   @Test
