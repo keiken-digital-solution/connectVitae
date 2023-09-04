@@ -2,8 +2,22 @@ package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.service
 
 
 import io.connectvitae.connectvitaelibrary.mappers.VoyagerApiMapperService;
-import io.connectvitae.connectvitaelibrary.models.*;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.*;
+import io.connectvitae.connectvitaelibrary.models.Certification;
+import io.connectvitae.connectvitaelibrary.models.Company;
+import io.connectvitae.connectvitaelibrary.models.Education;
+import io.connectvitae.connectvitaelibrary.models.Experience;
+import io.connectvitae.connectvitaelibrary.models.School;
+import io.connectvitae.connectvitaelibrary.models.Skill;
+import io.connectvitae.connectvitaelibrary.models.User;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCertification;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompany;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompanyLocation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInPosition;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSchool;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.PhoneNumber;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
-
+@SuppressWarnings("checkstyle:LineLength")
 public class VoyagerApiMapperServiceTest {
   @Autowired
   private VoyagerApiMapperService voyagerApiMapperService;
@@ -109,6 +123,7 @@ public class VoyagerApiMapperServiceTest {
     User actualUser = voyagerApiMapperService.mapUser(linkedInProfile);
     assertEquals(expectedUser, actualUser);
   }
+
 
   @Test
   void testConvertSchool() {

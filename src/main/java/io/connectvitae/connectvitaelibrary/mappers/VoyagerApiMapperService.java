@@ -173,36 +173,16 @@ public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
           .companyEmployeeCountRange(linkedInCompany.getStaffCount())
           .companyPhoneNumber(
                   linkedInCompany.getPhone() != null
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    ? linkedInCompany.getPhone().getNumber()
-                    : null
-=======
                           ? linkedInCompany.getPhone().getNumber()
                           : null
->>>>>>> f7688e1 (refactor(LinkedIn): copany and school info refactor)
-=======
-                    ? linkedInCompany.getPhone().getNumber()
-                    : null
->>>>>>> a8334cc (refactor(LinkedIn): refactoring info extractor branch tests)
           )
           .companySpecialities(linkedInCompany.getSpecialities())
           .companyDescription(linkedInCompany.getDescription())
           .companyLocations(linkedInCompany.getConfirmedLocations())
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a8334cc (refactor(LinkedIn): refactoring info extractor branch tests)
           .companyType(
               linkedInCompany.getCompanyType() != null
                 ? linkedInCompany.getCompanyType().getLocalizedName()
                 : null)
-<<<<<<< HEAD
-=======
-          .companyType(linkedInCompany.getCompanyType().getLocalizedName())
->>>>>>> f7688e1 (refactor(LinkedIn): copany and school info refactor)
-=======
->>>>>>> a8334cc (refactor(LinkedIn): refactoring info extractor branch tests)
           .build();
   }
   public School mapSchool(LinkedInSchool linkedInSchool) {

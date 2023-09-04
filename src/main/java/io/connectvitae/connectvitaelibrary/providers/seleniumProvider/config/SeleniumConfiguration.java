@@ -19,7 +19,7 @@ public class SeleniumConfiguration {
     //    chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
     //    chromeOptions.addArguments("--headless");
 
-    //        //Adding proxy options if needed
+    //        //Adding proxy options if neededgit
     //        Proxy proxy = new Proxy();
     //        proxy.setHttpProxy("<HOST:PORT>");
     //        chromeOptions.setCapability("proxy", proxy);
