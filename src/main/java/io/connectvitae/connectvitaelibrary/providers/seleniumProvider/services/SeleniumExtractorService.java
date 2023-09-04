@@ -9,6 +9,7 @@ import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.Sel
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,9 @@ public class SeleniumExtractorService {
     var experiences = seleniumFetcherService.fetchExperiences(profileId);
     List<SeleniumExperience> seleniumExperienceList = new ArrayList<>();
     getElements(experiences).forEach(element -> {
-      seleniumExperienceList.add(seleniumScrapeService.scrapeExperience(element));
+      boolean b = isExperienceGroup(element)
+          ? seleniumExperienceList.addAll(seleniumScrapeService.scrapeExperiencesGroup(element))
+          : seleniumExperienceList.add(seleniumScrapeService.scrapeExperience(element));
     });
 
     return seleniumExperienceList;
@@ -78,5 +81,9 @@ public class SeleniumExtractorService {
   public Elements getElements(String innerHTML) {
     Document doc = Jsoup.parse(innerHTML, "UTF-8");
     return doc.select("li.pvs-list__paged-list-item");
+  }
+  public boolean isExperienceGroup(Element element) {
+    Elements selectedElements = element.select(".t-bold");
+    return selectedElements.size() != 1;
   }
 }

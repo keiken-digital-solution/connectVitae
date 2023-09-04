@@ -130,7 +130,7 @@ public class SeleniumScrapeService {
         .build();
   }
 
-  // --------------------------------------- Helpers --------------------------------------- \\
+
 
   public List<SeleniumExperience> scrapeExperiencesGroup(Element experiencesGroupElement) {
     List<SeleniumExperience> seleniumExperiences = new ArrayList<>();
@@ -156,6 +156,8 @@ public class SeleniumScrapeService {
         });
     return seleniumExperiences;
   }
+
+  // --------------------------------------- Helpers --------------------------------------- \\
 
   private String extractText(Element element, String... selectors) {
     StringBuilder concatenatedSelector = new StringBuilder();
