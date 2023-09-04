@@ -3,6 +3,7 @@ package io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumCertification;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumEducation;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumExperience;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumLanguage;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumUser;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.utils.SeleniumDateParser;
@@ -22,22 +23,7 @@ import java.util.List;
 public class SeleniumScrapeService {
   private final SeleniumDateParser seleniumDateParser;
 
-  public static String extractGrade(String text) {
-    String[] parts = text.split(":");
 
-    if (parts.length != 2) {
-      return null;
-    }
-
-    String label = parts[0].trim();
-    String value = parts[1].trim();
-
-    if (label.equalsIgnoreCase("Niveau") || label.equalsIgnoreCase("Grade")) {
-      return value;
-    } else {
-      return null;
-    }
-  }
 
   public SeleniumUser scrapeUser(String userAsHTML) {
     Document doc = Jsoup.parse(userAsHTML, "UTF-8");
@@ -66,7 +52,6 @@ public class SeleniumScrapeService {
         .bio(about)
         .build();
   }
-
   public SeleniumExperience scrapeExperience(Element element) {
 
     String datesAsAText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
@@ -81,7 +66,30 @@ public class SeleniumScrapeService {
         .endDate(dates[1])
         .build();
   }
+  public List<SeleniumExperience> scrapeExperiencesGroup(Element experiencesGroupElement) {
+    List<SeleniumExperience> seleniumExperiences = new ArrayList<>();
+    String companyName = extractText(experiencesGroupElement, "t-bold");
+    Elements elements = Jsoup.parse(experiencesGroupElement
+                      .selectFirst("li.pvs-list__paged-list-item")
+                      .html())
+                    .select("li.pvs-list__paged-list-item");
 
+    elements
+        .forEach(experienceElement -> {
+          String dateAsAText = extractText(experienceElement, 0, "t-14", "t-normal", "t-black--light");
+          Date[] dates = seleniumDateParser.extractDates(dateAsAText);
+          SeleniumExperience seleniumExperience = SeleniumExperience.builder()
+              .company(companyName)
+              .roleName(extractText(experienceElement, "t-bold"))
+              .startDate(dates[0])
+              .endDate(dates[1])
+              .location(extractText(experienceElement, 1, "t-14", "t-normal", "t-black--light"))
+              .mission(extractText(experienceElement, "t-14", "t-normal", "t-black"))
+              .build();
+          seleniumExperiences.add(seleniumExperience);
+        });
+    return seleniumExperiences;
+  }
   public SeleniumEducation scrapeEducation(Element element) {
     String dateAsAText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
     Date[] dates = seleniumDateParser.extractDates(dateAsAText);
@@ -91,10 +99,9 @@ public class SeleniumScrapeService {
         .degree(extractText(element, "t-14", "t-normal"))
         .startDate(dates[0])
         .endDate(dates[1])
-        .grade(extractGrade(extractText(element, 0, 0, "t-14", "t-normal", "t-black")))
+        .grade(getGrade(extractText(element, 0, 0, "t-14", "t-normal", "t-black")))
         .build();
   }
-
   public SeleniumCertification scrapeCertification(Element element) {
 
     String certifiedDateAsText = extractText(element, 0, "t-14", "t-normal", "t-black--light");
@@ -111,13 +118,12 @@ public class SeleniumScrapeService {
         .certificationProvider(extractText(element, "t-14", "t-normal"))
         .build();
   }
-
   public SeleniumSkill scrapeSkill(Element element) {
     Elements skillEndorsementsElements = element
         .select(".pv-shared-text-with-see-more.full-width.t-14.t-normal.t-black.hoverable-link-text.display-flex.align-items-center");
 
     List<String> skillEndorsements = new ArrayList<>();
-    skillEndorsementsElements.stream().forEach(element1 ->
+    skillEndorsementsElements.forEach(element1 ->
         skillEndorsements.add(extractText(
             element1,
             0,
@@ -129,32 +135,11 @@ public class SeleniumScrapeService {
         .skillEndorsements(skillEndorsements)
         .build();
   }
-
-
-
-  public List<SeleniumExperience> scrapeExperiencesGroup(Element experiencesGroupElement) {
-    List<SeleniumExperience> seleniumExperiences = new ArrayList<>();
-    String companyName = extractText(experiencesGroupElement, "t-bold");
-    Elements elements = Jsoup.parse(experiencesGroupElement
-            .selectFirst("li.pvs-list__paged-list-item")
-            .html())
-        .select("li.pvs-list__paged-list-item");
-
-    elements.stream()
-        .forEach(experienceElement -> {
-          String dateAsAText = extractText(experienceElement, 0, "t-14", "t-normal", "t-black--light");
-          Date[] dates = seleniumDateParser.extractDates(dateAsAText);
-          SeleniumExperience seleniumExperience = SeleniumExperience.builder()
-              .company(companyName)
-              .roleName(extractText(experienceElement, "t-bold"))
-              .startDate(dates[0])
-              .endDate(dates[1])
-              .location(extractText(experienceElement, 1, "t-14", "t-normal", "t-black--light"))
-              .mission(extractText(experienceElement, "t-14", "t-normal", "t-black"))
-              .build();
-          seleniumExperiences.add(seleniumExperience);
-        });
-    return seleniumExperiences;
+  public SeleniumLanguage scrapeLanguage(Element element) {
+    return SeleniumLanguage.builder()
+        .languageName(extractText(element, "t-bold"))
+        .languageLevel(extractText(element, "t-14", "t-normal", "t-black--light"))
+        .build();
   }
 
   // --------------------------------------- Helpers --------------------------------------- \\
@@ -164,7 +149,6 @@ public class SeleniumScrapeService {
     for (String selector : selectors) {
       concatenatedSelector.append(".").append(selector);
     }
-
     Element selectedElement = element.selectFirst(concatenatedSelector.toString());
     return selectedElement != null
         ? selectedElement.child(0).text()
@@ -193,5 +177,22 @@ public class SeleniumScrapeService {
       return "";
     }
     return selectedElements.get(index1).child(0).child(index2).text();
+  }
+
+  public static String getGrade(String text) {
+    String[] parts = text.split(":");
+
+    if (parts.length != 2) {
+      return null;
+    }
+
+    String label = parts[0].trim();
+    String value = parts[1].trim();
+
+    if (label.equalsIgnoreCase("Niveau") || label.equalsIgnoreCase("Grade")) {
+      return value;
+    } else {
+      return null;
+    }
   }
 }

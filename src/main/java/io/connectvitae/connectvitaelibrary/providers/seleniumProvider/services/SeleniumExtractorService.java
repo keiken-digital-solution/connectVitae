@@ -3,6 +3,7 @@ package io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumCertification;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumEducation;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumExperience;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumLanguage;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumProfile;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumUser;
@@ -28,6 +29,7 @@ public class SeleniumExtractorService {
         .seleniumEducations(getEducations(profileId))
         .seleniumSkills(getSkills(profileId))
         .seleniumCertifications(getCertifications(profileId))
+        .seleniumLanguages(getLanguages(profileId))
         .seleniumUser(getUser(profileId))
         .build();
   }
@@ -56,6 +58,15 @@ public class SeleniumExtractorService {
     });
 
     return seleniumEducationList;
+  }
+
+  public List<SeleniumLanguage> getLanguages(String profileId) {
+    var languages = seleniumFetcherService.fetchLanguages(profileId);
+    List<SeleniumLanguage> seleniumLanguageList = new ArrayList<>();
+    getElements(languages).forEach(element -> {
+      seleniumLanguageList.add(seleniumScrapeService.scrapeLanguage(element));
+    });
+    return seleniumLanguageList;
   }
 
   public List<SeleniumSkill> getSkills(String profileId) {

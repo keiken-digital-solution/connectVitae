@@ -18,5 +18,6 @@ public class SeleniumProfile {
   private List<SeleniumSkill> seleniumSkills;
   private List<SeleniumCertification> seleniumCertifications;
   private List<SeleniumEducation> seleniumEducations;
+  private List<SeleniumLanguage> seleniumLanguages;
   private SeleniumUser seleniumUser;
 }

@@ -67,6 +67,7 @@ public class SeleniumFetcherService implements FetcherServiceInterface {
     return fetch("education", profileId);
   }
 
+
   public String fetchSkills(String profileId) {
     return fetch("skills", profileId);
   }
