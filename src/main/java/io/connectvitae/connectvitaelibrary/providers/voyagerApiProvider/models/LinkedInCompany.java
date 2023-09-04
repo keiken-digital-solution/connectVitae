@@ -14,9 +14,24 @@ import java.util.List;
 public class LinkedInCompany {
   private String name;
   private String universalName;
-  private String employeeCountRange;
+  private String staffCount;
   private String websiteUrl;
-  private String companyType;
+  private CompanyType companyType;
   private List<String> industries;
   private String description;
+  private String companyPageUrl;
+  private List<String> specialities;
+  private PhoneNumber phone;
+  private List<LinkedInCompanyLocation> confirmedLocations;
+
+  @Data
+  @AllArgsConstructor
+  @NoArgsConstructor
+  @Builder
+  public static class CompanyType {
+    private String localizedName;
+  }
+
 }
+
+

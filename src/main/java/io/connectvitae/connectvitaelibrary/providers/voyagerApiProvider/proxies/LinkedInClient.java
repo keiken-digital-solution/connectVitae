@@ -2,7 +2,9 @@ package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.proxies
 
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInAuthenticationDTO;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSchool;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CertificationView;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CompanyView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.EducationView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.PositionView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "linkedInClient", url = "https://www.linkedin.com")
 @Service
@@ -70,5 +73,19 @@ public interface LinkedInClient {
       @RequestHeader("cookie") String cookieValue,
       @RequestHeader("csrf-token") String jSessionId,
       @PathVariable("profileId") String profileId
+  );
+
+  @GetMapping("/voyager/api/organization/companies?decorationId=com.linkedin.voyager.deco.organization.web.WebFullCompanyMain-12&q=universalName")
+  CompanyView fetchCompanyById(
+      @RequestHeader("cookie") String cookieValue,
+      @RequestHeader("csrf-token") String jSessionId,
+      @RequestParam("universalName") String universalName
+  );
+
+  @GetMapping("/voyager/api/entities/schools/{schoolId}")
+  LinkedInSchool fetchSchool(
+      @RequestHeader("cookie") String cookieValue,
+      @RequestHeader("csrf-token") String jSessionId,
+      @PathVariable("schoolId") String schoolId
   );
 }

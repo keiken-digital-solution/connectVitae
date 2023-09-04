@@ -1,15 +1,20 @@
 package io.connectvitae.connectvitaelibrary.mappers;
 
+
 import io.connectvitae.connectvitaelibrary.models.Certification;
+import io.connectvitae.connectvitaelibrary.models.Company;
 import io.connectvitae.connectvitaelibrary.models.Education;
 import io.connectvitae.connectvitaelibrary.models.Experience;
 import io.connectvitae.connectvitaelibrary.models.Profile;
+import io.connectvitae.connectvitaelibrary.models.School;
 import io.connectvitae.connectvitaelibrary.models.Skill;
 import io.connectvitae.connectvitaelibrary.models.User;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCertification;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompany;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInPosition;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSchool;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSkill;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
 import org.springframework.stereotype.Service;
@@ -161,5 +166,57 @@ public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
         .build();
   }
 
+  public Company mapCompany(LinkedInCompany linkedInCompany) {
+    return Company.builder()
+          .companyName(linkedInCompany.getName())
+          .companyWebSiteUrl(linkedInCompany.getCompanyPageUrl())
+          .companyEmployeeCountRange(linkedInCompany.getStaffCount())
+          .companyPhoneNumber(
+                  linkedInCompany.getPhone() != null
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    ? linkedInCompany.getPhone().getNumber()
+                    : null
+=======
+                          ? linkedInCompany.getPhone().getNumber()
+                          : null
+>>>>>>> f7688e1 (refactor(LinkedIn): copany and school info refactor)
+=======
+                    ? linkedInCompany.getPhone().getNumber()
+                    : null
+>>>>>>> a8334cc (refactor(LinkedIn): refactoring info extractor branch tests)
+          )
+          .companySpecialities(linkedInCompany.getSpecialities())
+          .companyDescription(linkedInCompany.getDescription())
+          .companyLocations(linkedInCompany.getConfirmedLocations())
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a8334cc (refactor(LinkedIn): refactoring info extractor branch tests)
+          .companyType(
+              linkedInCompany.getCompanyType() != null
+                ? linkedInCompany.getCompanyType().getLocalizedName()
+                : null)
+<<<<<<< HEAD
+=======
+          .companyType(linkedInCompany.getCompanyType().getLocalizedName())
+>>>>>>> f7688e1 (refactor(LinkedIn): copany and school info refactor)
+=======
+>>>>>>> a8334cc (refactor(LinkedIn): refactoring info extractor branch tests)
+          .build();
+  }
+  public School mapSchool(LinkedInSchool linkedInSchool) {
+
+    return School.builder()
+        .schoolName(linkedInSchool.getSchoolName())
+        .schoolType(linkedInSchool.getSchoolType())
+        .schoolAddress(linkedInSchool.getAddress())
+        .schoolNumber(linkedInSchool.getPhoneNumber() != null
+            ? linkedInSchool.getPhoneNumber().getNumber()
+            : null)
+        .schoolUrl(linkedInSchool.getHomepageUrl())
+        .schoolDescription(linkedInSchool.getDescription())
+        .build();
+  }
 
 }
