@@ -12,9 +12,10 @@ import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.Sel
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumProfile;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumUser;
+import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
-
+@Service
 public class SeleniumMapperService implements Function<SeleniumProfile, Profile> {
   /**
    * Maps data from the ProfileView object to the intern Profile object that contains Experiences,

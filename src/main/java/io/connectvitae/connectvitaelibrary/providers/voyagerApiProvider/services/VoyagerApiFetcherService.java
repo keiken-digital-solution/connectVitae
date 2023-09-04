@@ -31,26 +31,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
   // TODO: find a better way to handle this
   private Map<String, String> storedCookies;
 
-  static Map<String, String> getCookies(ResponseEntity<?> responseEntity) {
-    HttpHeaders headers = responseEntity.getHeaders();
-    List<String> cookieList = headers.get(HttpHeaders.SET_COOKIE);
-    if (cookieList != null) {
-      Map<String, String> cookiesMap = new HashMap<>();
-      for (String cookie : cookieList) {
-        String[] cookieParts = cookie.split(";\\s*");
-        for (String part : cookieParts) {
-          String[] keyValue = part.split("=", 2);
-          if (keyValue.length == 2) {
-            String key = keyValue[0].trim();
-            String value = keyValue[1].trim();
-            cookiesMap.put(key, value);
-          }
-        }
-      }
-      return cookiesMap;
-    }
-    return null;
-  }
+
 
   /**
    * Gets the credentials and does an authentication request to the LinkedIn website, then stores
@@ -197,8 +178,26 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
     return null;
   }
 
-
-  // Making profile view from different retrieved complete views
+  static Map<String, String> getCookies(ResponseEntity<?> responseEntity) {
+    HttpHeaders headers = responseEntity.getHeaders();
+    List<String> cookieList = headers.get(HttpHeaders.SET_COOKIE);
+    if (cookieList != null) {
+      Map<String, String> cookiesMap = new HashMap<>();
+      for (String cookie : cookieList) {
+        String[] cookieParts = cookie.split(";\\s*");
+        for (String part : cookieParts) {
+          String[] keyValue = part.split("=", 2);
+          if (keyValue.length == 2) {
+            String key = keyValue[0].trim();
+            String value = keyValue[1].trim();
+            cookiesMap.put(key, value);
+          }
+        }
+      }
+      return cookiesMap;
+    }
+    return null;
+  }
 
   private String formatCookies(Map<String, String> storedCookies) {
     String liAt = storedCookies.get("li_at");
