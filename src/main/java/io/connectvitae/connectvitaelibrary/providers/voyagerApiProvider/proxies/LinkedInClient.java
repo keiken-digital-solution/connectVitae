@@ -1,8 +1,8 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.proxies;
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInAuthenticationDTO;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSchool;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiAuthenticationDTO;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSchool;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CertificationView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CompanyView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.EducationView;
@@ -29,7 +29,7 @@ public interface LinkedInClient {
   )
   ResponseEntity<String> authenticate(
       @RequestHeader("x-li-user-agent") String xLiUserAgent,
-      @RequestBody LinkedInAuthenticationDTO requestBody
+      @RequestBody VoyagerApiAuthenticationDTO requestBody
   );
 
   @GetMapping("/voyager/api/identity/profiles/{profileId}/profileView")
@@ -69,7 +69,7 @@ public interface LinkedInClient {
   );
 
   @GetMapping("/voyager/api/identity/profiles/{profileId}")
-  LinkedInProfile fetchProfile(
+  VoyagerApiProfile fetchProfile(
       @RequestHeader("cookie") String cookieValue,
       @RequestHeader("csrf-token") String jSessionId,
       @PathVariable("profileId") String profileId
@@ -83,7 +83,7 @@ public interface LinkedInClient {
   );
 
   @GetMapping("/voyager/api/entities/schools/{schoolId}")
-  LinkedInSchool fetchSchool(
+  VoyagerApiSchool fetchSchool(
       @RequestHeader("cookie") String cookieValue,
       @RequestHeader("csrf-token") String jSessionId,
       @PathVariable("schoolId") String schoolId

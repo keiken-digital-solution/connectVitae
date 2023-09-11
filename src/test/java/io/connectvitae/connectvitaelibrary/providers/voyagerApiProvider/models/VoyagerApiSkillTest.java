@@ -14,22 +14,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 
-public class LinkedInSkillTest {
+public class VoyagerApiSkillTest {
   @Autowired
   private ObjectMapper objectMapper;
 
   @Test
 
-  public void testLinkedInSkillJsonMapping() throws IOException {
+  public void testVoyagerApiSkillJsonMapping() throws IOException {
     String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-skill-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInSkillAsJson =
         StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
 
-    LinkedInSkill expectedLinkedInSkill = LinkedInSkill.builder().name("Data Engineering").build();
-    LinkedInSkill actualLinkedInSkill =
-        objectMapper.readValue(linkedInSkillAsJson, LinkedInSkill.class);
-    assertEquals(expectedLinkedInSkill, actualLinkedInSkill);
+    VoyagerApiSkill expectedVoyagerApiSkill = VoyagerApiSkill.builder().name("Data Engineering").build();
+    VoyagerApiSkill actualVoyagerApiSkill =
+        objectMapper.readValue(linkedInSkillAsJson, VoyagerApiSkill.class);
+    assertEquals(expectedVoyagerApiSkill, actualVoyagerApiSkill);
   }
 }

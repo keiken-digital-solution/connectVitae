@@ -4,9 +4,10 @@ import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.Sel
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumEducation;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumExperience;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumLanguage;
-import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumProfile;
+import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumGeneralProfile;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumSkill;
 import io.connectvitae.connectvitaelibrary.providers.seleniumProvider.models.SeleniumUser;
+import io.connectvitae.connectvitaelibrary.services.ExtractorServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,12 +20,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class SeleniumExtractorService {
+public class SeleniumExtractorService implements ExtractorServiceInterface {
   private final SeleniumScrapeService seleniumScrapeService;
   private final SeleniumFetcherService seleniumFetcherService;
 
-  public SeleniumProfile getProfile(String profileId) {
-    return SeleniumProfile.builder()
+  @Override
+  public SeleniumGeneralProfile getProfile(String profileId) {
+    return SeleniumGeneralProfile.builder()
         .seleniumExperiences(getExperiences(profileId))
         .seleniumEducations(getEducations(profileId))
         .seleniumSkills(getSkills(profileId))
@@ -33,11 +35,11 @@ public class SeleniumExtractorService {
         .seleniumUser(getUser(profileId))
         .build();
   }
-
+  @Override
   public SeleniumUser getUser(String profileId) {
     return seleniumScrapeService.scrapeUser(seleniumFetcherService.fetchUser(profileId));
   }
-
+  @Override
   public List<SeleniumExperience> getExperiences(String profileId) {
     var experiences = seleniumFetcherService.fetchExperiences(profileId);
     List<SeleniumExperience> seleniumExperienceList = new ArrayList<>();
@@ -49,7 +51,7 @@ public class SeleniumExtractorService {
 
     return seleniumExperienceList;
   }
-
+  @Override
   public List<SeleniumEducation> getEducations(String profileId) {
     var educations = seleniumFetcherService.fetchEducations(profileId);
     List<SeleniumEducation> seleniumEducationList = new ArrayList<>();
@@ -59,7 +61,6 @@ public class SeleniumExtractorService {
 
     return seleniumEducationList;
   }
-
   public List<SeleniumLanguage> getLanguages(String profileId) {
     var languages = seleniumFetcherService.fetchLanguages(profileId);
     List<SeleniumLanguage> seleniumLanguageList = new ArrayList<>();
@@ -68,7 +69,7 @@ public class SeleniumExtractorService {
     });
     return seleniumLanguageList;
   }
-
+  @Override
   public List<SeleniumSkill> getSkills(String profileId) {
     var skills = seleniumFetcherService.fetchSkills(profileId);
     List<SeleniumSkill> seleniumSkillList = new ArrayList<>();
@@ -77,7 +78,7 @@ public class SeleniumExtractorService {
     });
     return seleniumSkillList;
   }
-
+  @Override
   public List<SeleniumCertification> getCertifications(String profileId) {
     var certifications = seleniumFetcherService.fetchCertifications(profileId);
     List<SeleniumCertification> seleniumCertificationList = new ArrayList<>();

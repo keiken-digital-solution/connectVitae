@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LinkedInCompany {
+public class VoyagerApiCompany {
   private String name;
   private String universalName;
   private String staffCount;
@@ -22,7 +22,7 @@ public class LinkedInCompany {
   private String companyPageUrl;
   private List<String> specialities;
   private PhoneNumber phone;
-  private List<LinkedInCompanyLocation> confirmedLocations;
+  private List<VoyagerApiCompanyLocation> confirmedLocations;
 
   @Data
   @AllArgsConstructor

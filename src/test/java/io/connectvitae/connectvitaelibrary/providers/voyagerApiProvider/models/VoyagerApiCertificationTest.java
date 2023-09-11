@@ -15,14 +15,14 @@ import java.text.SimpleDateFormat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class LinkedInCertificationTest {
+public class VoyagerApiCertificationTest {
   private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-yyyy");
 
   @Autowired
   private ObjectMapper objectMapper;
 
   @Test
-  public void testLinkedInCertificationJsonMapping() throws ParseException, IOException {
+  public void testVoyagerApiCertificationJsonMapping() throws ParseException, IOException {
     String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-certification-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
@@ -30,22 +30,22 @@ public class LinkedInCertificationTest {
     String linkedInCertificationAsJson =
         StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
 
-    LinkedInTimePeriod timePeriod =
-        LinkedInTimePeriod.builder().startDate(DATE_FORMAT.parse("05-2017")).build();
+    VoyagerApiTimePeriod timePeriod =
+        VoyagerApiTimePeriod.builder().startDate(DATE_FORMAT.parse("05-2017")).build();
 
-    LinkedInCompany company =
-        LinkedInCompany.builder().name("Adobe France").universalName("adobe-france").build();
+    VoyagerApiCompany company =
+        VoyagerApiCompany.builder().name("Adobe France").universalName("adobe-france").build();
 
-    LinkedInCertification expectedLinkedInCertification =
-        LinkedInCertification.builder()
+    VoyagerApiCertification expectedVoyagerApiCertification =
+        VoyagerApiCertification.builder()
             .name("AEM 6 Certified Lead Developer")
             .authority("Adobe France")
             .timePeriod(timePeriod)
             .build();
 
-    LinkedInCertification actualLinkedInCertification =
-        objectMapper.readValue(linkedInCertificationAsJson, LinkedInCertification.class);
+    VoyagerApiCertification actualVoyagerApiCertification =
+        objectMapper.readValue(linkedInCertificationAsJson, VoyagerApiCertification.class);
 
-    assertEquals(expectedLinkedInCertification, actualLinkedInCertification);
+    assertEquals(expectedVoyagerApiCertification, actualVoyagerApiCertification);
   }
 }

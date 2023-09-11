@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LinkedInEducation {
-  private LinkedInTimePeriod timePeriod;
-  private String fieldOfStudy;
-  private String schoolName;
-  private String degreeName;
-  private String grade;
+public class VoyagerApiProfile {
+  private String firstName;
+  private String lastName;
+  private String summary;
+  private String headline;
+  private String industryName;
+  private String geoLocationName;
 }

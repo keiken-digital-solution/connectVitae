@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeleniumProfile {
+public class SeleniumGeneralProfile {
   private List<SeleniumExperience> seleniumExperiences;
   private List<SeleniumSkill> seleniumSkills;
   private List<SeleniumCertification> seleniumCertifications;

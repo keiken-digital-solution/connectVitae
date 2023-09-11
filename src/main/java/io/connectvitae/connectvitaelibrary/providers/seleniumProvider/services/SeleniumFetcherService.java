@@ -1,7 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.seleniumProvider.services;
 
 import io.connectvitae.connectvitaelibrary.services.FetcherServiceInterface;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -60,29 +59,23 @@ public class SeleniumFetcherService implements FetcherServiceInterface {
     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".pvs-loader__profile-card")));
     return driver.getPageSource();
   }
-
-  // TODO: test the case where this is a group
   public String fetchExperiences(String profileId) {
     return fetch("experience", profileId);
   }
-
   public String fetchEducations(String profileId) {
     return fetch("education", profileId);
   }
-
-
   public String fetchSkills(String profileId) {
     return fetch("skills", profileId);
   }
-
   public String fetchCertifications(String profileId) {
     return fetch("certifications", profileId);
   }
-
   public String fetchLanguages(String profileId) {
     return fetch("languages", profileId);
   }
 
+  // --------------------------------------- Helpers --------------------------------------- \\
   private String fetch(String informationType, String profileId) {
     driver.get("https://www.linkedin.com/in/" + profileId + "/details/" + informationType);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_SECONDS));

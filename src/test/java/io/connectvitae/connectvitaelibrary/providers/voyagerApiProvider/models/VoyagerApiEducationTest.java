@@ -15,34 +15,34 @@ import java.text.SimpleDateFormat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class LinkedInEducationTest {
+public class VoyagerApiEducationTest {
   private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-yyyy");
   @Autowired
   private ObjectMapper objectMapper;
 
   @Test
 
-  public void testLinkedInEducationJsonMapping() throws ParseException, IOException {
+  public void testVoyagerApiEducationJsonMapping() throws ParseException, IOException {
     String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-education-element.json";
 
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInEducationAsJson =
         StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
 
-    LinkedInTimePeriod timePeriod =
-        LinkedInTimePeriod.builder()
+    VoyagerApiTimePeriod timePeriod =
+        VoyagerApiTimePeriod.builder()
             .startDate(DATE_FORMAT.parse("09-2007"))
             .endDate(DATE_FORMAT.parse("07-2010"))
             .build();
-    LinkedInEducation expectedLinkedInEducation =
-        LinkedInEducation.builder()
+    VoyagerApiEducation expectedVoyagerApiEducation =
+        VoyagerApiEducation.builder()
             .schoolName("SRM University")
             .fieldOfStudy("Electrical and Electronics Engineering")
             .degreeName("Bachelor of Technology (B.Tech.)")
             .grade("Excellent")
             .build();
-    LinkedInEducation actualLinkedInEducation =
-        objectMapper.readValue(linkedInEducationAsJson, LinkedInEducation.class);
-    assertEquals(expectedLinkedInEducation, actualLinkedInEducation);
+    VoyagerApiEducation actualVoyagerApiEducation =
+        objectMapper.readValue(linkedInEducationAsJson, VoyagerApiEducation.class);
+    assertEquals(expectedVoyagerApiEducation, actualVoyagerApiEducation);
   }
 }

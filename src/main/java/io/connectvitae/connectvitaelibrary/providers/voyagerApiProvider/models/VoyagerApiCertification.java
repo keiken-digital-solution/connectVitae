@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LinkedInCertification {
+public class VoyagerApiCertification {
   private String name;
   private String authority;
-  private LinkedInTimePeriod timePeriod;
+  private VoyagerApiTimePeriod timePeriod;
 }

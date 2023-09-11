@@ -1,46 +1,44 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services;
 
-import io.connectvitae.connectvitaelibrary.models.Profile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCertification;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInPosition;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCertification;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiEducation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiPosition;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
 import io.connectvitae.connectvitaelibrary.services.ExtractorServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
 @Service
 public class VoyagerApiExtractorService implements ExtractorServiceInterface {
 
   private final VoyagerApiFetcherService fetcherService;
-
-  public CompletableFuture<Profile> getProfile(String profileId) {
-    return fetcherService.getProfileView(profileId);
+  @Override
+  public ProfileView getProfile(String profileId) {
+    return fetcherService.fetchGeneralProfile(profileId);
   }
-
-  public LinkedInProfile getUser(String profileId) {
+  @Override
+  public VoyagerApiProfile getUser(String profileId) {
     return fetcherService.fetchUser(profileId);
   }
-
-  public List<LinkedInPosition> getExperiences(String profileId) {
+  @Override
+  public List<VoyagerApiPosition> getExperiences(String profileId) {
     return fetcherService.fetchExperiences(profileId).getElements();
   }
-
-  public List<LinkedInEducation> getEducations(String profileId) {
-    return fetcherService.fetchEducations(profileId)
-        .getElements();
+  @Override
+  public List<VoyagerApiEducation> getEducations(String profileId) {
+    return fetcherService.fetchEducations(profileId).getElements();
   }
-
-  public List<LinkedInSkill> getSkills(String profileId) {
+  @Override
+  public List<VoyagerApiSkill> getSkills(String profileId) {
     return fetcherService.fetchSkills(profileId).getElements();
   }
-
-  public List<LinkedInCertification> getCertifications(String profileId) {
+  @Override
+  public List<VoyagerApiCertification> getCertifications(String profileId) {
     return fetcherService.fetchCertifications(profileId).getElements();
   }
 }

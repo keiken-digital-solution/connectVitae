@@ -1,6 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views;
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSkill;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,5 +12,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SkillView {
-  private List<LinkedInSkill> elements;
+  private List<VoyagerApiSkill> elements;
 }

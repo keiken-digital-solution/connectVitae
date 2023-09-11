@@ -1,6 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views;
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProfileView {
-  private LinkedInProfile profile;
+  private VoyagerApiProfile profile;
   private CertificationView certificationView;
   private EducationView educationView;
   private PositionView positionView;

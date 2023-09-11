@@ -3,16 +3,25 @@ package io.connectvitae.connectvitaelibrary.services;
 
 public interface FetcherServiceInterface {
   void authenticate(String username, String password);
-
-  Object fetchUser(String profileId);
-
-  Object fetchExperiences(String profileId);
-
-  Object fetchEducations(String profileId);
-
-  Object fetchSkills(String profileId);
-
-  Object fetchCertifications(String profileId);
-
-  Object fetchLanguages(String profileId);
+  default Object fetchGeneralProfile(String profileId) {
+    return null;
+  }
+  default Object fetchUser(String profileId) {
+    return null;
+  }
+  default Object fetchExperiences(String profileId) {
+    return null;
+  }
+  default Object fetchEducations(String profileId) {
+    return null;
+  };
+  default Object fetchSkills(String profileId) {
+    return null;
+  }
+  default Object fetchCertifications(String profileId) {
+    return null;
+  }
+  default Object fetchLanguages(String profileId) {
+    return null;
+  }
 }

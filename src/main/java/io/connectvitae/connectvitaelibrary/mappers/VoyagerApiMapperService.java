@@ -5,25 +5,33 @@ import io.connectvitae.connectvitaelibrary.models.Certification;
 import io.connectvitae.connectvitaelibrary.models.Company;
 import io.connectvitae.connectvitaelibrary.models.Education;
 import io.connectvitae.connectvitaelibrary.models.Experience;
-import io.connectvitae.connectvitaelibrary.models.Profile;
+import io.connectvitae.connectvitaelibrary.models.GeneralProfile;
 import io.connectvitae.connectvitaelibrary.models.School;
 import io.connectvitae.connectvitaelibrary.models.Skill;
 import io.connectvitae.connectvitaelibrary.models.User;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCertification;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompany;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInPosition;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSchool;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCertification;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCompany;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiEducation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiPosition;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSchool;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSkill;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
+import io.connectvitae.connectvitaelibrary.services.MapperServiceInterface;
 import org.springframework.stereotype.Service;
-
-import java.util.function.Function;
 
 
 @Service
-public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
+public class VoyagerApiMapperService implements MapperServiceInterface<
+    ProfileView,
+    VoyagerApiCertification,
+    VoyagerApiEducation,
+    VoyagerApiPosition,
+    Object,
+    VoyagerApiSkill,
+    VoyagerApiProfile,
+    VoyagerApiSchool,
+    VoyagerApiCompany> {
   /**
    * Maps data from the ProfileView object to the intern Profile object that contains Experiences,
    * Educations, Skills, Certifications and User data.
@@ -31,10 +39,9 @@ public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
    * @param profileView The source general profile view object.
    * @return The mapped Profile object.
    */
-
   @Override
-  public Profile apply(ProfileView profileView) {
-    return Profile.builder()
+  public GeneralProfile mapGeneralProfile(ProfileView profileView) {
+    return GeneralProfile.builder()
         .user(this.mapUser(profileView.getProfile()))
         .experiences(
             profileView
@@ -70,132 +77,143 @@ public class VoyagerApiMapperService implements Function<ProfileView, Profile> {
         )
         .build();
   }
-
   /**
    * Maps data from the LinkedInProfile object to the intern User object that contains
    * general information about the chosen user.
    *
-   * @param linkedInProfile The source Profile object.
+   * @param voyagerApiProfile The source Profile object.
    * @return The intern model User object.
    */
-  public User mapUser(LinkedInProfile linkedInProfile) {
+  @Override
+  public User mapUser(VoyagerApiProfile voyagerApiProfile) {
     return User.builder()
-        .firstName(linkedInProfile.getFirstName())
-        .lastName(linkedInProfile.getLastName())
-        .address(linkedInProfile.getGeoLocationName())
-        .bio(linkedInProfile.getSummary())
+        .firstName(voyagerApiProfile.getFirstName())
+        .lastName(voyagerApiProfile.getLastName())
+        .address(voyagerApiProfile.getGeoLocationName())
+        .bio(voyagerApiProfile.getSummary())
         .build();
   }
-
-
   /**
    * Maps data from the LinkedInEducation object to the intern Education object.
    *
-   * @param linkedInEducation The source Education object.
+   * @param voyagerApiEducation The source Education object.
    * @return The intern model education object.
    */
-  public Education mapEducation(LinkedInEducation linkedInEducation) {
+  @Override
+  public Education mapEducation(VoyagerApiEducation voyagerApiEducation) {
     return Education.builder()
-        .school(linkedInEducation.getSchoolName())
-        .degree(linkedInEducation.getDegreeName())
-        .specialty(linkedInEducation.getFieldOfStudy())
+        .school(voyagerApiEducation.getSchoolName())
+        .degree(voyagerApiEducation.getDegreeName())
+        .specialty(voyagerApiEducation.getFieldOfStudy())
         .startDate(
-            linkedInEducation.getTimePeriod() != null
-                ? linkedInEducation.getTimePeriod().getStartDate()
+            voyagerApiEducation.getTimePeriod() != null
+                ? voyagerApiEducation.getTimePeriod().getStartDate()
                 : null
         )
         .endDate(
-            linkedInEducation.getTimePeriod() != null
-                ? linkedInEducation.getTimePeriod().getEndDate()
+            voyagerApiEducation.getTimePeriod() != null
+                ? voyagerApiEducation.getTimePeriod().getEndDate()
                 : null
         )
         .build();
   }
-
-
   /**
    * Maps data from the LinkedInSkill object to the intern Skill object.
    *
-   * @param linkedInSkill The source Skill object.
+   * @param voyagerApiSkill The source Skill object.
    * @return The intern model Skill object.
    */
-  public Skill mapSkill(LinkedInSkill linkedInSkill) {
+  @Override
+  public Skill mapSkill(VoyagerApiSkill voyagerApiSkill) {
     return Skill.builder()
-        .skillName(linkedInSkill.getName()).build();
+        .skillName(voyagerApiSkill.getName()).build();
   }
-
   /**
    * Maps data from the LinkedInPosition object to the intern Experience object.
    *
-   * @param linkedInPosition The source Certification object.
+   * @param voyagerApiPosition The source Certification object.
    * @return The intern model Experience object.
    */
-  public Experience mapExperience(LinkedInPosition linkedInPosition) {
+  @Override
+  public Experience mapExperience(VoyagerApiPosition voyagerApiPosition) {
     return Experience.builder()
         .startDate(
-            linkedInPosition.getTimePeriod() != null
-                ? linkedInPosition.getTimePeriod().getStartDate()
+            voyagerApiPosition.getTimePeriod() != null
+                ? voyagerApiPosition.getTimePeriod().getStartDate()
                 : null
         )
         .endDate(
-            linkedInPosition.getTimePeriod() != null
-                ? linkedInPosition.getTimePeriod().getEndDate()
+            voyagerApiPosition.getTimePeriod() != null
+                ? voyagerApiPosition.getTimePeriod().getEndDate()
                 : null
         )
-        .company(linkedInPosition.getCompanyName())
-        .roleName(linkedInPosition.getTitle())
-        .mission(linkedInPosition.getDescription())
+        .company(voyagerApiPosition.getCompanyName())
+        .roleName(voyagerApiPosition.getTitle())
+        .mission(voyagerApiPosition.getDescription())
         .build();
   }
-
   /**
    * Maps data from the LinkedInCertification object to the intern Certification object.
    *
-   * @param linkedInCertification The source Certification object.
+   * @param voyagerApiCertification The source Certification object.
    * @return The intern model certification object.
    */
-  public Certification mapCertification(LinkedInCertification linkedInCertification) {
+  @Override
+  public Certification mapCertification(VoyagerApiCertification voyagerApiCertification) {
     return Certification.builder()
-        .certificationName(linkedInCertification.getName())
+        .certificationName(voyagerApiCertification.getName())
         .certifiedDate(
-            linkedInCertification.getTimePeriod() != null
-                ? linkedInCertification.getTimePeriod().getStartDate()
+            voyagerApiCertification.getTimePeriod() != null
+                ? voyagerApiCertification.getTimePeriod().getStartDate()
                 : null
         )
-        .certificationProvider(linkedInCertification.getAuthority())
+        .certificationProvider(voyagerApiCertification.getAuthority())
         .build();
   }
-
-  public Company mapCompany(LinkedInCompany linkedInCompany) {
+  /**
+   * Maps data from the VoyagerApiCompany object to the intern Company object.
+   *
+   * @param voyagerApiCompany The source Company object.
+   * @return The intern model Company object.
+   */
+  @Override
+  public Company mapCompany(VoyagerApiCompany voyagerApiCompany) {
     return Company.builder()
-          .companyName(linkedInCompany.getName())
-          .companyWebSiteUrl(linkedInCompany.getCompanyPageUrl())
-          .companyEmployeeCountRange(linkedInCompany.getStaffCount())
+          .companyName(voyagerApiCompany.getName())
+          .companyWebSiteUrl(voyagerApiCompany.getCompanyPageUrl())
+          .companyEmployeeCountRange(voyagerApiCompany.getStaffCount())
           .companyPhoneNumber(
-                  linkedInCompany.getPhone() != null
-                          ? linkedInCompany.getPhone().getNumber()
+                  voyagerApiCompany.getPhone() != null
+                          ? voyagerApiCompany.getPhone().getNumber()
                           : null
           )
-          .companySpecialities(linkedInCompany.getSpecialities())
-          .companyDescription(linkedInCompany.getDescription())
-          .companyLocations(linkedInCompany.getConfirmedLocations())
+          .companySpecialities(voyagerApiCompany.getSpecialities())
+          .companyDescription(voyagerApiCompany.getDescription())
+          .companyLocations(voyagerApiCompany.getConfirmedLocations())
           .companyType(
-              linkedInCompany.getCompanyType() != null
-                ? linkedInCompany.getCompanyType().getLocalizedName()
+              voyagerApiCompany.getCompanyType() != null
+                ? voyagerApiCompany.getCompanyType().getLocalizedName()
                 : null)
           .build();
   }
-  public School mapSchool(LinkedInSchool linkedInSchool) {
+  /**
+   * Maps data from the VoyagerApiSchool object to the intern School object.
+   *
+   * @param voyagerApiSchool The source School object.
+   * @return The intern model School object.
+   */
+  @Override
+  public School mapSchool(VoyagerApiSchool voyagerApiSchool) {
 
     return School.builder()
-        .schoolName(linkedInSchool.getSchoolName())
-        .schoolType(linkedInSchool.getSchoolType())
-        .schoolAddress(linkedInSchool.getAddress())
-        .schoolNumber(linkedInSchool.getPhoneNumber() != null
-            ? linkedInSchool.getPhoneNumber().getNumber()
+        .schoolName(voyagerApiSchool.getSchoolName())
+        .schoolType(voyagerApiSchool.getSchoolType())
+        .schoolAddress(voyagerApiSchool.getAddress())
+        .schoolNumber(voyagerApiSchool.getPhoneNumber() != null
+            ? voyagerApiSchool.getPhoneNumber().getNumber()
             : null)
-        .schoolUrl(linkedInSchool.getHomepageUrl())
-        .schoolDescription(linkedInSchool.getDescription())
+        .schoolUrl(voyagerApiSchool.getHomepageUrl())
+        .schoolDescription(voyagerApiSchool.getDescription())
         .build();
   }
 

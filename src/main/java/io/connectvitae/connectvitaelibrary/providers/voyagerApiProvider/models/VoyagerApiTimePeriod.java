@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LinkedInTimePeriod {
+public class VoyagerApiTimePeriod {
   @JsonDeserialize(using = VoyagerDateParser.class)
   private Date startDate;
   @JsonDeserialize(using = VoyagerDateParser.class)

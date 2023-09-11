@@ -9,6 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LinkedInSkill {
-  private String name;
+public class VoyagerApiCompanyLocation {
+  private String country;
+  private String geographicArea;
+  private String city;
+  private String postalCode;
+  private String description;
+  private String line1;
+  private String line2;
 }

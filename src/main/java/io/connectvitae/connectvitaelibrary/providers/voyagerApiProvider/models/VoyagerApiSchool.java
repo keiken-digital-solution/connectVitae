@@ -1,5 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,8 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LinkedInSchool {
+public class VoyagerApiSchool {
   private String address;
+  @JsonProperty("phoneNumber")
   private PhoneNumber phoneNumber;
   private String homepageUrl;
   private BasicSchoolInfo basicSchoolInfo;
@@ -40,6 +42,8 @@ public class LinkedInSchool {
   public static class BasicSchoolInfo {
     private MiniSchool miniSchool;
   }
+
+
 }
 
 

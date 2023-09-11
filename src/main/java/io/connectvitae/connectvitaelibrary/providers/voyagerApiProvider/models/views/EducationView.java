@@ -1,6 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views;
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiEducation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,5 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EducationView {
-  private List<LinkedInEducation> elements;
+  private List<VoyagerApiEducation> elements;
 }

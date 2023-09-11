@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @SuppressWarnings("checkstyle:LineLength")
-public class LinkedInCompanyTest {
+public class VoyagerApiCompanyTest {
   @Autowired
   private ObjectMapper objectMapper;
 
   @Test
-  public void testLinkedInCompanyJsonMapping() throws IOException {
+  public void testVoyagerApiCompanyJsonMapping() throws IOException {
     String jsonFilePath = "linkedIn/voyagerApiProvider/elements/linkedin-company-element.json";
     ClassPathResource resource = new ClassPathResource(jsonFilePath);
     String linkedInCompanyAsJson = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
@@ -34,13 +34,13 @@ public class LinkedInCompanyTest {
         "Data & Analytics", "Product Management", "Consulting", "Development", "Digital"
     );
 
-    LinkedInCompany expectedLinkedInCompany = LinkedInCompany.builder()
+    VoyagerApiCompany expectedVoyagerApiCompany = VoyagerApiCompany.builder()
         .name("SQLI")
         .universalName("sqli")
         .phone(new PhoneNumber("+33 (0)1 85 64 20 20"))
         .specialities(specialities)
         .staffCount("2830")
-        .companyType(LinkedInCompany.CompanyType.builder()
+        .companyType(VoyagerApiCompany.CompanyType.builder()
             .localizedName("Privately Held")
             .build())
         .companyPageUrl("http://www.sqli.com")
@@ -48,15 +48,15 @@ public class LinkedInCompanyTest {
         .confirmedLocations(buildConfirmedLocations())
         .build();
 
-    LinkedInCompany actualLinkedInCompany = objectMapper.readValue(linkedInCompanyAsJson, LinkedInCompany.class);
+    VoyagerApiCompany actualVoyagerApiCompany = objectMapper.readValue(linkedInCompanyAsJson, VoyagerApiCompany.class);
 
-    assertEquals(expectedLinkedInCompany, actualLinkedInCompany);
+    assertEquals(expectedVoyagerApiCompany, actualVoyagerApiCompany);
   }
 
   @SuppressWarnings("checkstyle:MethodLength")
-  private List<LinkedInCompanyLocation> buildConfirmedLocations() {
+  private List<VoyagerApiCompanyLocation> buildConfirmedLocations() {
     return Arrays.asList(
-        LinkedInCompanyLocation.builder()
+        VoyagerApiCompanyLocation.builder()
             .country("FR")
             .geographicArea("Ile-de-France")
             .city("Levallois-Perret")
@@ -64,7 +64,7 @@ public class LinkedInCompanyTest {
             .description("SQLI Paris")
             .line1("166, Rue Jules Guesde")
             .build(),
-        LinkedInCompanyLocation.builder()
+        VoyagerApiCompanyLocation.builder()
             .country("SE")
             .geographicArea("Västra Götaland County")
             .city("Göteborg")
@@ -72,7 +72,7 @@ public class LinkedInCompanyTest {
             .description("SQLI Gothenburg")
             .line1("Kyrkogatan 26")
             .build(),
-        LinkedInCompanyLocation.builder()
+        VoyagerApiCompanyLocation.builder()
             .country("CH")
             .geographicArea("Genève")
             .city("Carouge")

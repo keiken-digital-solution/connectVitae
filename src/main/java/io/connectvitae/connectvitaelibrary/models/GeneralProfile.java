@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Profile {
+public class GeneralProfile {
 
   private List<Experience> experiences;
   private List<Skill> skills;
@@ -21,5 +21,6 @@ public class Profile {
   private List<Education> educations;
   private User user;
   private List<Company> companies;
+  private List<Language> languages;
 
 }

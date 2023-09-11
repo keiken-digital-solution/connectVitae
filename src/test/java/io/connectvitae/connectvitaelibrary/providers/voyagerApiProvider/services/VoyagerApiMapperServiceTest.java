@@ -9,14 +9,14 @@ import io.connectvitae.connectvitaelibrary.models.Experience;
 import io.connectvitae.connectvitaelibrary.models.School;
 import io.connectvitae.connectvitaelibrary.models.Skill;
 import io.connectvitae.connectvitaelibrary.models.User;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCertification;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompany;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompanyLocation;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInEducation;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInPosition;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSchool;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCertification;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCompany;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCompanyLocation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiEducation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiPosition;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSchool;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSkill;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.PhoneNumber;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +36,14 @@ public class VoyagerApiMapperServiceTest {
 
   @Test
   void testMapExperience() {
-    LinkedInPosition linkedInPosition =
-        LinkedInPosition.builder()
+    VoyagerApiPosition voyagerApiPosition =
+        VoyagerApiPosition.builder()
             .companyName("Keiken Digital")
             .description("Working on developing a intern project for skills management")
             .locationName("Paris, France")
             .title("Software Developer")
             .build();
-    Experience actualExperience = voyagerApiMapperService.mapExperience(linkedInPosition);
+    Experience actualExperience = voyagerApiMapperService.mapExperience(voyagerApiPosition);
 
     Experience expectedExperience =
         Experience.builder()
@@ -57,8 +57,8 @@ public class VoyagerApiMapperServiceTest {
 
   @Test
   void testMapCertification() {
-    LinkedInCertification linkedInCertification =
-        LinkedInCertification.builder()
+    VoyagerApiCertification voyagerApiCertification =
+        VoyagerApiCertification.builder()
             .authority("Adobe")
             .name("Adobe certified Expert : CQ Component Developer")
             .build();
@@ -67,14 +67,14 @@ public class VoyagerApiMapperServiceTest {
             .certificationProvider("Adobe")
             .certificationName("Adobe certified Expert : CQ Component Developer")
             .build();
-    Certification actualCertification = voyagerApiMapperService.mapCertification(linkedInCertification);
+    Certification actualCertification = voyagerApiMapperService.mapCertification(voyagerApiCertification);
     assertEquals(expectedCertification, actualCertification);
   }
 
   @Test
   void testMapTraining() {
-    LinkedInEducation linkedInEducation =
-        LinkedInEducation.builder()
+    VoyagerApiEducation voyagerApiEducation =
+        VoyagerApiEducation.builder()
             .degreeName("Engineer")
             .fieldOfStudy("Information Technology")
             .schoolName("INPT")
@@ -85,7 +85,7 @@ public class VoyagerApiMapperServiceTest {
             .specialty("Information Technology")
             .degree("Engineer")
             .build();
-    Education actualEducation = voyagerApiMapperService.mapEducation(linkedInEducation);
+    Education actualEducation = voyagerApiMapperService.mapEducation(voyagerApiEducation);
     assertEquals(expectedEducation, actualEducation);
   }
 
@@ -94,17 +94,17 @@ public class VoyagerApiMapperServiceTest {
 
   @Test
   void testMapSkill() {
-    LinkedInSkill linkedInSkill = LinkedInSkill.builder().name("Project Management").build();
+    VoyagerApiSkill voyagerApiSkill = VoyagerApiSkill.builder().name("Project Management").build();
     Skill expectedSkill = Skill.builder().skillName("Project Management").build();
-    Skill actualSkill = voyagerApiMapperService.mapSkill(linkedInSkill);
+    Skill actualSkill = voyagerApiMapperService.mapSkill(voyagerApiSkill);
     assertEquals(expectedSkill, actualSkill);
   }
 
 
   @Test
   void testMapUser() {
-    LinkedInProfile linkedInProfile =
-        LinkedInProfile.builder()
+    VoyagerApiProfile voyagerApiProfile =
+        VoyagerApiProfile.builder()
             .firstName("John")
             .lastName("Lenon")
             .headline("Software Engineer")
@@ -120,19 +120,19 @@ public class VoyagerApiMapperServiceTest {
             .address("Paris, France")
             .bio("An enthusiastic software engineer who is interested in artificial intelligence")
             .build();
-    User actualUser = voyagerApiMapperService.mapUser(linkedInProfile);
+    User actualUser = voyagerApiMapperService.mapUser(voyagerApiProfile);
     assertEquals(expectedUser, actualUser);
   }
 
 
   @Test
-  void testConvertSchool() {
-    LinkedInSchool linkedInSchool =
-        LinkedInSchool.builder()
+  void testmMapSchool() {
+    VoyagerApiSchool voyagerApiSchool =
+        VoyagerApiSchool.builder()
             .basicSchoolInfo(
-                LinkedInSchool.BasicSchoolInfo.builder()
+                VoyagerApiSchool.BasicSchoolInfo.builder()
                     .miniSchool(
-                        LinkedInSchool.MiniSchool.builder()
+                        VoyagerApiSchool.MiniSchool.builder()
                             .schoolName("Dubai British School")
                             .build())
                     .build()
@@ -153,14 +153,14 @@ public class VoyagerApiMapperServiceTest {
             .schoolDescription("Dubai British School Emirates Hills, a Taaleem School, is a dynamic British International School that aims to be at the leading edge of educational innovation and excellence in British international education globally. We provide an international curriculum firmly rooted in the National Curriculum of England and enriched by specialist provision for the Arabic language and a strong performing and visual arts programme, as well as a multitude of sporting and extra-curricular activities and opportunities.\n\nDubai British School prides itself on its inclusive approach to education. We do not discriminate on the grounds of race, nationality, disability or cultural background. We see the diversity of our student and staff population as one of our greatest assets, and we make every attempt to give each and every student full access to our learning programmes.\n\nTeachers are assisted by specialist staff, such as our Extended Learning Co-ordinator, in the identification of and provision for an individual student’s specific or exceptional learning needs. If a student should need additional learning support beyond that available at the school, then the school reserves the right to pass on to parents part or all of the additional cost incurred. However, we would discourage the use of private tutors by parents because we believe that we should be able to meet every student’s learning needs in full and to ensure that each and every student makes good progress in every respect within our stated curriculum.")
             .build();
 
-    School actualSchool = voyagerApiMapperService.mapSchool(linkedInSchool);
+    School actualSchool = voyagerApiMapperService.mapSchool(voyagerApiSchool);
     assertEquals(expectedSchool, actualSchool);
   }
 
   @Test
   public void testMapCompany() {
-    LinkedInCompany linkedInCompany =
-        LinkedInCompany.builder()
+    VoyagerApiCompany voyagerApiCompany =
+        VoyagerApiCompany.builder()
             .name("SQLI")
             .companyPageUrl("http://www.sqli.com")
             .universalName("sqli")
@@ -169,7 +169,7 @@ public class VoyagerApiMapperServiceTest {
             .description("Founded in 1990, SQLI Digital Experience is a European full-service digital company that defines, builds and grows the digital business value of international A-brands. \\nTechnical and creative thinkers, their teams are committed to delivering meaningful and engaging experiences by leveraging technologies, methodologies, skills and creativity to get closer to the customer or user and capture their attention. They design, develop and deploy solid and high-performing architectures that improve business agility, increase efficiencies and facilitate business growth.\\nTheir 2,100 employees are located in 13 countries: France, Switzerland, Luxembourg, Belgium, The United Kingdom, Germany, Sweden, The Netherlands, Denmark, Spain, Morocco, Mauritius and Dubai. In 2021, the SQLI Group achieved revenue of €226m.\\n\\nSQLI has been listed on Euronext Paris (SQI) since 21 July 2000. \\n\\nFor more information, visit our website: https://www.sqli.com \",")
             .confirmedLocations(buildConfirmedLocations())
             .build();
-    Company actualCompany = voyagerApiMapperService.mapCompany(linkedInCompany);
+    Company actualCompany = voyagerApiMapperService.mapCompany(voyagerApiCompany);
 
     Company expectedCompany = Company.builder()
         .companyName("SQLI")
@@ -193,9 +193,9 @@ public class VoyagerApiMapperServiceTest {
         "Data & Analytics", "Product Management", "Consulting", "Development", "Digital");
   }
 
-  private List<LinkedInCompanyLocation> buildConfirmedLocations() {
+  private List<VoyagerApiCompanyLocation> buildConfirmedLocations() {
     return Arrays.asList(
-        LinkedInCompanyLocation.builder()
+        VoyagerApiCompanyLocation.builder()
             .country("FR")
             .geographicArea("Ile-de-France")
             .city("Levallois-Perret")
@@ -203,7 +203,7 @@ public class VoyagerApiMapperServiceTest {
             .description("SQLI Paris")
             .line1("166, Rue Jules Guesde")
             .build(),
-        LinkedInCompanyLocation.builder()
+        VoyagerApiCompanyLocation.builder()
             .country("SE")
             .geographicArea("Västra Götaland County")
             .city("Göteborg")
@@ -211,7 +211,7 @@ public class VoyagerApiMapperServiceTest {
             .description("SQLI Gothenburg")
             .line1("Kyrkogatan 26")
             .build(),
-        LinkedInCompanyLocation.builder()
+        VoyagerApiCompanyLocation.builder()
             .country("CH")
             .geographicArea("Genève")
             .city("Carouge")

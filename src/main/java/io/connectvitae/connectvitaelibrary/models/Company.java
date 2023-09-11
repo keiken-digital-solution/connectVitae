@@ -2,7 +2,7 @@ package io.connectvitae.connectvitaelibrary.models;
 
 
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInCompanyLocation;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCompanyLocation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +21,6 @@ public class Company {
   private String companyType;
   private List<String> companySpecialities;
   private String companyDescription;
-  private List<LinkedInCompanyLocation> companyLocations;
+  private List<VoyagerApiCompanyLocation> companyLocations;
 
 }

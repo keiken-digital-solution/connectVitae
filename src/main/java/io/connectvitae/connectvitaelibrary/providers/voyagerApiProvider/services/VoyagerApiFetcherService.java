@@ -1,9 +1,7 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services;
 
-import io.connectvitae.connectvitaelibrary.mappers.VoyagerApiMapperService;
-import io.connectvitae.connectvitaelibrary.models.Profile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInAuthenticationDTO;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiAuthenticationDTO;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CertificationView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.EducationView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.PositionView;
@@ -27,7 +25,6 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
 
 
   private final LinkedInClient linkedinClient;
-  private final VoyagerApiMapperService voyagerApiMapperService;
   // TODO: find a better way to handle this
   private Map<String, String> storedCookies;
 
@@ -43,7 +40,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
     ResponseEntity<String> authenticationResponse =
         linkedinClient.authenticate(
             "LIAuthLibrary:3.2.4 com.linkedin.LinkedIn:8.8.1 iPhone:8.3",
-            LinkedInAuthenticationDTO.builder()
+            VoyagerApiAuthenticationDTO.builder()
                 .sessionKey(username)
                 .sessionPassword(password)
                 .build()
@@ -58,38 +55,26 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
   // TODO: Change the method name
 
   /**
-   * Makes required requests for different information, maps them to the intern data model
-   * and put them in a profile object.
+   * Makes required requests for different information, to fetch a complete voyager api profile view object
    *
-   * @param profileId The id of the user of which we want to retrive information.
-   * @return The intern model profile object.
+   * @param profileId The id of the user of which we want to retrieve information.
+   * @return The voyager api profile view object.
    */
 
-  //TODO: This should be externalized - Mapper Service shouldn't be used here
-  public CompletableFuture<Profile> getProfileView(String profileId) {
+  public ProfileView fetchGeneralProfile(String profileId) {
     CompletableFuture<EducationView> educationFuture = CompletableFuture.supplyAsync(() -> fetchEducations(profileId));
     CompletableFuture<PositionView> positionFuture = CompletableFuture.supplyAsync(() -> fetchExperiences(profileId));
     CompletableFuture<SkillView> skillFuture = CompletableFuture.supplyAsync(() -> fetchSkills(profileId));
-    CompletableFuture<LinkedInProfile> linkedInProfileFuture = CompletableFuture.supplyAsync(() -> fetchUser(profileId));
+    CompletableFuture<VoyagerApiProfile> linkedInProfileFuture = CompletableFuture.supplyAsync(() -> fetchUser(profileId));
     CompletableFuture<CertificationView> certificationFuture = CompletableFuture.supplyAsync(() -> fetchCertifications(profileId));
 
-    return CompletableFuture.allOf(
-        educationFuture,
-        positionFuture,
-        skillFuture,
-        linkedInProfileFuture,
-        certificationFuture
-    ).thenApplyAsync(
-        ignoredVoid -> voyagerApiMapperService.apply(
-            ProfileView.builder()
+    return ProfileView.builder()
                 .educationView(educationFuture.join())
                 .positionView(positionFuture.join())
                 .skillView(skillFuture.join())
                 .profile(linkedInProfileFuture.join())
                 .certificationView(certificationFuture.join())
-                .build()
-        )
-    );
+                .build();
   }
 
   /**
@@ -99,7 +84,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    * @param profileId The id of the user.
    * @return A LinkedInProfile object.
    */
-  public LinkedInProfile fetchUser(String profileId) {
+  public VoyagerApiProfile fetchUser(String profileId) {
     return linkedinClient.fetchProfile(
         formatCookies(storedCookies),
         getSessionID(storedCookies),
@@ -174,9 +159,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
 
   // --------------------------------------- Helpers --------------------------------------- \\
 
-  public Object fetchLanguages(String profileId) {
-    return null;
-  }
+
 
   static Map<String, String> getCookies(ResponseEntity<?> responseEntity) {
     HttpHeaders headers = responseEntity.getHeaders();

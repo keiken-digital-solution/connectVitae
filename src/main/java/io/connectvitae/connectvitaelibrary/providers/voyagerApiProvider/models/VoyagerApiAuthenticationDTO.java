@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class LinkedInAuthenticationDTO {
+public class VoyagerApiAuthenticationDTO {
   @JsonProperty("session_key")
   @FormProperty("session_key")
   private String sessionKey;

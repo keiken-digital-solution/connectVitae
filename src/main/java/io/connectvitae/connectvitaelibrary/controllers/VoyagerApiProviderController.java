@@ -1,15 +1,13 @@
 package io.connectvitae.connectvitaelibrary.controllers;
 
 import io.connectvitae.connectvitaelibrary.config.LinkedInProperties;
-import io.connectvitae.connectvitaelibrary.models.Profile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services.VoyagerApiFetcherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,9 +21,9 @@ public class VoyagerApiProviderController {
 
 
   @GetMapping("/{profileId}")
-  public CompletableFuture<Profile> getProfile(@PathVariable String profileId) {
+  public ProfileView getProfile(@PathVariable String profileId) {
     authenticate();
-    return voyagerApiFetcherService.getProfileView(profileId);
+    return voyagerApiFetcherService.fetchGeneralProfile(profileId);
   }
 
   private void authenticate() {

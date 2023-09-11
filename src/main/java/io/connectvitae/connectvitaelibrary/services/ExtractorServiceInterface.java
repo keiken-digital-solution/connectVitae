@@ -1,19 +1,31 @@
 package io.connectvitae.connectvitaelibrary.services;
 
-import io.connectvitae.connectvitaelibrary.models.Profile;
-
-import java.util.concurrent.CompletableFuture;
-
 public interface ExtractorServiceInterface {
-  CompletableFuture<Profile> getProfile(String profileId);
+  default Object getProfile(String profileId) {
+    return null;
+  }
 
-  Object getUser(String profileId);
+  default Object getUser(String profileId) {
+    return null;
+  }
 
-  Object getExperiences(String profileId);
+  default Object getExperiences(String profileId) {
+    return null;
+  }
 
-  Object getEducations(String profileId);
+  default Object getEducations(String profileId) {
+    return null;
+  }
 
-  Object getSkills(String profileId);
+  default Object getSkills(String profileId) {
+    return null;
+  }
 
-  Object getCertifications(String profileId);
+  default Object getCertifications(String profileId) {
+    return null;
+  }
+
+  default Object getLanguages(String profileId) {
+    return null;
+  }
 }

@@ -1,6 +1,6 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views;
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.LinkedInPosition;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiPosition;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,5 +12,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PositionView {
-  private List<LinkedInPosition> elements;
+  private List<VoyagerApiPosition> elements;
 }
