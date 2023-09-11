@@ -1,13 +1,16 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services;
 
+
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiAuthenticationDTO;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSchool;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CertificationView;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CompanyView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.EducationView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.PositionView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.SkillView;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.proxies.LinkedInClient;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.proxies.VoyagerApiClient;
 import io.connectvitae.connectvitaelibrary.services.FetcherServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -22,14 +25,9 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor
 @Service
 public class VoyagerApiFetcherService implements FetcherServiceInterface {
-
-
-  private final LinkedInClient linkedinClient;
+  private final VoyagerApiClient voyagerApiClient;
   // TODO: find a better way to handle this
   private Map<String, String> storedCookies;
-
-
-
   /**
    * Gets the credentials and does an authentication request to the LinkedIn website, then stores
    * the cookies that will be used for future requests.
@@ -38,7 +36,7 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    */
   public void authenticate(String username, String password) {
     ResponseEntity<String> authenticationResponse =
-        linkedinClient.authenticate(
+        voyagerApiClient.authenticate(
             "LIAuthLibrary:3.2.4 com.linkedin.LinkedIn:8.8.1 iPhone:8.3",
             VoyagerApiAuthenticationDTO.builder()
                 .sessionKey(username)
@@ -51,16 +49,12 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
     // Logging the response body
     System.out.println(authenticationResponse.getBody());
   }
-
-  // TODO: Change the method name
-
   /**
    * Makes required requests for different information, to fetch a complete voyager api profile view object
    *
    * @param profileId The id of the user of which we want to retrieve information.
    * @return The voyager api profile view object.
    */
-
   public ProfileView fetchGeneralProfile(String profileId) {
     CompletableFuture<EducationView> educationFuture = CompletableFuture.supplyAsync(() -> fetchEducations(profileId));
     CompletableFuture<PositionView> positionFuture = CompletableFuture.supplyAsync(() -> fetchExperiences(profileId));
@@ -76,7 +70,6 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
                 .certificationView(certificationFuture.join())
                 .build();
   }
-
   /**
    * Makes a request to the Voyager endpoint that returns a json containing general information of the user
    * and deserializes it into a LinkedInProfile object.
@@ -85,14 +78,13 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    * @return A LinkedInProfile object.
    */
   public VoyagerApiProfile fetchUser(String profileId) {
-    return linkedinClient.fetchProfile(
+    return voyagerApiClient.fetchProfile(
         formatCookies(storedCookies),
         getSessionID(storedCookies),
         profileId
     );
 
   }
-
   /**
    * Makes a request to the Voyager endpoint that returns a json containing positions of the user
    * and deserializes it into a PositionView object.
@@ -101,14 +93,13 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    * @return A list of LinkedInPosition objects nested inside a PositionView object.
    */
   public PositionView fetchExperiences(String profileId) {
-    return linkedinClient.fetchPositions(
+    return voyagerApiClient.fetchPositions(
         formatCookies(storedCookies),
         getSessionID(storedCookies),
         profileId
     );
 
   }
-
   /**
    * Makes a request to the Voyager endpoint that returns a json containing skills of the user
    * and deserializes it into a SkillView object.
@@ -117,14 +108,13 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    * @return A list of LinkedInSkill objects nested inside a SkillView object.
    */
   public SkillView fetchSkills(String profileId) {
-    return linkedinClient.fetchSkills(
+    return voyagerApiClient.fetchSkills(
         formatCookies(storedCookies),
         getSessionID(storedCookies),
         profileId
     );
 
   }
-
   /**
    * Makes a request to the Voyager endpoint that returns a json containing educations of the user
    * and deserializes it into an EducationView object.
@@ -133,14 +123,13 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    * @return A list of LinkedInEducation objects nested inside an EducationView object.
    */
   public EducationView fetchEducations(String profileId) {
-    return linkedinClient.fetchEducations(
+    return voyagerApiClient.fetchEducations(
         formatCookies(storedCookies),
         getSessionID(storedCookies),
         profileId
     );
 
   }
-
   /**
    * Makes a request to the Voyager endpoint that returns a json containing certifications of the user
    * and deserializes it into an CertificationView object.
@@ -149,14 +138,40 @@ public class VoyagerApiFetcherService implements FetcherServiceInterface {
    * @return A list of LinkedInCertification objects nested inside an CertificationView object.
    */
   public CertificationView fetchCertifications(String profileId) {
-    return linkedinClient.fetchCertifications(
+    return voyagerApiClient.fetchCertifications(
         formatCookies(storedCookies),
         getSessionID(storedCookies),
         profileId
     );
-
   }
-
+  /**
+   * Makes a request to the Voyager endpoint that returns a json containing the information of the company
+   * and deserializes it into an CompanyView object.
+   *
+   * @param companyId The id of the user.
+   * @return CompanyView object with nested elements concerning the desired company.
+   */
+  public CompanyView fetchCompany(String companyId) {
+    return voyagerApiClient.fetchCompanyById(
+        formatCookies(storedCookies),
+        getSessionID(storedCookies),
+        companyId
+    );
+  }
+  /**
+   * Makes a request to the Voyager endpoint that returns a json containing the information of the school
+   * and deserializes it into an VoyagerApiSchool object.
+   *
+   * @param schoolId The id of the user.
+   * @return VoyagerApiSchool object with nested elements concerning the desired school.
+   */
+  public VoyagerApiSchool fetchSchool(String schoolId) {
+    return voyagerApiClient.fetchSchool(
+        formatCookies(storedCookies),
+        getSessionID(storedCookies),
+        schoolId
+    );
+  }
   // --------------------------------------- Helpers --------------------------------------- \\
 
 

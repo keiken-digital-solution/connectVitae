@@ -23,7 +23,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/selenium")
-public class SeleniumProviderController {
+//TODO: Handle UnsupportedOperationException
+public class SeleniumController {
   private final SeleniumExtractorService extractorService;
   private final LinkedInProperties linkedInProperties;
   private final SeleniumFetcherService fetcherService;

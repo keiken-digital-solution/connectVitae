@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "linkedInClient", url = "https://www.linkedin.com")
 @Service
-public interface LinkedInClient {
+public interface VoyagerApiClient {
   @PostMapping(
       value = "/uas/authenticate",
       consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE

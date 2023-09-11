@@ -20,10 +20,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class SeleniumScrapeService {
   private final SeleniumDateParser seleniumDateParser;
-
-
 
   public SeleniumUser scrapeUser(String userAsHTML) {
     Document doc = Jsoup.parse(userAsHTML, "UTF-8");

@@ -34,7 +34,7 @@ public interface MapperServiceInterface<
    * @return The intern model User object.
    */
   default GeneralProfile mapGeneralProfile(ExternalGeneralProfile externalGeneralProfile) {
-    return GeneralProfile.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapGeneralProfile is not supported");
   }
   /**
    * Maps data from the external User object to the intern User object that contains
@@ -44,7 +44,7 @@ public interface MapperServiceInterface<
    * @return The intern model User object.
    */
   default User mapUser(ExternalUser externalUser) {
-    return User.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapUser is not supported");
   }
   /**
    * Maps data from the provider Education object to the intern Education object.
@@ -53,7 +53,7 @@ public interface MapperServiceInterface<
    * @return The intern model education object.
    */
   default Education mapEducation(ExternalEducation externalEducation) {
-    return Education.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapEducation is not supported");
   }
   /**
    * Maps data from the external Experience object to the intern Experience object.
@@ -62,7 +62,7 @@ public interface MapperServiceInterface<
    * @return The intern model Skill object.
    */
   default Skill mapSkill(ExternalSkill externalSkill) {
-    return Skill.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapmapSkill is not supported");
   }
   /**
    * Maps data from the external Experience object to the intern Experience object.
@@ -71,7 +71,7 @@ public interface MapperServiceInterface<
    * @return The intern model Experience object.
    */
   default Experience mapExperience(ExternalExperience externalExperience) {
-    return Experience.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapExperience is not supported");
   }
   /**
    * Maps data from the external Certification object to the intern Certification object.
@@ -80,7 +80,7 @@ public interface MapperServiceInterface<
    * @return The intern model certification object.
    */
   default Certification mapCertification(ExternalCertification externalCertification) {
-    return Certification.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapCertification is not supported");
   }
   /**
    * Maps data from the external Language object to the intern Language object.
@@ -89,7 +89,7 @@ public interface MapperServiceInterface<
    * @return The intern model Language object.
    */
   default Language mapLanguage(ExternalLanguage externalLanguage) {
-    return Language.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapLanguage is not supported");
   }
   /**
    * Maps data from the external School object to the intern School object.
@@ -98,7 +98,7 @@ public interface MapperServiceInterface<
    * @return The intern model School object.
    */
   default School mapSchool(ExternalSchool externalSchool) {
-    return School.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapSchool is not supported");
   }
   /**
    * Maps data from the external Company object to the intern Company object.
@@ -107,6 +107,6 @@ public interface MapperServiceInterface<
    * @return The intern model Company object.
    */
   default Company mapCompany(ExternalCompany externalCompany) {
-    return Company.builder().build();
+    throw new UnsupportedOperationException(this.getClass() + ".mapCompany is not supported");
   }
 }

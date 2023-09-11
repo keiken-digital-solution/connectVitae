@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/linkedIn")
-
-public class VoyagerApiProviderController {
+//TODO: Handle UnsupportedOperationException
+//TODO: Implement separate information getters
+public class VoyagerApiController {
   private final LinkedInProperties linkedInProperties;
   private final VoyagerApiFetcherService voyagerApiFetcherService;
 

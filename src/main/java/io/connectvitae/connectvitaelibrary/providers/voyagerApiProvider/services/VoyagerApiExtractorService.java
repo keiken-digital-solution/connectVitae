@@ -1,10 +1,7 @@
 package io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.services;
 
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiCertification;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiEducation;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiPosition;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiProfile;
-import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.VoyagerApiSkill;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.*;
+import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.CompanyView;
 import io.connectvitae.connectvitaelibrary.providers.voyagerApiProvider.models.views.ProfileView;
 import io.connectvitae.connectvitaelibrary.services.ExtractorServiceInterface;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +37,12 @@ public class VoyagerApiExtractorService implements ExtractorServiceInterface {
   @Override
   public List<VoyagerApiCertification> getCertifications(String profileId) {
     return fetcherService.fetchCertifications(profileId).getElements();
+  }
+  @Override
+  public CompanyView getCompany(String companyId) {
+    return fetcherService.fetchCompany(companyId);
+  }
+  public VoyagerApiSchool getSchool(String schoolId) {
+    return fetcherService.fetchSchool(schoolId);
   }
 }
