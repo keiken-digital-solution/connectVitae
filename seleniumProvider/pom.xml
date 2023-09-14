@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>seleniumProvider</artifactId>
+
     <packaging>jar</packaging>
 
     <properties>
@@ -18,4 +19,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.connectvitae</groupId>
+            <artifactId>contracts</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
