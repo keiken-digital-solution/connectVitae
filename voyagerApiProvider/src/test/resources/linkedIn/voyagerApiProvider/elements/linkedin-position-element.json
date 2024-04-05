@@ -1,0 +1,62 @@
+{
+  "locationName": "Hartford, Connecticut Area",
+  "entityUrn": "urn:li:fs_position:(ACoAAAKDuMsBugjGZwz0pJy43LJ-6bVwc0gm9xQ,1507519023)",
+  "geoLocationName": "Hartford, Connecticut Area",
+  "companyName": "CGI",
+  "timePeriod": {
+    "endDate": {
+      "month": 12,
+      "year": 2019
+    },
+    "startDate": {
+      "month": 5,
+      "year": 2017
+    }
+  },
+  "description": "Type: Development from Scratch\nRole: Python Engineer (Cloud)\n\nTechnology Used: Python,Dask,Flask,React,MySql,PySpark,Docker,Go,AWS,Kubernetes,Microservices,GraphQL\n\nResponsibilities:\n\n-Migrated monolith applications to microservice-based services using AWS, Python, Go, and Flask.\n-Wrote extendible code using TDD approach and containerized apps using Docker.\n-Created production-grade POC.\n-Worked with various data pipelines using AirFlow, Dask Pandas, and Numpy.\n-Leveraged AWS lambda, AWS ECS, AWS Elasticache, and DynamoDB for various services.\n-Created high-performance, scalable RestFul APIs using Python(Flask) /AWS API Gateway for various enterprise applications.\n-Worked on Single Page Applications using React by consuming RESTFul APIs.",
+  "company": {
+    "miniCompany": {
+      "objectUrn": "urn:li:company:1415",
+      "entityUrn": "urn:li:fs_miniCompany:1415",
+      "name": "CGI",
+      "showcase": false,
+      "active": true,
+      "logo": {
+        "com.linkedin.common.VectorImage": {
+          "artifacts": [
+            {
+              "width": 200,
+              "fileIdentifyingUrlPathSegment": "200_200/0/1663664110409?e=1698883200&v=beta&t=7q2d7yBzrz5hVfyn5tVUQexU47a_9H5hAPKeekGZt8o",
+              "expiresAt": 1698883200000,
+              "height": 200
+            },
+            {
+              "width": 100,
+              "fileIdentifyingUrlPathSegment": "100_100/0/1663664110409?e=1698883200&v=beta&t=WO_JhKrN6_nzybYRt4xzTlLemzlv5FZxwyBbJTzsToY",
+              "expiresAt": 1698883200000,
+              "height": 100
+            },
+            {
+              "width": 400,
+              "fileIdentifyingUrlPathSegment": "400_400/0/1663664110409?e=1698883200&v=beta&t=5v2EauFwE0PVbFgg6Ev5iqZK0BG9TZvceF2WfQ5hSPQ",
+              "expiresAt": 1698883200000,
+              "height": 400
+            }
+          ],
+          "rootUrl": "https://media.licdn.com/dms/image/C4E0BAQErzXWSFkn9tQ/company-logo_"
+        }
+      },
+      "universalName": "cgi",
+      "dashCompanyUrn": "urn:li:fsd_company:1415",
+      "trackingId": "SqSAHN+xTgGUCAIgVXevnw=="
+    },
+    "employeeCountRange": {
+      "start": 10001
+    },
+    "industries": [
+      "Information Technology and Services"
+    ]
+  },
+  "title": "Senior Python Developer at Cigna",
+  "companyUrn": "urn:li:fs_miniCompany:1415"
+}

@@ -1,0 +1,7 @@
+config:
+  linkedin:
+    accounts:
+      - username: ${USERNAME}
+        password: ${PASSWORD}
+    selenium:
+      web-driver-location: ${webDriverLocation}

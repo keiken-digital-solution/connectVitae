@@ -1,0 +1,42 @@
+{
+  "entityUrn": "urn:li:fs_education:(ACoAAAKDuMsBugjGZwz0pJy43LJ-6bVwc0gm9xQ,321705216)",
+  "school": {
+    "objectUrn": "urn:li:school:162118",
+    "entityUrn": "urn:li:fs_miniSchool:162118",
+    "active": true,
+    "logo": {
+      "com.linkedin.common.VectorImage": {
+        "artifacts": [
+          {
+            "width": 200,
+            "fileIdentifyingUrlPathSegment": "200_200/0/1565025702584?e=1698883200&v=beta&t=zSSFDJKRwZN5Y6cFxZfIeZ9NHO2c_YVle3V7gUL1srk",
+            "expiresAt": 1698883200000,
+            "height": 200
+          },
+          {
+            "width": 100,
+            "fileIdentifyingUrlPathSegment": "100_100/0/1565025702584?e=1698883200&v=beta&t=oOsc17NOOYANXQD1gKSRAl9hDIGRECNzoY0-f-1gdhw",
+            "expiresAt": 1698883200000,
+            "height": 100
+          },
+          {
+            "width": 400,
+            "fileIdentifyingUrlPathSegment": "400_400/0/1565025702584?e=1698883200&v=beta&t=rNzdooNwS4t0DZrmne2y8zVZXHq42S8INc3VRayS4zo",
+            "expiresAt": 1698883200000,
+            "height": 400
+          }
+        ],
+        "rootUrl": "https://media.licdn.com/dms/image/C510BAQHO4Qj_rvGxUA/company-logo_"
+      }
+    },
+    "schoolName": "SRM University",
+    "trackingId": "b1+e4ZynTESn3l3SAYn7iQ=="
+  },
+  "fieldOfStudyUrn": "urn:li:fs_fieldOfStudy:100351",
+  "degreeName": "Bachelor of Technology (B.Tech.)",
+  "schoolName": "SRM University",
+  "fieldOfStudy": "Electrical and Electronics Engineering",
+  "degreeUrn": "urn:li:fs_degree:250",
+  "grade": "Excellent",
+  "schoolUrn": "urn:li:fs_miniSchool:162118"
+}
