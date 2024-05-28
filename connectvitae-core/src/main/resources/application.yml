@@ -1,7 +1,7 @@
 config:
   linkedin:
     accounts:
-      - username: ${USERNAME}
-        password: ${PASSWORD}
+      - username: patrikaspu@gufum.com
+        password: mehdi321
     selenium:
-      web-driver-location: ${webDriverLocation}
+      web-driver-location: chromedriver.exe
