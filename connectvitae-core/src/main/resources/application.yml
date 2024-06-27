@@ -1,7 +1,7 @@
 config:
   linkedin:
     accounts:
-      - username: patrikaspu@gufum.com
-        password: mehdi321
+      - username: gecofan117@fresec.com
+        password: Y3zUqVv4GFg%UP&
     selenium:
       web-driver-location: chromedriver.exe
